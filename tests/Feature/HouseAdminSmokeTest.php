@@ -5,12 +5,19 @@ namespace Tests\Feature;
 use App\Filament\Resources\AmenityResource\Pages\ManageAmenities;
 use App\Filament\Resources\DiscountResource\Pages\CreateDiscount;
 use App\Filament\Resources\DiscountResource\Pages\ListDiscounts;
+use App\Filament\Resources\EmailTemplateResource\Pages\ManageEmailTemplates;
 use App\Filament\Resources\ExtraCostResource\Pages\CreateExtraCost;
 use App\Filament\Resources\ExtraCostResource\Pages\ListExtraCosts;
+use App\Filament\Resources\GuestResource\Pages\CreateGuest;
+use App\Filament\Resources\GuestResource\Pages\ListGuests;
 use App\Filament\Resources\HouseResource\Pages\CreateHouse;
 use App\Filament\Resources\HouseResource\Pages\EditHouse;
 use App\Filament\Resources\HouseResource\Pages\ListHouses;
+use App\Filament\Resources\ReservationResource\Pages\CreateReservation;
+use App\Filament\Resources\ReservationResource\Pages\ListReservations;
+use App\Models\Guest;
 use App\Models\House;
+use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -130,5 +137,78 @@ class HouseAdminSmokeTest extends TestCase
             ->assertHasNoFormErrors();
 
         $this->assertDatabaseHas('discounts', ['code' => 'SUMMER26', 'type' => 'promo_code']);
+    }
+
+    public function test_admin_can_load_guest_and_reservation_pages(): void
+    {
+        $this->actingAs(User::factory()->create());
+
+        Livewire::test(ListGuests::class)->assertSuccessful();
+        Livewire::test(CreateGuest::class)->assertSuccessful();
+        Livewire::test(ListReservations::class)->assertSuccessful();
+        Livewire::test(CreateReservation::class)->assertSuccessful();
+        Livewire::test(ManageEmailTemplates::class)->assertSuccessful();
+    }
+
+    public function test_admin_cannot_create_overlapping_reservation(): void
+    {
+        $this->actingAs(User::factory()->create());
+
+        $house = House::create([
+            'slug' => 'overlap-house',
+            'name' => ['hr' => 'Kucica'],
+            'base_price_per_night' => 50,
+        ]);
+
+        Reservation::create([
+            'house_id' => $house->id,
+            'check_in' => '2026-09-01',
+            'check_out' => '2026-09-05',
+            'status' => 'confirmed',
+        ]);
+
+        Livewire::test(CreateReservation::class)
+            ->fillForm([
+                'house_id' => $house->id,
+                'check_in' => '2026-09-03',
+                'check_out' => '2026-09-07',
+                'status' => 'new_request',
+                'source' => 'website',
+                'locale' => 'hr',
+            ])
+            ->call('create')
+            ->assertHasFormErrors(['check_out']);
+
+        $this->assertDatabaseCount('reservations', 1);
+    }
+
+    public function test_admin_can_create_a_non_overlapping_reservation_with_a_new_guest(): void
+    {
+        $this->actingAs(User::factory()->create());
+
+        $house = House::create([
+            'slug' => 'free-house',
+            'name' => ['hr' => 'Slobodna kucica'],
+            'base_price_per_night' => 50,
+        ]);
+
+        Livewire::test(CreateReservation::class)
+            ->fillForm([
+                'house_id' => $house->id,
+                'check_in' => '2026-09-10',
+                'check_out' => '2026-09-14',
+                'status' => 'confirmed',
+                'source' => 'phone',
+                'locale' => 'hr',
+                'total_price' => 200,
+            ])
+            ->call('create')
+            ->assertHasNoFormErrors();
+
+        $this->assertDatabaseHas('reservations', [
+            'house_id' => $house->id,
+            'status' => 'confirmed',
+            'source' => 'phone',
+        ]);
     }
 }
