@@ -193,6 +193,8 @@ class HouseResource extends Resource
     {
         return [
             HouseResource\RelationManagers\PhotosRelationManager::class,
+            HouseResource\RelationManagers\PricingRulesRelationManager::class,
+            HouseResource\RelationManagers\StayRulesRelationManager::class,
         ];
     }
 
