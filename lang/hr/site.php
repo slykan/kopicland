@@ -1,0 +1,46 @@
+<?php
+
+return [
+    'nav' => [
+        'home' => 'Naslovna',
+        'houses' => 'Kućice',
+        'about' => 'O nama',
+        'location' => 'Lokacija',
+        'contact' => 'Kontakt',
+        'faq' => 'Česta pitanja',
+    ],
+    'footer' => [
+        'rights' => 'Sva prava pridržana.',
+        'legal' => 'Pravne informacije',
+        'booking_rules' => 'Pravila rezervacije',
+        'terms' => 'Uvjeti korištenja',
+        'privacy' => 'Politika privatnosti',
+        'cookies' => 'Politika kolačića',
+    ],
+    'pages' => [
+        'about_title' => 'O nama',
+        'location_title' => 'Lokacija i kako doći',
+        'contact_title' => 'Kontakt',
+        'faq_title' => 'Česta pitanja',
+        'booking_rules_title' => 'Pravila rezervacije',
+        'terms_title' => 'Uvjeti korištenja',
+        'privacy_title' => 'Politika privatnosti',
+        'cookies_title' => 'Politika kolačića',
+        'content_pending' => 'Sadržaj ove stranice bit će dopunjen konačnim tekstovima naručitelja.',
+    ],
+    'common' => [
+        'book_now' => 'Rezerviraj',
+        'check_availability' => 'Provjeri dostupnost',
+        'view_details' => 'Detalji',
+        'check_in' => 'Dolazak',
+        'check_out' => 'Odlazak',
+        'adults' => 'Odrasli',
+        'guests' => 'gostiju',
+        'children' => 'Djeca',
+        'pets' => 'Kućni ljubimci',
+        'per_night' => 'po noćenju',
+        'from' => 'od',
+        'search' => 'Pretraži',
+        'nights' => 'noćenja',
+    ],
+];

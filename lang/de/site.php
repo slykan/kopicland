@@ -1,0 +1,46 @@
+<?php
+
+return [
+    'nav' => [
+        'home' => 'Startseite',
+        'houses' => 'Hütten',
+        'about' => 'Über uns',
+        'location' => 'Lage',
+        'contact' => 'Kontakt',
+        'faq' => 'FAQ',
+    ],
+    'footer' => [
+        'rights' => 'Alle Rechte vorbehalten.',
+        'legal' => 'Rechtliches',
+        'booking_rules' => 'Buchungsregeln',
+        'terms' => 'Nutzungsbedingungen',
+        'privacy' => 'Datenschutzrichtlinie',
+        'cookies' => 'Cookie-Richtlinie',
+    ],
+    'pages' => [
+        'about_title' => 'Über uns',
+        'location_title' => 'Lage & Anfahrt',
+        'contact_title' => 'Kontakt',
+        'faq_title' => 'FAQ',
+        'booking_rules_title' => 'Buchungsregeln',
+        'terms_title' => 'Nutzungsbedingungen',
+        'privacy_title' => 'Datenschutzrichtlinie',
+        'cookies_title' => 'Cookie-Richtlinie',
+        'content_pending' => 'Diese Seite wird mit den endgültigen Texten des Kunden ergänzt.',
+    ],
+    'common' => [
+        'book_now' => 'Jetzt buchen',
+        'check_availability' => 'Verfügbarkeit prüfen',
+        'view_details' => 'Details',
+        'check_in' => 'Anreise',
+        'check_out' => 'Abreise',
+        'adults' => 'Erwachsene',
+        'guests' => 'Gäste',
+        'children' => 'Kinder',
+        'pets' => 'Haustiere',
+        'per_night' => 'pro Nacht',
+        'from' => 'ab',
+        'search' => 'Suchen',
+        'nights' => 'Nächte',
+    ],
+];

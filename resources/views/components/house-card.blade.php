@@ -1,0 +1,25 @@
+@props(['house'])
+@php
+    $cover = $house->photos->firstWhere('is_cover', true) ?? $house->photos->first();
+@endphp
+<a href="{{ route('houses.show', ['locale' => app()->getLocale(), 'house' => $house->slug]) }}" class="group block overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm transition hover:shadow-md">
+    <div class="aspect-[4/3] overflow-hidden bg-brand-100">
+        @if ($cover)
+            <img src="{{ Storage::url($cover->path) }}" alt="{{ $cover->getTranslation('alt_text', app()->getLocale(), useFallbackLocale: true) ?: $house->getTranslation('name', app()->getLocale()) }}" class="h-full w-full object-cover transition group-hover:scale-105">
+        @else
+            <div class="flex h-full w-full items-center justify-center text-brand-300">{{ config('site.name') }}</div>
+        @endif
+    </div>
+
+    <div class="p-4">
+        <h3 class="text-lg font-semibold text-brand-900">{{ $house->getTranslation('name', app()->getLocale()) }}</h3>
+        <p class="mt-1 line-clamp-2 text-sm text-brand-600">{{ $house->getTranslation('short_description', app()->getLocale(), useFallbackLocale: true) }}</p>
+
+        <div class="mt-3 flex items-center justify-between">
+            <span class="text-sm text-brand-500">{{ $house->capacity_adults + $house->capacity_children }} {{ __('site.common.guests') }}</span>
+            <span class="text-sm font-semibold text-brand-800">
+                {{ __('site.common.from') }} {{ number_format($house->base_price_per_night, 0) }} € {{ __('site.common.per_night') }}
+            </span>
+        </div>
+    </div>
+</a>

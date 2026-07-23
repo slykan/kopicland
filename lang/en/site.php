@@ -1,0 +1,46 @@
+<?php
+
+return [
+    'nav' => [
+        'home' => 'Home',
+        'houses' => 'Houses',
+        'about' => 'About',
+        'location' => 'Location',
+        'contact' => 'Contact',
+        'faq' => 'FAQ',
+    ],
+    'footer' => [
+        'rights' => 'All rights reserved.',
+        'legal' => 'Legal',
+        'booking_rules' => 'Booking rules',
+        'terms' => 'Terms of use',
+        'privacy' => 'Privacy policy',
+        'cookies' => 'Cookie policy',
+    ],
+    'pages' => [
+        'about_title' => 'About us',
+        'location_title' => 'Location & directions',
+        'contact_title' => 'Contact',
+        'faq_title' => 'FAQ',
+        'booking_rules_title' => 'Booking rules',
+        'terms_title' => 'Terms of use',
+        'privacy_title' => 'Privacy policy',
+        'cookies_title' => 'Cookie policy',
+        'content_pending' => 'This page will be filled in with the client\'s final copy.',
+    ],
+    'common' => [
+        'book_now' => 'Book now',
+        'check_availability' => 'Check availability',
+        'view_details' => 'View details',
+        'check_in' => 'Check-in',
+        'check_out' => 'Check-out',
+        'adults' => 'Adults',
+        'guests' => 'guests',
+        'children' => 'Children',
+        'pets' => 'Pets',
+        'per_night' => 'per night',
+        'from' => 'from',
+        'search' => 'Search',
+        'nights' => 'nights',
+    ],
+];
