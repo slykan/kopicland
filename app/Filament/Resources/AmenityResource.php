@@ -19,6 +19,11 @@ class AmenityResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-sparkles';
 
+    public static function canViewAny(): bool
+    {
+        return auth()->user()?->canManageContent() ?? false;
+    }
+
     public static function form(Form $form): Form
     {
         return $form

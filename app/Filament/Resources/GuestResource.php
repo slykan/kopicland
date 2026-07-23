@@ -18,6 +18,11 @@ class GuestResource extends Resource
 
     protected static ?string $navigationGroup = 'Reservations';
 
+    public static function canViewAny(): bool
+    {
+        return auth()->user()?->canManageReservations() ?? false;
+    }
+
     public static function form(Form $form): Form
     {
         return $form

@@ -4,11 +4,13 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
@@ -46,5 +48,44 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // Every user in this table is admin-panel staff (guests/customers are
+        // the separate Guest model, not a User) - role checks happen per
+        // resource, not at the panel gate.
+        return true;
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isReservationStaff(): bool
+    {
+        return $this->role === 'reservation_staff';
+    }
+
+    public function isContentEditor(): bool
+    {
+        return $this->role === 'content_editor';
+    }
+
+    /**
+     * Reservations, guests, and the calendar (doc 12: djelatnik za rezervacije).
+     */
+    public function canManageReservations(): bool
+    {
+        return $this->isAdmin() || $this->isReservationStaff();
+    }
+
+    /**
+     * Houses, photos, and amenities (doc 12: urednik sadržaja).
+     */
+    public function canManageContent(): bool
+    {
+        return $this->isAdmin() || $this->isContentEditor();
     }
 }

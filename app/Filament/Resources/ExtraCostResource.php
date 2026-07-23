@@ -20,6 +20,11 @@ class ExtraCostResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-banknotes';
 
+    public static function canViewAny(): bool
+    {
+        return auth()->user()?->isAdmin() ?? false;
+    }
+
     protected static ?string $navigationGroup = 'Pricing';
 
     public static function form(Form $form): Form

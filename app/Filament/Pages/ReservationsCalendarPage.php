@@ -19,6 +19,11 @@ class ReservationsCalendarPage extends Page
 
     protected static string $view = 'filament.pages.reservations-calendar-page';
 
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->canManageReservations() ?? false;
+    }
+
     protected function getHeaderWidgets(): array
     {
         return [

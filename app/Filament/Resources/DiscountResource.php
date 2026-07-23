@@ -20,6 +20,11 @@ class DiscountResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
+    public static function canViewAny(): bool
+    {
+        return auth()->user()?->isAdmin() ?? false;
+    }
+
     protected static ?string $navigationGroup = 'Pricing';
 
     public static function form(Form $form): Form

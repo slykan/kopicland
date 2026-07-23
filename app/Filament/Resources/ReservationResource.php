@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ReservationResource\Pages;
+use App\Filament\Resources\ReservationResource\RelationManagers;
 use App\Models\House;
 use App\Models\Reservation;
 use App\Rules\HouseIsAvailable;
@@ -20,6 +21,11 @@ class ReservationResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
 
     protected static ?string $navigationGroup = 'Reservations';
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()?->canManageReservations() ?? false;
+    }
 
     public static function form(Form $form): Form
     {
@@ -202,6 +208,14 @@ class ReservationResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            RelationManagers\PaymentsRelationManager::class,
+            RelationManagers\DocumentsRelationManager::class,
+        ];
     }
 
     public static function getPages(): array

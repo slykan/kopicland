@@ -20,6 +20,11 @@ class HouseResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-home-modern';
 
+    public static function canViewAny(): bool
+    {
+        return auth()->user()?->canManageContent() ?? false;
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -191,11 +196,17 @@ class HouseResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
+        $relations = [
             HouseResource\RelationManagers\PhotosRelationManager::class,
-            HouseResource\RelationManagers\PricingRulesRelationManager::class,
             HouseResource\RelationManagers\StayRulesRelationManager::class,
         ];
+
+        // Pricing is financial data; content editors don't get access to it (doc 12).
+        if (auth()->user()?->isAdmin()) {
+            $relations[] = HouseResource\RelationManagers\PricingRulesRelationManager::class;
+        }
+
+        return $relations;
     }
 
     public static function getPages(): array
