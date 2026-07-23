@@ -23,8 +23,16 @@ class ReservationResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
+        return $form->schema(self::formSchema());
+    }
+
+    /**
+     * Shared with ReservationsCalendarWidget so the quick-add/edit modal
+     * on the central calendar uses the same fields and availability rule.
+     */
+    public static function formSchema(): array
+    {
+        return [
                 Forms\Components\Section::make('Booking')
                     ->schema([
                         Forms\Components\Select::make('house_id')
@@ -131,7 +139,7 @@ class ReservationResource extends Resource
                             ->label('Internal note (not visible to guest)'),
                     ])
                     ->columns(2),
-            ]);
+        ];
     }
 
     public static function table(Table $table): Table
