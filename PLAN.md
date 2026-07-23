@@ -6,52 +6,60 @@ Repo: https://github.com/slykan/kopicland
 Deploy (temp): https://vps.on-click.hr/~kopicland/
 
 ## Faza 0 — Setup
-- [ ] Laravel 12 skeleton (`laravel/laravel`)
-- [ ] Filament 3 admin panel
-- [ ] DB šema: houses, house_photos, amenities, house_amenities, pricing_rules (base/seasonal/date), extra_costs, discounts, reservations, guests, email_templates, booking_blocks
-- [ ] .env, git, deploy.sh prilagođen (placko.app pattern)
+- [x] Laravel 12 skeleton (`laravel/laravel`)
+- [x] Filament 3 admin panel
+- [x] DB šema: houses, house_photos, amenities, house_amenities, pricing_rules (base/seasonal/date), extra_costs, discounts, stay_rules, reservations (+payments/documents/logs), guests, email_templates
+- [ ] .env produkcija (mysql), deploy.sh prilagođen (placko.app pattern) — v idi Faza 7
 
 ## Faza 1 — Admin: kućice
-- [ ] CRUD kućica (naziv, opisi, kapacitet, sobe/kreveti/kupaonice, površina, lokacija, check-in/out, pravila, SEO)
-- [ ] Foto galerija (upload, redoslijed, naslovna foto, optimizacija/web format)
-- [ ] Pogodnosti (Wi-Fi, klima, parking, bazen...) — admin ih sam dodaje
-- [ ] Objava / privremena odjava / arhiva / redoslijed / izdvojene / kopiranje kao predložak
+- [x] CRUD kućica (naziv, opisi, kapacitet, sobe/kreveti/kupaonice, površina, lokacija, check-in/out, pravila, SEO) — translatable HR/EN/DE preko locale switchera
+- [x] Foto galerija (upload, redoslijed, naslovna foto)
+- [x] Pogodnosti (Wi-Fi, klima, parking, bazen...) — admin ih sam dodaje
+- [x] Objava / privremena odjava / arhiva / redoslijed / izdvojene
+- [ ] Kopiranje postojeće kućice kao predloška (nije napravljeno)
+- [ ] Automatska optimizacija/web format fotografija (nije napravljeno)
 
 ## Faza 2 — Admin: cijene
-- [ ] Osnovna cijena po noćenju
-- [ ] Sezonske cijene (raspon datuma)
-- [ ] Pojedinačna cijena po datumu (prioritet nad sezonskom/osnovnom)
-- [ ] Min/max noćenja, dopušteni dan dolaska/odlaska
-- [ ] Dodatni troškovi (čišćenje, boravišna pristojba, os./ljubimac/krevetić/doručak...)
-- [ ] Popusti (duži boravak, rana rezervacija, last-minute, promo kod, ručni)
+- [x] Osnovna cijena po noćenju
+- [x] Sezonske cijene (raspon datuma)
+- [x] Pojedinačna cijena po datumu (prioritet nad sezonskom/osnovnom)
+- [x] Min/max noćenja, dopušteni dan dolaska/odlaska
+- [x] Dodatni troškovi (jednokratno/po noćenju/po osobi/po osobi i noćenju, po kućici ili globalno)
+- [x] Popusti (duži boravak, rana rezervacija, last-minute, promo kod, ručni tip postoji ali ručna primjena iz admina još nije UI-rana)
 
 ## Faza 3 — Admin: rezervacije
-- [ ] Statusi (novi zahtjev → čeka potvrdu → potvrđena / odbijena / otkazana / završena / no-show, + privremeno rezervirano, blokiran termin)
-- [ ] Ručni unos rezervacije (telefon/mail/agencija), provjera preklapanja
-- [ ] Centralni kalendar (10 kućica, dan/tjedan/mjesec, filter, drag/klik, premještanje uz re-check)
-- [ ] Ručno blokiranje termina
-- [ ] Podaci o gostu (GDPR: privola, datum prihvaćanja pravila/privatnosti)
-- [ ] Email predlošci + automatski mailovi (gost: primitak/potvrda/izmjena/odbijanje/otkazivanje; admin: novi zahtjev/otkazivanje/podsjetnik)
-- [ ] Nadzorna ploča (novi zahtjevi, dolasci/odlasci, zauzetost, prihod, upozorenja)
+- [x] Statusi (novi zahtjev → čeka potvrdu → potvrđena / odbijena / otkazana / završena / no-show, + privremeno rezervirano, blokiran termin)
+- [x] Ručni unos rezervacije (telefon/mail/agencija), provjera preklapanja (AvailabilityChecker + HouseIsAvailable rule)
+- [x] Centralni kalendar (10 kućica, mjesec/tjedan/dan, filter po kućici/statusu, premještanje uz obveznu re-provjeru dostupnosti)
+- [x] Ručno blokiranje termina (status "blocked")
+- [x] Podaci o gostu (GDPR: privola, datum prihvaćanja pravila/privatnosti)
+- [x] Email predlošci + automatski mailovi (gost: primitak/potvrda/odbijanje/otkazivanje/izmjena; admin: novi zahtjev/otkazivanje) — na jeziku gosta
+- [x] Povijest promjena (reservation_logs)
+- [ ] Nadzorna ploča/dashboard widgeti (novi zahtjevi, dolasci/odlasci, zauzetost, prihod) — nije napravljeno
+- [ ] Podsjetnik prije dolaska / mail nakon odlaska — predlošci postoje, automatsko slanje (scheduled) još nije ožičeno
+- [ ] Rok za automatski istek nepotvrđenog zahtjeva (cron) — nije napravljeno
 
 ## Faza 4 — Javni dio
-- [ ] Naslovna (hero, izdvojene kućice, pogodnosti, provjera dostupnosti, foto, karta, kontakt)
-- [ ] Popis kućica (kartice: foto, opis, kapacitet, cijena od, dostupnost)
-- [ ] Detalj kućice (galerija, kapacitet, pogodnosti, pravila, kalendar dostupnosti, cjenik, obrazac)
-- [ ] Provjera dostupnosti (datumi, gosti, kućni ljubimci → filtrira slobodne kućice)
-- [ ] Rezervacijski obrazac + live izračun cijene, re-check dostupnosti prije spremanja
-- [ ] Privremeno zadržavanje termina (par minuta dok gost popunjava)
-- [ ] Rok za automatski istek nepotvrđenog zahtjeva (npr. 24h)
-- [ ] Zaštita obrasca (captcha/rate-limit)
+- [x] Naslovna (hero, izdvojene kućice, provjera dostupnosti)
+- [x] Popis kućica (kartice: foto, opis, kapacitet, cijena od) + filter po dostupnosti/kapacitetu
+- [x] Detalj kućice (galerija, kapacitet, pogodnosti, pravila, opis, booking forma)
+- [x] Provjera dostupnosti (datumi, gosti → filtrira slobodne kućice)
+- [x] Rezervacijski obrazac + live izračun cijene (PriceCalculator), re-check dostupnosti prije spremanja
+- [ ] Kalendar dostupnosti na stranici kućice (vizualni prikaz zauzetih datuma) — nije napravljeno, trenutno samo re-check pri submitu
+- [ ] Privremeno zadržavanje termina (hold) — nije napravljeno (doc označava kao "dodatna preporučena funkcija")
+- [ ] Rok za automatski istek nepotvrđenog zahtjeva — nije napravljeno
+- [ ] Zaštita obrasca (captcha/rate-limit) — nije napravljeno
 
 ## Faza 5 — Višejezičnost i statične stranice
-- [ ] HR/EN/DE prijevodi (front), admin samo EN
-- [ ] O nama, Lokacija, Kontakt, FAQ, Pravila rezervacije, Uvjeti korištenja, Privatnost, Kolačići, Aktivnosti u okolici
+- [x] HR/EN/DE rute i UI chrome (nav/footer/forme), admin samo EN (ForceEnglishLocale middleware)
+- [x] Stranice postoje kao rute: O nama, Lokacija, Kontakt, FAQ, Pravila rezervacije, Uvjeti korištenja, Privatnost, Kolačići — sadržaj je placeholder dok klijent ne pošalje tekstove
+- [ ] Aktivnosti u okolici / preporuke — nije napravljeno
+- [ ] Stvarni prijevodi sadržaja kućica (HR uneseno, EN/DE fallback na HR dok admin ne prevede)
 
 ## Faza 6 — Izvještaji, role, dodatno
 - [ ] Statistika (rezervacije/noćenja, popunjenost, prihod, prosjeci, izvor rezervacije, izvoz CSV/Excel)
-- [ ] Uloge: glavni admin / djelatnik za rezervacije / urednik sadržaja
-- [ ] Evidencija plaćanja, dokumenti/privici uz rezervaciju, povijest promjena (audit log)
+- [ ] Uloge: glavni admin / djelatnik za rezervacije / urednik sadržaja — `role` kolona postoji na users, ali Filament pristup/permisije po ulozi još nisu ožičene
+- [x] Evidencija plaćanja (reservation_payments), dokumenti/privici (reservation_documents), povijest promjena (reservation_logs) — modeli/migracije postoje, admin UI za njih još nije napravljen
 - [ ] Backup baze i fotografija
 
 ## Faza 7 — Deploy
