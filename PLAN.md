@@ -57,10 +57,12 @@ Deploy (temp): https://vps.on-click.hr/~kopicland/
 - [ ] Stvarni prijevodi sadržaja kućica (HR uneseno, EN/DE fallback na HR dok admin ne prevede)
 
 ## Faza 6 — Izvještaji, role, dodatno
-- [ ] Statistika (rezervacije/noćenja, popunjenost, prihod, prosjeci, izvor rezervacije, izvoz CSV/Excel)
-- [ ] Uloge: glavni admin / djelatnik za rezervacije / urednik sadržaja — `role` kolona postoji na users, ali Filament pristup/permisije po ulozi još nisu ožičene
-- [x] Evidencija plaćanja (reservation_payments), dokumenti/privici (reservation_documents), povijest promjena (reservation_logs) — modeli/migracije postoje, admin UI za njih još nije napravljen
-- [ ] Backup baze i fotografija
+- [x] Dashboard widget (novi zahtjevi, čeka potvrdu, potvrđeno, dolasci/odlasci sljedećih 7 dana, potvrđena vrijednost)
+- [x] Uloge: glavni admin / djelatnik za rezervacije / urednik sadržaja — ožičeno preko `canViewAny()`/`canAccess()` po resursu, testirano
+- [x] Evidencija plaćanja (reservation_payments) i dokumenti/privici (reservation_documents) — relation manageri na ReservationResource
+- [x] Povijest promjena (reservation_logs) — automatski preko ReservationObserver
+- [ ] Statistika/izvještaji (popunjenost, prihod, prosjeci) i izvoz CSV/Excel — **preskočeno po dogovoru, nije prioritet za sada**
+- [ ] Backup baze i fotografija — **preskočeno po dogovoru, nije prioritet za sada**
 
 ## Faza 7 — Deploy
 - [ ] deploy.sh za vps.on-click.hr/~kopicland
