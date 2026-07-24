@@ -98,4 +98,15 @@ return [
         'search' => 'Suchen',
         'nights' => 'Nächte',
     ],
+    'contact_form' => [
+        'name' => 'Vor- und Nachname',
+        'email' => 'E-Mail',
+        'subject' => 'Betreff',
+        'participants' => 'Anzahl der Teilnehmer',
+        'event_date' => 'Datum',
+        'message' => 'Nachricht',
+        'send' => 'Senden',
+        'sent_title' => 'Nachricht gesendet!',
+        'sent_body' => 'Vielen Dank für Ihre Anfrage, wir melden uns so schnell wie möglich bei Ihnen.',
+    ],
 ];

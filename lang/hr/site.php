@@ -98,4 +98,15 @@ return [
         'search' => 'Pretraži',
         'nights' => 'noćenja',
     ],
+    'contact_form' => [
+        'name' => 'Ime i prezime',
+        'email' => 'Email',
+        'subject' => 'Naslov',
+        'participants' => 'Broj sudionika',
+        'event_date' => 'Datum',
+        'message' => 'Poruka',
+        'send' => 'Pošalji',
+        'sent_title' => 'Poruka je poslana!',
+        'sent_body' => 'Hvala na upitu, javit ćemo Vam se u najkraćem mogućem roku.',
+    ],
 ];

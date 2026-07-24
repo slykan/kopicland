@@ -98,4 +98,15 @@ return [
         'search' => 'Search',
         'nights' => 'nights',
     ],
+    'contact_form' => [
+        'name' => 'Full name',
+        'email' => 'Email',
+        'subject' => 'Subject',
+        'participants' => 'Number of participants',
+        'event_date' => 'Date',
+        'message' => 'Message',
+        'send' => 'Send',
+        'sent_title' => 'Message sent!',
+        'sent_body' => 'Thank you for reaching out, we\'ll get back to you as soon as possible.',
+    ],
 ];

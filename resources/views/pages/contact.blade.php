@@ -12,5 +12,9 @@
             </div>
             <div class="text-brand-600">{{ $contact['address'] }}</div>
         </dl>
+
+        <div class="mt-10">
+            <livewire:public.contact-form />
+        </div>
     </div>
 </x-layouts.app>
