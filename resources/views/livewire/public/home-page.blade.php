@@ -124,11 +124,11 @@
         <section class="w-full bg-brand-50 py-16">
             <h2 class="font-display px-4 text-center text-3xl font-semibold text-brand-900 sm:text-4xl">{{ __('site.nav.features') }}</h2>
 
-            <div class="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-x-6 gap-y-10 px-4 sm:grid-cols-3 sm:px-6 lg:grid-cols-4">
+            <div class="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-x-6 gap-y-10 px-4 sm:grid-cols-3 sm:px-6 lg:grid-cols-5">
                 @foreach ($amenities as $amenity)
                     <div class="flex flex-col items-center gap-3 text-center">
-                        <span class="flex h-16 w-16 items-center justify-center rounded-full border border-brand-200 bg-white text-brand-600">
-                            <x-dynamic-component :component="'tabler-'.($amenity->icon ?: 'circle')" class="h-7 w-7" />
+                        <span class="flex h-20 w-20 items-center justify-center rounded-full border border-brand-200 bg-white text-brand-600">
+                            <x-dynamic-component :component="'tabler-'.($amenity->icon ?: 'circle')" class="h-9 w-9" />
                         </span>
                         <span class="text-sm font-medium text-brand-700">{{ $amenity->getTranslation('name', app()->getLocale()) }}</span>
                     </div>
