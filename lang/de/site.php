@@ -27,6 +27,15 @@ return [
         'privacy_title' => 'Datenschutzrichtlinie',
         'cookies_title' => 'Cookie-Richtlinie',
         'content_pending' => 'Diese Seite wird mit den endgültigen Texten des Kunden ergänzt.',
+        'about_intro' => 'Kopićland ist ein 4 Hektar großes Landgut in Marinci, nur 10 Minuten vom Zentrum von Vinkovci und Vukovar entfernt. Wir bieten ein vielfältiges Sportangebot sowie hausgemachte Speisen und Getränke, und unser Gelände ist der ideale Rahmen für Hochzeiten, Taufen, Geburtstage, verschiedenste Feiern und Team-Building-Events.',
+        'about_heading' => 'Kopićland Restaurant',
+        'about_body' => [
+            'Willkommen bei Kopićland – einem Ort für gutes Essen, eine angenehme Atmosphäre und unvergessliche Momente in Marinci.',
+            'Lassen Sie uns Ihre Gastgeber sein und genießen Sie die Vielfalt der traditionellen kroatischen Küche. Unser freundliches Personal sorgt dafür, dass Sie sich wohlfühlen, während unsere sorgfältig zubereiteten Gerichte Ihnen ein wahres kulinarisches Erlebnis bieten.',
+            'Ob Familienessen, Treffen mit Freunden oder die Organisation einer besonderen Veranstaltung – Kopićland ist der ideale Ort, um ein paar Stunden zu entspannen und zu genießen.',
+            'Unseren Gästen stehen eine Außenterrasse, klimatisierte Innenräume, kostenlose Parkplätze und WLAN zur Verfügung. Für die Kleinsten haben wir eine gemütliche Spielecke eingerichtet, und auch Ihre Haustiere sind herzlich willkommen. Ein eigens eingerichteter Raucherbereich ist ebenfalls vorhanden.',
+            'Kontaktieren Sie uns und reservieren Sie Ihren Tisch. Wir freuen uns auf Ihren Besuch!',
+        ],
     ],
     'common' => [
         'book_now' => 'Jetzt buchen',

@@ -27,6 +27,15 @@ return [
         'privacy_title' => 'Politika privatnosti',
         'cookies_title' => 'Politika kolačića',
         'content_pending' => 'Sadržaj ove stranice bit će dopunjen konačnim tekstovima naručitelja.',
+        'about_intro' => 'Kopićland je seosko imanje od 4 hektara u Marincima, samo 10 minuta vožnje od centra Vinkovaca i Vukovara. Nudimo bogat izbor sportskih sadržaja, domaću hranu i pića, a naš prostor idealan je za vjenčanja, krštenja, rođendane, razne proslave i team buildinge.',
+        'about_heading' => 'Kopićland Restaurant',
+        'about_body' => [
+            'Dobrodošli u Kopićland – mjesto dobre hrane, ugodne atmosfere i nezaboravnih trenutaka u Marincima.',
+            'Dopustite nam da budemo Vaši domaćini i uživajte u bogatstvu okusa domaće hrvatske kuhinje. Naše ljubazno osoblje pobrinut će se da se osjećate ugodno, a pažljivo pripremljena jela pružit će Vam pravi gastronomski doživljaj.',
+            'Bilo da dolazite na obiteljski ručak, druženje s prijateljima ili organizirate poseban događaj, Kopićland je idealno mjesto za nekoliko sati opuštanja i uživanja.',
+            'Gostima su na raspolaganju vanjska terasa, klimatizirani prostor, besplatan parking i Wi-Fi. Za najmlađe smo pripremili ugodan dječji kutak, a dobrodošli su i Vaši kućni ljubimci. Dostupan je i posebno uređen prostor za pušače.',
+            'Kontaktirajte nas i rezervirajte svoj stol. Radujemo se Vašem dolasku!',
+        ],
     ],
     'common' => [
         'book_now' => 'Rezerviraj',
