@@ -20,8 +20,14 @@ class HouseDetailPage extends Component
     {
         $locale = app()->getLocale();
 
+        $seoTitle = $this->house->getTranslation('seo_title', $locale, useFallbackLocale: true)
+            ?: $this->house->getTranslation('name', $locale);
+
+        $seoDescription = $this->house->getTranslation('seo_description', $locale, useFallbackLocale: true)
+            ?: $this->house->getTranslation('short_description', $locale, useFallbackLocale: true);
+
         return view('livewire.public.house-detail-page')
-            ->title($this->house->getTranslation('name', $locale).' — '.config('site.name'))
-            ->layoutData(['description' => $this->house->getTranslation('short_description', $locale, useFallbackLocale: true)]);
+            ->title($seoTitle.' — '.config('site.name'))
+            ->layoutData(['description' => $seoDescription]);
     }
 }

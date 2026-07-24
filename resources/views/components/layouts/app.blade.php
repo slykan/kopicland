@@ -9,6 +9,22 @@
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}">
 
+    @if (request()->route() && request()->route()->parameter('locale'))
+        <link rel="canonical" href="{{ url()->current() }}">
+        @foreach (\App\Http\Middleware\SetLocale::SUPPORTED_LOCALES as $code)
+            <link rel="alternate" hreflang="{{ $code }}" href="{{ route(request()->route()->getName(), array_merge(request()->route()->parameters(), ['locale' => $code])) }}">
+        @endforeach
+        <link rel="alternate" hreflang="x-default" href="{{ route(request()->route()->getName(), array_merge(request()->route()->parameters(), ['locale' => 'hr'])) }}">
+    @endif
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ config('site.name') }}">
+    <meta property="og:title" content="{{ $title ?? config('site.name') }}">
+    <meta property="og:description" content="{{ $description ?? config('site.name') }}">
+    <meta property="og:image" content="{{ asset('images/hero-banner-3.jpg') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta name="twitter:card" content="summary_large_image">
+
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600|playfair-display:600,700" rel="stylesheet" />
 

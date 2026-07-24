@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SitemapController;
 use App\Http\Middleware\SetLocale;
 use App\Livewire\Public\HomePage;
 use App\Livewire\Public\HouseDetailPage;
@@ -7,6 +8,8 @@ use App\Livewire\Public\HouseListPage;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/hr');
+
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 
 Route::prefix('{locale}')
     ->where(['locale' => implode('|', SetLocale::SUPPORTED_LOCALES)])
