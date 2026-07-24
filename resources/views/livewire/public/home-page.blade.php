@@ -1,6 +1,6 @@
 <div>
     <section
-        class="relative flex min-h-[80vh] flex-col items-center justify-center overflow-hidden bg-brand-800 pb-16 text-white lg:min-h-screen"
+        class="relative flex min-h-[80vh] flex-col items-center justify-center bg-brand-800 pb-16 text-white lg:min-h-screen"
         x-data="{
             images: [
                 '{{ asset('images/hero-banner-3.jpg') }}',
