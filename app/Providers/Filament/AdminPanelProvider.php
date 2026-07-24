@@ -2,6 +2,8 @@
 
 namespace App\Providers\Filament;
 
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -24,6 +26,12 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class AdminPanelProvider extends PanelProvider
 {
+    public function boot(): void
+    {
+        DatePicker::configureUsing(fn (DatePicker $component) => $component->native(false)->displayFormat('d.m.Y'));
+        DateTimePicker::configureUsing(fn (DateTimePicker $component) => $component->native(false)->displayFormat('d.m.Y H:i'));
+    }
+
     public function panel(Panel $panel): Panel
     {
         return $panel
