@@ -3,6 +3,7 @@ REPO=~/kopicland
 
 cd $REPO
 echo "→ git pull..."
+git checkout -- .
 git pull origin main
 
 echo "→ composer install..."
