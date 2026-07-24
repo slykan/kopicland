@@ -68,4 +68,21 @@ class House extends Model
     {
         return $this->hasMany(Reservation::class);
     }
+
+    /**
+     * Case-insensitive search by translated name, keyed by id => label.
+     * A plain `where('name', 'like', ...)` doesn't work reliably here since
+     * `name` is a JSON column (translatable) and MySQL's JSON LIKE comparison
+     * is case-sensitive.
+     */
+    public static function searchByName(string $search): array
+    {
+        $locale = app()->getLocale();
+        $needle = mb_strtolower($search);
+
+        return static::query()->get()
+            ->filter(fn (self $house) => str_contains(mb_strtolower($house->getTranslation('name', $locale)), $needle))
+            ->mapWithKeys(fn (self $house) => [$house->id => $house->getTranslation('name', $locale)])
+            ->all();
+    }
 }

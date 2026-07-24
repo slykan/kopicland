@@ -1,12 +1,10 @@
 <div>
     <section
-        class="relative flex min-h-[50vh] flex-col items-center justify-center overflow-hidden bg-brand-800 pb-16 text-white"
+        class="relative flex min-h-[80vh] flex-col items-center justify-center overflow-hidden bg-brand-800 pb-16 text-white lg:min-h-screen"
         x-data="{
             images: [
                 '{{ asset('images/hero-banner-3.jpg') }}',
                 '{{ asset('images/hero-banner-4.jpg') }}',
-                '{{ asset('images/hero-banner.jpg') }}',
-                '{{ asset('images/hero-banner-2.jpg') }}',
             ],
             active: 0,
             init() {

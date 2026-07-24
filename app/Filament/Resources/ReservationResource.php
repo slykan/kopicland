@@ -45,8 +45,9 @@ class ReservationResource extends Resource
                             ->label('House')
                             ->relationship('house', 'id')
                             ->getOptionLabelFromRecordUsing(fn (House $record) => $record->getTranslation('name', app()->getLocale()))
+                            ->getSearchResultsUsing(fn (string $search) => House::searchByName($search))
                             ->required()
-                            ->searchable(['name'])
+                            ->searchable()
                             ->live(),
                         Forms\Components\Select::make('guest_id')
                             ->label('Guest')

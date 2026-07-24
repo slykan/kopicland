@@ -35,7 +35,8 @@ class ExtraCostResource extends Resource
                     ->label('House')
                     ->relationship('house', 'id')
                     ->getOptionLabelFromRecordUsing(fn (House $record) => $record->getTranslation('name', app()->getLocale()))
-                    ->searchable(['name'])
+                    ->getSearchResultsUsing(fn (string $search) => House::searchByName($search))
+                    ->searchable()
                     ->placeholder('All houses')
                     ->helperText('Leave empty to apply to every house'),
                 Forms\Components\TextInput::make('name')
