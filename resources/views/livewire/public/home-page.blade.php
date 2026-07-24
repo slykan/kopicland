@@ -35,10 +35,10 @@
 
     <div class="h-16"></div>
 
-    <section class="mx-auto max-w-3xl px-4 py-12 text-center sm:px-6">
+    <section class="w-full bg-brand-50 px-4 py-16 text-center sm:px-6">
         <h2 class="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">{{ __('site.pages.about_heading') }}</h2>
-        <p class="mx-auto mt-4 max-w-2xl text-brand-600">{{ __('site.pages.about_intro') }}</p>
-        <p class="mx-auto mt-3 max-w-2xl text-brand-600">{{ __('site.pages.about_body')[0] }}</p>
+        <p class="mx-auto mt-4 max-w-5xl text-brand-600">{{ __('site.pages.about_intro') }}</p>
+        <p class="mx-auto mt-3 max-w-5xl text-brand-600">{{ __('site.pages.about_body')[0] }}</p>
     </section>
 
     @php
@@ -124,7 +124,7 @@
         <section class="w-full bg-brand-50 py-16">
             <h2 class="font-display px-4 text-center text-3xl font-semibold text-brand-900 sm:text-4xl">{{ __('site.nav.features') }}</h2>
 
-            <div class="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-x-6 gap-y-10 px-4 sm:grid-cols-3 sm:px-6 lg:grid-cols-5">
+            <div class="mx-auto mt-10 grid max-w-7xl grid-cols-2 gap-x-6 gap-y-10 px-4 sm:grid-cols-3 sm:px-6 lg:grid-cols-5">
                 @foreach ($amenities as $amenity)
                     <div class="flex flex-col items-center gap-3 text-center">
                         <span class="flex h-20 w-20 items-center justify-center rounded-full border border-brand-200 bg-white text-brand-600">
@@ -200,15 +200,15 @@
     </section>
 
     @php $contact = config('site.contact'); @endphp
-    <section class="w-full py-12">
+    <section class="w-full pt-12">
         <h2 class="font-display px-4 text-center text-3xl font-semibold text-brand-900 sm:text-4xl">{{ __('site.pages.find_us_heading') }}</h2>
         <p class="mt-2 px-4 text-center text-brand-600">{{ $contact['address'] }}</p>
 
-        <div class="mt-8 h-[450px] w-full">
+        <div class="mt-8 h-[450px] w-full lg:h-[585px]">
             <iframe
                 class="h-full w-full"
                 loading="lazy"
-                src="https://maps.google.com/maps?q={{ $contact['lat'] }},{{ $contact['lng'] }}&z=15&output=embed"
+                src="https://maps.google.com/maps?q={{ $contact['lat'] }},{{ $contact['lng'] }}&z=13&output=embed"
             ></iframe>
         </div>
     </section>
