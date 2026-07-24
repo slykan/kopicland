@@ -9,12 +9,12 @@
             <div class="grid grid-cols-2 gap-3">
                 <div>
                     <label class="block text-xs font-medium text-brand-600">{{ __('site.common.check_in') }}</label>
-                    <input type="text" inputmode="numeric" placeholder="dd.mm.gggg" pattern="\d{2}\.\d{2}\.\d{4}" wire:model.live="checkIn" class="mt-1 w-full rounded-lg border-brand-200 text-sm">
+                    <input type="text" inputmode="numeric" placeholder="dd.mm.gggg" pattern="\d{2}\.\d{2}\.\d{4}" wire:model.live="checkIn" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
                     @error('checkIn') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
                 </div>
                 <div>
                     <label class="block text-xs font-medium text-brand-600">{{ __('site.common.check_out') }}</label>
-                    <input type="text" inputmode="numeric" placeholder="dd.mm.gggg" pattern="\d{2}\.\d{2}\.\d{4}" wire:model.live="checkOut" class="mt-1 w-full rounded-lg border-brand-200 text-sm">
+                    <input type="text" inputmode="numeric" placeholder="dd.mm.gggg" pattern="\d{2}\.\d{2}\.\d{4}" wire:model.live="checkOut" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
                     @error('checkOut') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
                 </div>
             </div>
@@ -22,15 +22,15 @@
             <div class="grid grid-cols-3 gap-3">
                 <div>
                     <label class="block text-xs font-medium text-brand-600">{{ __('site.common.adults') }}</label>
-                    <input type="number" min="1" wire:model.live="adults" class="mt-1 w-full rounded-lg border-brand-200 text-sm">
+                    <input type="number" min="1" wire:model.live="adults" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
                 </div>
                 <div>
                     <label class="block text-xs font-medium text-brand-600">{{ __('site.common.children') }}</label>
-                    <input type="number" min="0" wire:model.live="children" class="mt-1 w-full rounded-lg border-brand-200 text-sm">
+                    <input type="number" min="0" wire:model.live="children" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
                 </div>
                 <div>
                     <label class="block text-xs font-medium text-brand-600">{{ __('site.common.pets') }}</label>
-                    <input type="number" min="0" wire:model="pets" class="mt-1 w-full rounded-lg border-brand-200 text-sm">
+                    <input type="number" min="0" wire:model="pets" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
                 </div>
             </div>
 
@@ -54,41 +54,41 @@
             <div class="grid grid-cols-2 gap-3">
                 <div>
                     <label class="block text-xs font-medium text-brand-600">{{ __('First name') }}</label>
-                    <input type="text" wire:model="firstName" class="mt-1 w-full rounded-lg border-brand-200 text-sm">
+                    <input type="text" wire:model="firstName" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
                     @error('firstName') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
                 </div>
                 <div>
                     <label class="block text-xs font-medium text-brand-600">{{ __('Last name') }}</label>
-                    <input type="text" wire:model="lastName" class="mt-1 w-full rounded-lg border-brand-200 text-sm">
+                    <input type="text" wire:model="lastName" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
                     @error('lastName') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
                 </div>
             </div>
 
             <div>
                 <label class="block text-xs font-medium text-brand-600">{{ __('Email') }}</label>
-                <input type="email" wire:model="email" class="mt-1 w-full rounded-lg border-brand-200 text-sm">
+                <input type="email" wire:model="email" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
                 @error('email') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
             </div>
 
             <div class="grid grid-cols-2 gap-3">
                 <div>
                     <label class="block text-xs font-medium text-brand-600">{{ __('Phone') }}</label>
-                    <input type="text" wire:model="phone" class="mt-1 w-full rounded-lg border-brand-200 text-sm">
+                    <input type="text" wire:model="phone" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
                 </div>
                 <div>
                     <label class="block text-xs font-medium text-brand-600">{{ __('Country') }}</label>
-                    <input type="text" wire:model="country" class="mt-1 w-full rounded-lg border-brand-200 text-sm">
+                    <input type="text" wire:model="country" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
                 </div>
             </div>
 
             <div>
                 <label class="block text-xs font-medium text-brand-600">{{ __('Note') }}</label>
-                <textarea wire:model="guestNote" rows="2" class="mt-1 w-full rounded-lg border-brand-200 text-sm"></textarea>
+                <textarea wire:model="guestNote" rows="2" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900"></textarea>
             </div>
 
             <div>
                 <label class="block text-xs font-medium text-brand-600">{{ __('Promo code') }}</label>
-                <input type="text" wire:model.live="promoCode" class="mt-1 w-full rounded-lg border-brand-200 text-sm">
+                <input type="text" wire:model.live="promoCode" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
             </div>
 
             <div class="space-y-2 text-sm text-brand-600">

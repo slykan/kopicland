@@ -1,5 +1,24 @@
 <div>
-    <section class="relative flex min-h-[50vh] flex-col items-center justify-center bg-brand-800 bg-cover bg-center pb-16 text-white" style="background-image: url('{{ asset('images/hero-banner.jpg') }}')">
+    <section
+        class="relative flex min-h-[50vh] flex-col items-center justify-center overflow-hidden bg-brand-800 pb-16 text-white"
+        x-data="{
+            images: [
+                '{{ asset('images/hero-banner.jpg') }}',
+                '{{ asset('images/hero-banner-2.jpg') }}',
+            ],
+            active: 0,
+            init() {
+                setInterval(() => { this.active = (this.active + 1) % this.images.length }, 6000)
+            },
+        }"
+    >
+        <template x-for="(image, index) in images" :key="index">
+            <div
+                class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out"
+                :style="`background-image: url('${image}')`"
+                :class="active === index ? 'opacity-100' : 'opacity-0'"
+            ></div>
+        </template>
         <div class="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-brand-900/50 to-brand-950/20"></div>
         <div class="relative mx-auto max-w-3xl px-4 py-24 text-center">
             <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">{{ config('site.name') }}</h1>
