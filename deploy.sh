@@ -10,6 +10,7 @@ echo "→ composer install..."
 
 echo "→ npm install + build..."
 npm install
+chmod +x node_modules/.bin/*
 npm run build
 
 /usr/local/bin/ea-php83 artisan migrate --force
