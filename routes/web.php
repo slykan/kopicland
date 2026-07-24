@@ -21,8 +21,5 @@ Route::prefix('{locale}')
         Route::view('/location', 'pages.location')->name('pages.location');
         Route::view('/contact', 'pages.contact')->name('pages.contact');
         Route::view('/faq', 'pages.faq')->name('pages.faq');
-        Route::view('/booking-rules', 'pages.booking-rules')->name('pages.booking-rules');
-        Route::view('/terms', 'pages.terms')->name('pages.terms');
-        Route::view('/privacy', 'pages.privacy')->name('pages.privacy');
-        Route::view('/cookies', 'pages.cookies')->name('pages.cookies');
+        Route::view('/legal', 'pages.legal')->name('pages.legal');
     });

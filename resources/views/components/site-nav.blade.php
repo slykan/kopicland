@@ -3,7 +3,8 @@
 @endphp
 <header class="border-b border-brand-100">
     <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
-        <a href="{{ route('home', ['locale' => $locale]) }}" class="text-xl font-semibold tracking-tight text-brand-800">
+        <a href="{{ route('home', ['locale' => $locale]) }}" class="flex items-center gap-2 text-xl font-semibold tracking-tight text-brand-800">
+            <img src="{{ asset('images/logo.jpg') }}" alt="{{ config('site.name') }}" class="h-9 w-9 rounded-full object-cover">
             {{ config('site.name') }}
         </a>
 
