@@ -65,8 +65,10 @@ Deploy (temp): https://vps.on-click.hr/~kopicland/
 - [ ] Backup baze i fotografija — **preskočeno po dogovoru, nije prioritet za sada**
 
 ## Faza 7 — Deploy
-- [ ] deploy.sh za vps.on-click.hr/~kopicland
-- [ ] SSL, provjera na temp URL-u, kasnije domena
+- [x] deploy.sh za vps.on-click.hr (account `kopicland`, domena kopicland.hr već vezana na account)
+- [x] Produkcija deployana (2026-07-24): composer/npm build, .env (MySQL + cPanel SMTP), migracije, admin user, cron za scheduler
+- [ ] SSL (AutoSSL) — čeka DNS delegaciju
+- [ ] DNS delegacija kopicland.hr na razini .hr registra — domena nije delegirana ni na jedan nameserver (nije propagacija, nego nedostaje NS zapis na registraru), korisnik provjerava kod registrara
 
 ## Čeka se od klijenta (doc, t.15)
 Logotip, tekstovi, fotografije kućica, podaci/pogodnosti po kućici, pravila rezervacije, cjenik, kontakt podaci, podaci za pravne stranice, pristup domeni/serveru.
