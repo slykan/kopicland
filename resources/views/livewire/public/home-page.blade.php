@@ -32,6 +32,12 @@
 
     <div class="h-16"></div>
 
+    <section class="mx-auto max-w-3xl px-4 py-12 text-center sm:px-6">
+        <h2 class="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">{{ __('site.pages.about_heading') }}</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-brand-600">{{ __('site.pages.about_intro') }}</p>
+        <p class="mx-auto mt-3 max-w-2xl text-brand-600">{{ __('site.pages.about_body')[0] }}</p>
+    </section>
+
     @if ($featuredHouses->isNotEmpty())
         <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
             <h2 class="text-2xl font-semibold text-brand-900">{{ __('site.nav.houses') }}</h2>
