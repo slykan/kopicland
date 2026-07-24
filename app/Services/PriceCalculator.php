@@ -6,6 +6,7 @@ use App\Exceptions\BookingRuleException;
 use App\Models\Discount;
 use App\Models\ExtraCost;
 use App\Models\House;
+use App\Models\PricingTier;
 use Carbon\Carbon;
 use Carbon\CarbonInterface;
 
@@ -29,7 +30,7 @@ class PriceCalculator
 
         $this->assertStayRulesSatisfied($house, $checkIn, $checkOut, $nights);
 
-        $accommodationSubtotal = $this->accommodationSubtotal($house, $checkIn, $nights);
+        $accommodationSubtotal = $this->accommodationSubtotal($house, $checkIn, $nights, $adults + $children);
         [$extraCosts, $extraCostsTotal] = $this->extraCosts($house, $nights, $adults, $children);
         [$discount, $discountAmount] = $this->bestDiscount($house, $checkIn, $nights, $accommodationSubtotal, $promoCode);
 
@@ -75,9 +76,10 @@ class PriceCalculator
         }
     }
 
-    private function accommodationSubtotal(House $house, Carbon $checkIn, int $nights): float
+    private function accommodationSubtotal(House $house, Carbon $checkIn, int $nights, int $guests): float
     {
         $pricingRules = $house->pricingRules()->get();
+        $tiersByRule = PricingTier::query()->orderBy('guests')->get()->groupBy('pricing_rule_id');
 
         $total = 0.0;
 
@@ -87,7 +89,19 @@ class PriceCalculator
             $rule = $pricingRules->first(fn ($rule) => $rule->type === 'date' && $date->between($rule->date_from, $rule->date_to))
                 ?? $pricingRules->first(fn ($rule) => $rule->type === 'season' && $date->between($rule->date_from, $rule->date_to));
 
-            $total += $rule ? (float) $rule->price_per_night : (float) $house->base_price_per_night;
+            $tiers = $tiersByRule->get($rule?->id);
+
+            if ($tiers && $tiers->isNotEmpty()) {
+                $tier = $tiers->first(fn (PricingTier $tier) => $tier->guests >= $guests);
+
+                if (! $tier) {
+                    throw new BookingRuleException("This house sleeps a maximum of {$tiers->last()->guests} guests.");
+                }
+
+                $total += (float) $tier->price_per_night;
+            } else {
+                $total += $rule ? (float) $rule->price_per_night : (float) $house->base_price_per_night;
+            }
         }
 
         return round($total, 2);

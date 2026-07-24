@@ -171,4 +171,54 @@ class PriceCalculatorTest extends TestCase
         $this->expectException(BookingRuleException::class);
         $this->calculator->calculate($this->house, '2026-06-05', '2026-06-01');
     }
+
+    public function test_guest_pricing_tier_overrides_base_price(): void
+    {
+        \App\Models\PricingTier::create(['pricing_rule_id' => null, 'guests' => 2, 'price_per_night' => 90]);
+        \App\Models\PricingTier::create(['pricing_rule_id' => null, 'guests' => 4, 'price_per_night' => 120]);
+
+        $twoGuests = $this->calculator->calculate($this->house, '2026-06-01', '2026-06-02', adults: 2);
+        $this->assertSame(90.0, $twoGuests->accommodationSubtotal);
+
+        $threeGuests = $this->calculator->calculate($this->house, '2026-06-01', '2026-06-02', adults: 3);
+        $this->assertSame(120.0, $threeGuests->accommodationSubtotal); // rounds up to the next defined tier
+
+        $fourGuests = $this->calculator->calculate($this->house, '2026-06-01', '2026-06-02', adults: 4);
+        $this->assertSame(120.0, $fourGuests->accommodationSubtotal);
+    }
+
+    public function test_single_guest_uses_lowest_defined_tier(): void
+    {
+        \App\Models\PricingTier::create(['pricing_rule_id' => null, 'guests' => 2, 'price_per_night' => 90]);
+
+        $oneGuest = $this->calculator->calculate($this->house, '2026-06-01', '2026-06-02', adults: 1);
+
+        $this->assertSame(90.0, $oneGuest->accommodationSubtotal);
+    }
+
+    public function test_exceeding_the_highest_pricing_tier_is_rejected(): void
+    {
+        \App\Models\PricingTier::create(['pricing_rule_id' => null, 'guests' => 6, 'price_per_night' => 140]);
+
+        $this->expectException(BookingRuleException::class);
+        $this->calculator->calculate($this->house, '2026-06-01', '2026-06-02', adults: 7);
+    }
+
+    public function test_season_rule_pricing_tiers_take_priority_over_global_tiers(): void
+    {
+        \App\Models\PricingTier::create(['pricing_rule_id' => null, 'guests' => 2, 'price_per_night' => 90]);
+
+        $rule = $this->house->pricingRules()->create([
+            'type' => 'season',
+            'date_from' => '2026-07-01',
+            'date_to' => '2026-08-31',
+            'price_per_night' => 999, // ignored once its own tiers exist
+        ]);
+
+        \App\Models\PricingTier::create(['pricing_rule_id' => $rule->id, 'guests' => 2, 'price_per_night' => 150]);
+
+        $breakdown = $this->calculator->calculate($this->house, '2026-07-10', '2026-07-11', adults: 2);
+
+        $this->assertSame(150.0, $breakdown->accommodationSubtotal);
+    }
 }
