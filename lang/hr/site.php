@@ -9,6 +9,7 @@ return [
         'contact' => 'Kontakt',
         'faq' => 'Česta pitanja',
         'gallery' => 'Galerija',
+        'features' => 'Značajke',
     ],
     'footer' => [
         'rights' => 'Sva prava pridržana.',

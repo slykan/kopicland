@@ -9,6 +9,7 @@ return [
         'contact' => 'Contact',
         'faq' => 'FAQ',
         'gallery' => 'Gallery',
+        'features' => 'Features',
     ],
     'footer' => [
         'rights' => 'All rights reserved.',
