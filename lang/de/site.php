@@ -8,6 +8,7 @@ return [
         'location' => 'Lage',
         'contact' => 'Kontakt',
         'faq' => 'FAQ',
+        'gallery' => 'Galerie',
     ],
     'footer' => [
         'rights' => 'Alle Rechte vorbehalten.',

@@ -8,6 +8,7 @@ return [
         'location' => 'Lokacija',
         'contact' => 'Kontakt',
         'faq' => 'Česta pitanja',
+        'gallery' => 'Galerija',
     ],
     'footer' => [
         'rights' => 'Sva prava pridržana.',

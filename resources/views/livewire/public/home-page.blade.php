@@ -127,4 +127,55 @@
             </div>
         </section>
     @endif
+
+    @php
+        $galleryImages = collect(range(1, 24))->map(fn ($n) => asset("images/gallery/{$n}.jpg"))->all();
+    @endphp
+
+    <section
+        class="w-full py-12"
+        x-data="{
+            images: {{ Illuminate\Support\Js::from($galleryImages) }},
+            open: false,
+            active: 0,
+            show(index) { this.active = index; this.open = true },
+            next() { this.active = (this.active + 1) % this.images.length },
+            prev() { this.active = (this.active - 1 + this.images.length) % this.images.length },
+        }"
+        @keydown.window.escape="open = false"
+        @keydown.window.arrow-right="if (open) next()"
+        @keydown.window.arrow-left="if (open) prev()"
+    >
+        <h2 class="font-display px-4 text-center text-3xl font-semibold text-brand-900 sm:text-4xl">{{ __('site.nav.gallery') }}</h2>
+
+        <div class="mt-8 grid grid-cols-3 gap-0.5 sm:grid-cols-4 md:grid-cols-6">
+            <template x-for="(image, index) in images" :key="index">
+                <button type="button" @click="show(index)" class="group aspect-square overflow-hidden">
+                    <img :src="image" :alt="`Kopić Land ${index + 1}`" loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110">
+                </button>
+            </template>
+        </div>
+
+        <div
+            x-show="open"
+            x-transition.opacity
+            @click.self="open = false"
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+            style="display: none;"
+        >
+            <button @click="open = false" type="button" aria-label="Close" class="absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white hover:bg-white/20">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+
+            <button @click="prev()" type="button" aria-label="Previous" class="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 sm:left-4">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+
+            <img :src="images[active]" alt="" class="max-h-[85vh] max-w-full object-contain">
+
+            <button @click="next()" type="button" aria-label="Next" class="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 sm:right-4">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+        </div>
+    </section>
 </div>
