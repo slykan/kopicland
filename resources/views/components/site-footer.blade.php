@@ -2,7 +2,7 @@
     $locale = app()->getLocale();
     $contact = config('site.contact');
 @endphp
-<footer class="mt-24 border-t border-brand-100 bg-brand-50">
+<footer class="border-t border-brand-100 bg-brand-50">
     <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
         <div>
             <p class="text-lg font-semibold text-brand-800">{{ config('site.name') }}</p>

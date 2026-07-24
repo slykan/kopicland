@@ -9,7 +9,9 @@ return [
         'contact' => 'Kontakt',
         'faq' => 'Česta pitanja',
         'gallery' => 'Galerija',
+        'gallery_subtitle' => 'Pogledajte atmosferu Kopićlanda kroz naše fotografije.',
         'features' => 'Značajke',
+        'features_subtitle' => 'Sve pogodnosti koje su Vam na raspolaganju tijekom boravka u Kopićlandu.',
     ],
     'footer' => [
         'rights' => 'Sva prava pridržana.',

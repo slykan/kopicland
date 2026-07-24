@@ -9,7 +9,9 @@ return [
         'contact' => 'Contact',
         'faq' => 'FAQ',
         'gallery' => 'Gallery',
+        'gallery_subtitle' => 'Take a look at the atmosphere of Kopićland through our photos.',
         'features' => 'Features',
+        'features_subtitle' => 'All the amenities available to you during your stay at Kopićland.',
     ],
     'footer' => [
         'rights' => 'All rights reserved.',

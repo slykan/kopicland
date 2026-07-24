@@ -121,6 +121,7 @@
     @if ($amenities->isNotEmpty())
         <section class="w-full bg-brand-50 py-16">
             <h2 class="font-display px-4 text-center text-3xl font-semibold text-brand-900 sm:text-4xl">{{ __('site.nav.features') }}</h2>
+            <p class="mt-2 px-4 text-center text-brand-600">{{ __('site.nav.features_subtitle') }}</p>
 
             <div class="mx-auto mt-10 grid max-w-7xl grid-cols-3 gap-x-4 gap-y-10 px-4 sm:grid-cols-5 sm:px-6 lg:flex lg:flex-nowrap lg:justify-between lg:gap-x-2">
                 @foreach ($amenities as $amenity)
@@ -165,6 +166,7 @@
         @keydown.window.arrow-left="if (open) prev()"
     >
         <h2 class="font-display px-4 text-center text-3xl font-semibold text-brand-900 sm:text-4xl">{{ __('site.nav.gallery') }}</h2>
+        <p class="mt-2 px-4 text-center text-brand-600">{{ __('site.nav.gallery_subtitle') }}</p>
 
         <div class="mt-8 grid grid-cols-3 gap-0.5 sm:grid-cols-4 md:grid-cols-6">
             <template x-for="(image, index) in images" :key="index">
@@ -206,7 +208,7 @@
             <iframe
                 class="h-full w-full"
                 loading="lazy"
-                src="https://maps.google.com/maps?q={{ $contact['lat'] }},{{ $contact['lng'] }}&z=13&output=embed"
+                src="https://maps.google.com/maps?q={{ $contact['lat'] }},{{ $contact['lng'] }}&z=11&output=embed"
             ></iframe>
         </div>
     </section>

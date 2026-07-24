@@ -9,7 +9,9 @@ return [
         'contact' => 'Kontakt',
         'faq' => 'FAQ',
         'gallery' => 'Galerie',
+        'gallery_subtitle' => 'Werfen Sie einen Blick auf die Atmosphäre von Kopićland durch unsere Fotos.',
         'features' => 'Ausstattung',
+        'features_subtitle' => 'Alle Annehmlichkeiten, die Ihnen während Ihres Aufenthalts in Kopićland zur Verfügung stehen.',
     ],
     'footer' => [
         'rights' => 'Alle Rechte vorbehalten.',
