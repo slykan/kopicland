@@ -31,6 +31,7 @@ return [
     'pages' => [
         'about_title' => 'About us',
         'location_title' => 'Location & directions',
+        'find_us_heading' => 'Where to find us',
         'contact_title' => 'Contact',
         'faq_title' => 'FAQ',
         'booking_rules_title' => 'Booking rules',

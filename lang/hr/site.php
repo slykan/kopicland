@@ -31,6 +31,7 @@ return [
     'pages' => [
         'about_title' => 'O nama',
         'location_title' => 'Lokacija i kako doći',
+        'find_us_heading' => 'Gdje se nalazimo',
         'contact_title' => 'Kontakt',
         'faq_title' => 'Česta pitanja',
         'booking_rules_title' => 'Pravila rezervacije',
