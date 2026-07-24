@@ -40,6 +40,26 @@
         </div>
     </div>
 
+    <div class="border-t border-brand-100 py-8 text-center">
+        <p class="font-display text-lg font-semibold text-brand-800">{{ __('site.footer.payments_title') }}</p>
+        <div class="mx-auto mt-4 flex max-w-2xl flex-wrap items-start justify-center gap-x-8 gap-y-4">
+            @foreach ([
+                ['icon' => 'cash', 'label' => __('site.footer.payments.cash')],
+                ['icon' => 'nfc', 'label' => __('site.footer.payments.contactless')],
+                ['icon' => 'brand-mastercard', 'label' => __('site.footer.payments.mastercard')],
+                ['icon' => 'brand-visa', 'label' => __('site.footer.payments.visa')],
+                ['icon' => 'credit-card', 'label' => __('site.footer.payments.debit')],
+                ['icon' => 'credit-card', 'label' => __('site.footer.payments.diners')],
+                ['icon' => 'credit-card', 'label' => __('site.footer.payments.maestro')],
+            ] as $payment)
+                <div class="flex w-16 flex-col items-center gap-1.5 text-xs text-brand-600">
+                    <x-dynamic-component :component="'tabler-'.$payment['icon']" class="h-7 w-7 text-brand-500" />
+                    <span>{{ $payment['label'] }}</span>
+                </div>
+            @endforeach
+        </div>
+    </div>
+
     <div class="border-t border-brand-100 py-4 text-center text-xs text-brand-500">
         &copy; {{ now()->year }} {{ config('site.name') }}. {{ __('site.footer.rights') }}
     </div>

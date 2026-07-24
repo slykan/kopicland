@@ -11,6 +11,16 @@ return [
     ],
     'footer' => [
         'rights' => 'Sva prava pridržana.',
+        'payments_title' => 'Dostupne mogućnosti plaćanja',
+        'payments' => [
+            'cash' => 'Gotovina',
+            'contactless' => 'Beskontaktno plaćanje',
+            'mastercard' => 'Mastercard',
+            'visa' => 'VISA',
+            'debit' => 'Debitna kartica',
+            'diners' => 'Diners Club',
+            'maestro' => 'Maestro',
+        ],
         'legal' => 'Pravne informacije',
         'booking_rules' => 'Pravila rezervacije',
         'terms' => 'Uvjeti korištenja',
@@ -28,6 +38,36 @@ return [
         'cookies_title' => 'Politika kolačića',
         'content_pending' => 'Sadržaj ove stranice bit će dopunjen konačnim tekstovima naručitelja.',
         'about_intro' => 'Kopićland je seosko imanje od 4 hektara u Marincima, samo 10 minuta vožnje od centra Vinkovaca i Vukovara. Nudimo bogat izbor sportskih sadržaja, domaću hranu i pića, a naš prostor idealan je za vjenčanja, krštenja, rođendane, razne proslave i team buildinge.',
+        'about_stories' => [
+            'sports' => [
+                'title' => 'Sportski tereni',
+                'body' => 'Na 4 hektara našeg imanja pronaći ćete pravi mali sportski raj – košarkaški i nogometni teren, boćalište i još mnogo prostora za aktivnu zabavu u prirodi. Idealno za obiteljska druženja, team building ili jednostavno aktivno opuštanje na svježem zraku.',
+            ],
+            'indoor' => [
+                'title' => 'Unutarnji prostor',
+                'body' => 'Naš zatvoreni, klimatizirani prostor pruža toplinu i udobnost tijekom cijele godine. Bilo da je vani vrućina ili hladnoća, unutra Vas uvijek čeka ugodna atmosfera, pažljivo osmišljen ambijent i najbolje društvo. Dođite i uživajte u opuštenom druženju uz domaću hranu i piće.',
+            ],
+            'outdoor' => [
+                'title' => 'Vanjski prostor',
+                'body' => 'Naša prostrana terasa i vanjski dio imanja pravo su mjesto za uživanje u ljetnim danima i svježim večerima. Okruženi zelenilom i mirom slavonske ravnice, gosti mogu uživati u hladu, druženju i večerima uz roštilj i peku, dok djeca slobodno trče po travnjaku.',
+            ],
+            'sustainable' => [
+                'title' => 'Samoodrživo gospodarstvo',
+                'body' => 'Kopićland je više od mjesta za odmor i objed – to je samoodrživo gospodarstvo koje funkcionira bez priključka na javnu mrežu struje, vode ili kanalizacije. Oslanjamo se na obnovljive izvore energije i prirodne resurse, čuvajući okoliš i njegujući način života u skladu s prirodom. Vjerujemo da je to najljepša inspiracija za održivu budućnost.',
+            ],
+            'events' => [
+                'title' => 'Eksperti u organizaciji svih vrsta proslava',
+                'body' => [
+                    'Naš restoran raspolaže zatvorenim, grijanim i klimatiziranim prostorom kapaciteta do 150 osoba – idealnim za svečane večere, korporativne događaje, vjenčanja i sve vrste privatnih proslava. Bez obzira na vremenske uvjete, kod nas ćete uvijek uživati u savršenoj temperaturi i ugodnoj atmosferi.',
+                    'Osim zatvorenog prostora, naše imanje može ugostiti i preko 300 gostiju zahvaljujući prostranom vanjskom dijelu okruženom zelenilom i prirodom. Uz vrhunske specijalitete domaće kuhinje, ljubazno osoblje i opuštenu atmosferu, svaka proslava kod nas postaje nezaboravno iskustvo.',
+                    'Posjetite nas i uvjerite se zašto je Kopićland pravi izbor za Vaš sljedeći poseban trenutak – od rođendana i krštenja do vjenčanja i poslovnih događanja.',
+                ],
+            ],
+            'peka' => [
+                'title' => 'Peka',
+                'body' => 'Tko ne voli peku? Priprema ispod čeripa, polako i s ljubavlju, jedan je od zaštitnih znakova naše kuhinje. Meso i povrće satima se krčkaju ispod žara, upijajući okuse i mirise domaćeg dvorišta, sve dok ne postanu savršeno sočni i mekani. Dođite probati pravu slavonsku peku pripremljenu na tradicionalan način.',
+            ],
+        ],
         'about_heading' => 'Kopićland Restaurant',
         'about_body' => [
             'Dobrodošli u Kopićland – mjesto dobre hrane, ugodne atmosfere i nezaboravnih trenutaka u Marincima.',

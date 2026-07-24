@@ -11,6 +11,16 @@ return [
     ],
     'footer' => [
         'rights' => 'All rights reserved.',
+        'payments_title' => 'Accepted payment methods',
+        'payments' => [
+            'cash' => 'Cash',
+            'contactless' => 'Contactless payment',
+            'mastercard' => 'Mastercard',
+            'visa' => 'VISA',
+            'debit' => 'Debit card',
+            'diners' => 'Diners Club',
+            'maestro' => 'Maestro',
+        ],
         'legal' => 'Legal',
         'booking_rules' => 'Booking rules',
         'terms' => 'Terms of use',
@@ -28,6 +38,36 @@ return [
         'cookies_title' => 'Cookie policy',
         'content_pending' => 'This page will be filled in with the client\'s final copy.',
         'about_intro' => 'Kopićland is a 4-hectare rural estate in Marinci, just 10 minutes from the centres of Vinkovci and Vukovar. We offer a wide range of sports facilities along with homemade food and drinks, and our grounds are the perfect setting for weddings, christenings, birthdays, celebrations of all kinds, and team-building events.',
+        'about_stories' => [
+            'sports' => [
+                'title' => 'Sports facilities',
+                'body' => 'Across our 4-hectare estate you\'ll find a little sporting paradise of your own – a basketball court, a football pitch, a bocce court, and plenty of open space for active fun outdoors. Perfect for family gatherings, team-building days, or simply an active break in the fresh air.',
+            ],
+            'indoor' => [
+                'title' => 'Indoor space',
+                'body' => 'Our enclosed, air-conditioned space offers warmth and comfort all year round. Whatever the weather outside, indoors you\'ll always find a welcoming atmosphere, a thoughtfully designed setting, and the best company. Come and enjoy relaxed time together over homemade food and drink.',
+            ],
+            'outdoor' => [
+                'title' => 'Outdoor space',
+                'body' => 'Our spacious terrace and outdoor grounds are the perfect place to enjoy summer days and cool evenings. Surrounded by greenery and the calm of the Slavonian plains, guests can relax in the shade, socialise, and enjoy evenings by the grill and the peka, while children run freely on the lawn.',
+            ],
+            'sustainable' => [
+                'title' => 'A self-sustaining estate',
+                'body' => 'Kopićland is more than a place to relax and dine – it\'s a self-sustaining estate that operates without a connection to the public electricity, water, or sewage grid. We rely on renewable energy sources and natural resources, protecting the environment and nurturing a way of life in harmony with nature. We believe that\'s the most beautiful inspiration for a sustainable future.',
+            ],
+            'events' => [
+                'title' => 'Experts in organising every kind of celebration',
+                'body' => [
+                    'Our restaurant offers an enclosed, heated and air-conditioned space for up to 150 guests – ideal for gala dinners, corporate events, weddings, and every kind of private celebration. Whatever the weather, you\'ll always enjoy the perfect temperature and atmosphere with us.',
+                    'Beyond the indoor space, our estate can host over 300 guests thanks to its spacious outdoor grounds, surrounded by greenery and nature. With top-quality homemade specialities, friendly staff, and a relaxed atmosphere, every celebration here becomes an unforgettable experience.',
+                    'Visit us and see for yourself why Kopićland is the right choice for your next special moment – from birthdays and christenings to weddings and corporate events.',
+                ],
+            ],
+            'peka' => [
+                'title' => 'Peka',
+                'body' => 'Who doesn\'t love peka? Slow-cooked under a bell-shaped lid with plenty of care, it\'s one of the signatures of our kitchen. Meat and vegetables simmer for hours beneath the embers, soaking up the flavours and aromas of a real countryside yard, until they turn perfectly tender and juicy. Come and try authentic Slavonian peka, prepared the traditional way.',
+            ],
+        ],
         'about_heading' => 'Kopićland Restaurant',
         'about_body' => [
             'Welcome to Kopićland – a place of good food, a pleasant atmosphere, and unforgettable moments in Marinci.',
