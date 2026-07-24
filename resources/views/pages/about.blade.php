@@ -42,4 +42,18 @@
             </div>
         @endforeach
     </div>
+
+    @php $contact = config('site.contact'); @endphp
+    <section class="w-full pt-12">
+        <h2 class="font-display px-4 text-center text-3xl font-semibold text-brand-900 sm:text-4xl">{{ __('site.pages.find_us_heading') }}</h2>
+        <p class="mt-2 px-4 text-center text-brand-600">{{ $contact['address'] }}</p>
+
+        <div class="mt-8 h-[450px] w-full lg:h-[585px]">
+            <iframe
+                class="h-full w-full"
+                loading="lazy"
+                src="https://maps.google.com/maps?q={{ $contact['lat'] }},{{ $contact['lng'] }}&z=11&output=embed"
+            ></iframe>
+        </div>
+    </section>
 </x-layouts.app>
