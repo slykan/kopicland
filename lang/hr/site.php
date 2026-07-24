@@ -81,6 +81,7 @@ return [
             'Gostima su na raspolaganju vanjska terasa, klimatizirani prostor, besplatan parking i Wi-Fi. Za najmlađe smo pripremili ugodan dječji kutak, a dobrodošli su i Vaši kućni ljubimci. Dostupan je i posebno uređen prostor za pušače.',
             'Kontaktirajte nas i rezervirajte svoj stol. Radujemo se Vašem dolasku!',
         ],
+        'events_highlight' => 'Organiziramo sva vrsta slavlja i događanja — od rođendana i krštenja do vjenčanja i poslovnih okupljanja. Recite nam datum, mi se pobrinemo za ostalo.',
     ],
     'common' => [
         'book_now' => 'Rezerviraj',

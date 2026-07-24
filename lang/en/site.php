@@ -81,6 +81,7 @@ return [
             'Guests can enjoy our outdoor terrace, air-conditioned indoor seating, free parking, and Wi-Fi. We\'ve also prepared a cosy corner for the little ones, and your pets are welcome too. A dedicated smoking area is also available.',
             'Get in touch with us and reserve your table. We look forward to welcoming you!',
         ],
+        'events_highlight' => 'We organise every kind of celebration and event — from birthdays and christenings to weddings and corporate gatherings. Just tell us the date, we\'ll take care of the rest.',
     ],
     'common' => [
         'book_now' => 'Book now',

@@ -81,6 +81,7 @@ return [
             'Unseren Gästen stehen eine Außenterrasse, klimatisierte Innenräume, kostenlose Parkplätze und WLAN zur Verfügung. Für die Kleinsten haben wir eine gemütliche Spielecke eingerichtet, und auch Ihre Haustiere sind herzlich willkommen. Ein eigens eingerichteter Raucherbereich ist ebenfalls vorhanden.',
             'Kontaktieren Sie uns und reservieren Sie Ihren Tisch. Wir freuen uns auf Ihren Besuch!',
         ],
+        'events_highlight' => 'Wir organisieren jede Art von Feier und Veranstaltung – von Geburtstagen und Taufen bis hin zu Hochzeiten und Firmenfeiern. Nennen Sie uns das Datum, um den Rest kümmern wir uns.',
     ],
     'common' => [
         'book_now' => 'Jetzt buchen',

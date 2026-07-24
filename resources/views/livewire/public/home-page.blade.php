@@ -37,6 +37,12 @@
         <h2 class="font-display text-3xl font-semibold text-brand-900 sm:text-4xl">{{ __('site.pages.about_heading') }}</h2>
         <p class="mx-auto mt-4 max-w-5xl text-brand-600">{{ __('site.pages.about_intro') }}</p>
         <p class="mx-auto mt-3 max-w-5xl text-brand-600">{{ __('site.pages.about_body')[0] }}</p>
+
+        <p class="font-display mx-auto mt-8 max-w-3xl text-xl font-semibold text-brand-800">{{ __('site.pages.events_highlight') }}</p>
+
+        <a href="{{ route('pages.contact', ['locale' => app()->getLocale()]) }}" class="mt-6 inline-block rounded-full bg-brand-600 px-6 py-3 text-sm font-medium text-white hover:bg-brand-700">
+            {{ __('site.nav.contact') }}
+        </a>
     </section>
 
     @php
