@@ -4,7 +4,7 @@
 <header class="border-b border-brand-100">
     <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
         <a href="{{ route('home', ['locale' => $locale]) }}" class="flex items-center gap-2 text-xl font-semibold tracking-tight text-brand-800">
-            <img src="{{ asset('images/logo.jpg') }}" alt="{{ config('site.name') }}" class="h-9 w-9 rounded-full object-cover">
+            <img src="{{ asset('images/logo.png') }}" alt="{{ config('site.name') }}" class="h-10 w-10 object-contain">
             {{ config('site.name') }}
         </a>
 

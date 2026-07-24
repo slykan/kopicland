@@ -21,7 +21,10 @@
         </template>
         <div class="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-brand-900/50 to-brand-950/20"></div>
         <div class="relative mx-auto max-w-3xl px-4 py-24 text-center">
-            <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">{{ config('site.name') }}</h1>
+            <h1>
+                <img src="{{ asset('images/logo.png') }}" alt="{{ config('site.name') }}" class="mx-auto h-40 w-40 object-contain drop-shadow-lg sm:h-56 sm:w-56">
+                <span class="sr-only">{{ config('site.name') }}</span>
+            </h1>
             <p class="mt-4 text-lg text-brand-100">Marinci, Hrvatska</p>
         </div>
 
