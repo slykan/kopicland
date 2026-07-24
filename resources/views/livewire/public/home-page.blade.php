@@ -40,6 +40,85 @@
         <p class="mx-auto mt-3 max-w-2xl text-brand-600">{{ __('site.pages.about_body')[0] }}</p>
     </section>
 
+    @php
+        $slides = collect(['sports', 'indoor', 'outdoor', 'sustainable', 'events', 'peka'])->map(function ($key) {
+            $body = __('site.pages.about_stories.'.$key.'.body');
+
+            return [
+                'image' => asset('images/about/'.$key.'.jpg'),
+                'title' => __('site.pages.about_stories.'.$key.'.title'),
+                'body' => is_array($body) ? $body[0] : $body,
+            ];
+        })->values()->all();
+    @endphp
+
+    <section
+        class="mx-auto max-w-5xl px-4 py-8 sm:px-6"
+        x-data="{
+            slides: {{ Illuminate\Support\Js::from($slides) }},
+            active: 0,
+            next() { this.active = (this.active + 1) % this.slides.length },
+            prev() { this.active = (this.active - 1 + this.slides.length) % this.slides.length },
+            init() {
+                setInterval(() => { if (!this.paused) this.next() }, 7000)
+            },
+            paused: false,
+        }"
+    >
+        <div
+            class="relative overflow-hidden rounded-2xl bg-brand-950 shadow-lg"
+            @mouseenter="paused = true"
+            @mouseleave="paused = false"
+        >
+            <template x-for="(slide, index) in slides" :key="index">
+                <div
+                    x-show="active === index"
+                    x-transition:enter="transition ease-out duration-700"
+                    x-transition:enter-start="opacity-0"
+                    x-transition:enter-end="opacity-100"
+                    class="grid md:grid-cols-2"
+                >
+                    <div class="h-64 md:h-[26rem]">
+                        <img :src="slide.image" :alt="slide.title" class="h-full w-full object-cover">
+                    </div>
+                    <div class="flex flex-col justify-center p-8 text-white sm:p-12">
+                        <h3 class="font-display text-2xl font-semibold sm:text-3xl" x-text="slide.title"></h3>
+                        <p class="mt-4 text-brand-100" x-text="slide.body"></p>
+                    </div>
+                </div>
+            </template>
+
+            <button
+                @click="prev()"
+                type="button"
+                aria-label="Previous"
+                class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/20 p-2 text-white hover:bg-white/30"
+            >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button
+                @click="next()"
+                type="button"
+                aria-label="Next"
+                class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/20 p-2 text-white hover:bg-white/30"
+            >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+        </div>
+
+        <div class="mt-4 flex justify-center gap-2">
+            <template x-for="(slide, index) in slides" :key="index">
+                <button
+                    @click="active = index"
+                    type="button"
+                    aria-label="Go to slide"
+                    class="h-2 rounded-full transition-all"
+                    :class="active === index ? 'w-6 bg-brand-600' : 'w-2 bg-brand-200 hover:bg-brand-300'"
+                ></button>
+            </template>
+        </div>
+    </section>
+
     @if ($featuredHouses->isNotEmpty())
         <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
             <h2 class="text-2xl font-semibold text-brand-900">{{ __('site.nav.houses') }}</h2>
