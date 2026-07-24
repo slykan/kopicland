@@ -7,14 +7,14 @@
     @else
         <form wire:submit="submit" class="space-y-4">
             <div class="grid grid-cols-2 gap-3">
-                <div>
+                <div x-data="datePicker({ minDate: 'today' })">
                     <label class="block text-xs font-medium text-brand-600">{{ __('site.common.check_in') }}</label>
-                    <input type="text" inputmode="numeric" placeholder="dd.mm.gggg" pattern="\d{2}\.\d{2}\.\d{4}" wire:model.live="checkIn" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
+                    <input type="text" x-ref="input" placeholder="dd.mm.gggg" wire:model.live="checkIn" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
                     @error('checkIn') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
                 </div>
-                <div>
+                <div x-data="datePicker({ minDate: 'today' })">
                     <label class="block text-xs font-medium text-brand-600">{{ __('site.common.check_out') }}</label>
-                    <input type="text" inputmode="numeric" placeholder="dd.mm.gggg" pattern="\d{2}\.\d{2}\.\d{4}" wire:model.live="checkOut" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
+                    <input type="text" x-ref="input" placeholder="dd.mm.gggg" wire:model.live="checkOut" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
                     @error('checkOut') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
                 </div>
             </div>
