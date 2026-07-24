@@ -31,7 +31,7 @@ class AmenityResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required(),
                 Forms\Components\TextInput::make('icon')
-                    ->helperText('Heroicon name, e.g. heroicon-o-wifi'),
+                    ->helperText('Tabler icon name, e.g. wifi (browse names at tabler.io/icons)'),
                 Forms\Components\TextInput::make('sort_order')
                     ->numeric()
                     ->default(0),

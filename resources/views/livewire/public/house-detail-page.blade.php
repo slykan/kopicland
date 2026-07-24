@@ -34,7 +34,7 @@
                     <ul class="mt-3 grid grid-cols-2 gap-2 text-sm text-brand-600 sm:grid-cols-3">
                         @foreach ($house->amenities as $amenity)
                             <li class="flex items-center gap-2">
-                                <span class="h-1.5 w-1.5 rounded-full bg-brand-400"></span>
+                                <x-dynamic-component :component="'tabler-'.($amenity->icon ?: 'circle')" class="h-5 w-5 shrink-0 text-brand-500" />
                                 {{ $amenity->getTranslation('name', $locale) }}
                             </li>
                         @endforeach
