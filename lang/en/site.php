@@ -40,7 +40,7 @@ return [
         'privacy_title' => 'Privacy policy',
         'cookies_title' => 'Cookie policy',
         'content_pending' => 'This page will be filled in with the client\'s final copy.',
-        'about_intro' => 'Kopićland is a 4-hectare rural estate in Marinci, just 10 minutes from the centres of Vinkovci and Vukovar. We offer a wide range of sports facilities along with homemade food and drinks, and our grounds are the perfect setting for weddings, christenings, birthdays, celebrations of all kinds, and team-building events.',
+        'about_intro' => 'Kopićland is a 4-hectare rural estate in Marinci, just 10 minutes from the centres of Vinkovci and Vukovar. Alongside our restaurant serving homemade food and drinks, we also offer comfortable holiday cottages for overnight stays, a wide range of sports facilities, and amenities such as free Wi-Fi, parking, air conditioning, an outdoor terrace, and a kids\' corner. Our grounds are the perfect setting for a family getaway, weddings, christenings, birthdays, celebrations of all kinds, and team-building events — whether you\'re joining us for the day or staying for a few nights.',
         'about_stories' => [
             'sports' => [
                 'title' => 'Sports facilities',
@@ -71,7 +71,7 @@ return [
                 'body' => 'Who doesn\'t love peka? Slow-cooked under a bell-shaped lid with plenty of care, it\'s one of the signatures of our kitchen. Meat and vegetables simmer for hours beneath the embers, soaking up the flavours and aromas of a real countryside yard, until they turn perfectly tender and juicy. Come and try authentic Slavonian peka, prepared the traditional way.',
             ],
         ],
-        'about_heading' => 'Kopićland Restaurant',
+        'about_heading' => 'Kopićland Restaurant & Homes',
         'about_body' => [
             'Welcome to Kopićland – a place of good food, a pleasant atmosphere, and unforgettable moments in Marinci.',
             'Let us be your hosts and enjoy the rich flavours of traditional Croatian cuisine. Our friendly staff will make sure you feel right at home, while our carefully prepared dishes offer a true culinary experience.',

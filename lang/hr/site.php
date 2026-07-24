@@ -40,7 +40,7 @@ return [
         'privacy_title' => 'Politika privatnosti',
         'cookies_title' => 'Politika kolačića',
         'content_pending' => 'Sadržaj ove stranice bit će dopunjen konačnim tekstovima naručitelja.',
-        'about_intro' => 'Kopićland je seosko imanje od 4 hektara u Marincima, samo 10 minuta vožnje od centra Vinkovaca i Vukovara. Nudimo bogat izbor sportskih sadržaja, domaću hranu i pića, a naš prostor idealan je za vjenčanja, krštenja, rođendane, razne proslave i team buildinge.',
+        'about_intro' => 'Kopićland je seosko imanje od 4 hektara u Marincima, samo 10 minuta vožnje od centra Vinkovaca i Vukovara. Osim restorana s domaćom hranom i pićem, nudimo i udobne kućice za odmor opremljene za ugodan boravak, bogat izbor sportskih sadržaja te niz sadržaja poput besplatnog Wi-Fija, parkinga, klimatizacije, vanjske terase i dječjeg kutka. Naš prostor idealan je za obiteljski odmor, vjenčanja, krštenja, rođendane, razne proslave i team buildinge — bilo da dolazite na jedan dan ili na nekoliko noćenja.',
         'about_stories' => [
             'sports' => [
                 'title' => 'Sportski tereni',
@@ -71,7 +71,7 @@ return [
                 'body' => 'Tko ne voli peku? Priprema ispod čeripa, polako i s ljubavlju, jedan je od zaštitnih znakova naše kuhinje. Meso i povrće satima se krčkaju ispod žara, upijajući okuse i mirise domaćeg dvorišta, sve dok ne postanu savršeno sočni i mekani. Dođite probati pravu slavonsku peku pripremljenu na tradicionalan način.',
             ],
         ],
-        'about_heading' => 'Kopićland Restaurant',
+        'about_heading' => 'Kopićland Restaurant & Homes',
         'about_body' => [
             'Dobrodošli u Kopićland – mjesto dobre hrane, ugodne atmosfere i nezaboravnih trenutaka u Marincima.',
             'Dopustite nam da budemo Vaši domaćini i uživajte u bogatstvu okusa domaće hrvatske kuhinje. Naše ljubazno osoblje pobrinut će se da se osjećate ugodno, a pažljivo pripremljena jela pružit će Vam pravi gastronomski doživljaj.',

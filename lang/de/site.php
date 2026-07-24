@@ -40,7 +40,7 @@ return [
         'privacy_title' => 'Datenschutzrichtlinie',
         'cookies_title' => 'Cookie-Richtlinie',
         'content_pending' => 'Diese Seite wird mit den endgültigen Texten des Kunden ergänzt.',
-        'about_intro' => 'Kopićland ist ein 4 Hektar großes Landgut in Marinci, nur 10 Minuten vom Zentrum von Vinkovci und Vukovar entfernt. Wir bieten ein vielfältiges Sportangebot sowie hausgemachte Speisen und Getränke, und unser Gelände ist der ideale Rahmen für Hochzeiten, Taufen, Geburtstage, verschiedenste Feiern und Team-Building-Events.',
+        'about_intro' => 'Kopićland ist ein 4 Hektar großes Landgut in Marinci, nur 10 Minuten vom Zentrum von Vinkovci und Vukovar entfernt. Neben unserem Restaurant mit hausgemachten Speisen und Getränken bieten wir auch komfortable Ferienhäuser für Übernachtungen, ein vielfältiges Sportangebot sowie Annehmlichkeiten wie kostenloses WLAN, Parkplätze, Klimaanlage, eine Außenterrasse und eine Spielecke für Kinder. Unser Gelände ist der ideale Rahmen für einen Familienausflug, Hochzeiten, Taufen, Geburtstage, verschiedenste Feiern und Team-Building-Events – ob für einen Tagesausflug oder mehrere Übernachtungen.',
         'about_stories' => [
             'sports' => [
                 'title' => 'Sportanlagen',
@@ -71,7 +71,7 @@ return [
                 'body' => 'Wer liebt Peka nicht? Langsam und mit viel Liebe unter einer Glocke gegart, ist sie eines der Markenzeichen unserer Küche. Fleisch und Gemüse schmoren stundenlang unter der Glut und nehmen die Aromen eines echten Landhofs auf, bis sie perfekt zart und saftig sind. Kommen Sie vorbei und probieren Sie echte slawonische Peka, zubereitet auf traditionelle Weise.',
             ],
         ],
-        'about_heading' => 'Kopićland Restaurant',
+        'about_heading' => 'Kopićland Restaurant & Homes',
         'about_body' => [
             'Willkommen bei Kopićland – einem Ort für gutes Essen, eine angenehme Atmosphäre und unvergessliche Momente in Marinci.',
             'Lassen Sie uns Ihre Gastgeber sein und genießen Sie die Vielfalt der traditionellen kroatischen Küche. Unser freundliches Personal sorgt dafür, dass Sie sich wohlfühlen, während unsere sorgfältig zubereiteten Gerichte Ihnen ein wahres kulinarisches Erlebnis bieten.',
