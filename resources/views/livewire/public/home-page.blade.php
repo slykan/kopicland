@@ -237,7 +237,7 @@
                             class="group block w-[85%] shrink-0 overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm transition hover:shadow-md sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)]"
                             style="scroll-snap-align: start;"
                         >
-                            <div class="aspect-[5/4] overflow-hidden bg-brand-100">
+                            <div class="aspect-[1/1] overflow-hidden bg-brand-100">
                                 <img src="{{ Storage::url($article->image_path) }}" alt="{{ $article->getTranslation('title', app()->getLocale(), useFallbackLocale: true) }}" class="h-full w-full object-cover transition group-hover:scale-105">
                             </div>
                             <div class="p-4">
