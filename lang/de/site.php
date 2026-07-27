@@ -14,6 +14,8 @@ return [
         'features_subtitle' => 'Alle Annehmlichkeiten, die Ihnen während Ihres Aufenthalts in Kopićland zur Verfügung stehen.',
         'video' => 'Kopićland in Bewegung',
         'video_subtitle' => 'Ein kurzer Einblick in die Atmosphäre und Umgebung von Kopićland.',
+        'explore' => 'Erkunden Sie die Umgebung',
+        'explore_subtitle' => 'Ausflugsideen und Sehenswürdigkeiten in der Nähe von Kopićland.',
     ],
     'footer' => [
         'rights' => 'Alle Rechte vorbehalten.',
@@ -34,6 +36,7 @@ return [
         'cookies' => 'Cookie-Richtlinie',
     ],
     'pages' => [
+        'explore_heading' => 'Sehenswürdigkeiten rund um Kopićland',
         'about_title' => 'Über uns',
         'location_title' => 'Lage & Anfahrt',
         'find_us_heading' => 'Wo Sie uns finden',
@@ -102,6 +105,8 @@ return [
         'nights' => 'Nächte',
         'availability' => 'Verfügbarkeit',
         'booked' => 'belegt',
+        'read_more' => 'Mehr lesen',
+        'show_less' => 'Weniger anzeigen',
     ],
     'contact_form' => [
         'name' => 'Vor- und Nachname',

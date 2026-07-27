@@ -218,6 +218,31 @@
         </div>
     </section>
 
+    @if ($articles->isNotEmpty())
+        <section class="w-full py-12">
+            <h2 class="font-display px-4 text-center text-3xl font-semibold text-brand-900 sm:text-4xl">{{ __('site.nav.explore') }}</h2>
+            <p class="mt-2 px-4 text-center text-brand-600">{{ __('site.nav.explore_subtitle') }}</p>
+
+            <div class="mt-8 flex gap-4 overflow-x-auto px-4 pb-4 sm:px-6" style="scroll-snap-type: x mandatory;">
+                @foreach ($articles as $article)
+                    <a
+                        href="{{ route('articles.index', ['locale' => app()->getLocale()]) }}#{{ $article->slug }}"
+                        class="group block w-64 shrink-0 overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm transition hover:shadow-md"
+                        style="scroll-snap-align: start;"
+                    >
+                        <div class="aspect-[4/3] overflow-hidden bg-brand-100">
+                            <img src="{{ Storage::url($article->image_path) }}" alt="{{ $article->getTranslation('title', app()->getLocale(), useFallbackLocale: true) }}" class="h-full w-full object-cover transition group-hover:scale-105">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-sm font-semibold text-brand-900">{{ $article->getTranslation('title', app()->getLocale(), useFallbackLocale: true) }}</h3>
+                            <p class="mt-1 line-clamp-2 text-xs text-brand-600">{{ $article->getTranslation('excerpt', app()->getLocale(), useFallbackLocale: true) }}</p>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        </section>
+    @endif
+
     @php $contact = config('site.contact'); @endphp
     <section class="w-full pt-12">
         <h2 class="font-display px-4 text-center text-3xl font-semibold text-brand-900 sm:text-4xl">{{ __('site.pages.find_us_heading') }}</h2>

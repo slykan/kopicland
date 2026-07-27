@@ -14,6 +14,8 @@ return [
         'features_subtitle' => 'Sve pogodnosti koje su Vam na raspolaganju tijekom boravka u Kopićlandu.',
         'video' => 'Kopićland u pokretu',
         'video_subtitle' => 'Kratki uvid u atmosferu i okoliš Kopićlanda.',
+        'explore' => 'Istražite okolicu',
+        'explore_subtitle' => 'Ideje za izlete i znamenitosti u blizini Kopićlanda.',
     ],
     'footer' => [
         'rights' => 'Sva prava pridržana.',
@@ -34,6 +36,7 @@ return [
         'cookies' => 'Politika kolačića',
     ],
     'pages' => [
+        'explore_heading' => 'Što posjetiti u okolici Kopićlanda',
         'about_title' => 'O nama',
         'location_title' => 'Lokacija i kako doći',
         'find_us_heading' => 'Gdje se nalazimo',
@@ -102,6 +105,8 @@ return [
         'nights' => 'noćenja',
         'availability' => 'Dostupnost',
         'booked' => 'zauzeto',
+        'read_more' => 'Pročitaj više',
+        'show_less' => 'Prikaži manje',
     ],
     'contact_form' => [
         'name' => 'Ime i prezime',

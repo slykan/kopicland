@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SitemapController;
 use App\Http\Middleware\SetLocale;
+use App\Livewire\Public\ArticleListPage;
 use App\Livewire\Public\HomePage;
 use App\Livewire\Public\HouseDetailPage;
 use App\Livewire\Public\HouseListPage;
@@ -19,6 +20,8 @@ Route::prefix('{locale}')
 
         Route::get('/houses', HouseListPage::class)->name('houses.index');
         Route::get('/houses/{house:slug}', HouseDetailPage::class)->name('houses.show');
+
+        Route::get('/explore', ArticleListPage::class)->name('articles.index');
 
         Route::view('/about', 'pages.about')->name('pages.about');
         Route::view('/location', 'pages.location')->name('pages.location');
