@@ -78,7 +78,7 @@
                     <ul>
                         <li><b>Photos</b> — galerija fotki te kućice, redoslijed i naslovna foto.</li>
                         <li><b>Stay Rules</b> — min/max broj noćenja, dopušteni dani dolaska/odlaska.</li>
-                        <li><b>Pricing Rules</b> — sezonske ili cijene za točan datum (nadjačavaju osnovnu cijenu).</li>
+                        <li><b>Pricing Rules</b> — sezonske ili cijene za točan datum (nadjačavaju osnovnu cijenu); unutar svakog pravila možeš postaviti i cijenu po broju gostiju (kao Guest Pricing, ali samo za tu kućicu/period), ne samo paušalnu cijenu po noćenju.</li>
                     </ul>
                 </li>
             </ul>

@@ -95,6 +95,7 @@ return [
         'pets' => 'Haustiere',
         'per_night' => 'pro Nacht',
         'from' => 'ab',
+        'to' => 'bis',
         'search' => 'Suchen',
         'nights' => 'Nächte',
     ],

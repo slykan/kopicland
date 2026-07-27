@@ -95,6 +95,7 @@ return [
         'pets' => 'Kućni ljubimci',
         'per_night' => 'po noćenju',
         'from' => 'od',
+        'to' => 'do',
         'search' => 'Pretraži',
         'nights' => 'noćenja',
     ],

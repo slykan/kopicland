@@ -1,6 +1,7 @@
 @props(['house'])
 @php
     $cover = $house->photos->firstWhere('is_cover', true) ?? $house->photos->first();
+    [$priceFrom, $priceTo] = $house->basePriceRange();
 @endphp
 <a href="{{ route('houses.show', ['locale' => app()->getLocale(), 'house' => $house->slug]) }}" class="group block overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm transition hover:shadow-md">
     <div class="aspect-[4/3] overflow-hidden bg-brand-100">
@@ -18,7 +19,11 @@
         <div class="mt-3 flex items-center justify-between">
             <span class="text-sm text-brand-500">{{ $house->capacity_adults + $house->capacity_children }} {{ __('site.common.guests') }}</span>
             <span class="text-sm font-semibold text-brand-800">
-                {{ __('site.common.from') }} {{ number_format($house->base_price_per_night, 0) }} € {{ __('site.common.per_night') }}
+                @if ($priceFrom < $priceTo)
+                    {{ __('site.common.from') }} {{ number_format($priceFrom, 0) }} € {{ __('site.common.to') }} {{ number_format($priceTo, 0) }} € {{ __('site.common.per_night') }}
+                @else
+                    {{ __('site.common.from') }} {{ number_format($priceFrom, 0) }} € {{ __('site.common.per_night') }}
+                @endif
             </span>
         </div>
     </div>

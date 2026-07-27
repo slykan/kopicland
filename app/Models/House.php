@@ -70,6 +70,25 @@ class House extends Model
     }
 
     /**
+     * [cheapest, priciest] per-night price for this house based on the global
+     * per-guest pricing tiers (from 1 guest up to this house's full capacity).
+     * Falls back to base_price_per_night (as a flat range) when no tiers exist.
+     */
+    public function basePriceRange(): array
+    {
+        $tiers = PricingTier::query()->whereNull('pricing_rule_id')->orderBy('guests')->get();
+
+        if ($tiers->isEmpty()) {
+            return [(float) $this->base_price_per_night, (float) $this->base_price_per_night];
+        }
+
+        $capacity = $this->capacity_adults + $this->capacity_children;
+        $maxTier = $tiers->first(fn (PricingTier $tier) => $tier->guests >= $capacity) ?? $tiers->last();
+
+        return [(float) $tiers->first()->price_per_night, (float) $maxTier->price_per_night];
+    }
+
+    /**
      * Case-insensitive search by translated name, keyed by id => label.
      * A plain `where('name', 'like', ...)` doesn't work reliably here since
      * `name` is a JSON column (translatable) and MySQL's JSON LIKE comparison

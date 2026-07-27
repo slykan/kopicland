@@ -106,11 +106,6 @@ class HouseResource extends Resource
 
                 Forms\Components\Section::make('Pricing & status')
                     ->schema([
-                        Forms\Components\TextInput::make('base_price_per_night')
-                            ->label('Base price / night (EUR)')
-                            ->required()
-                            ->numeric()
-                            ->default(0),
                         Forms\Components\Select::make('status')
                             ->options([
                                 'draft' => 'Draft',
@@ -125,7 +120,7 @@ class HouseResource extends Resource
                             ->numeric()
                             ->default(0),
                     ])
-                    ->columns(4),
+                    ->columns(3),
 
                 Forms\Components\Section::make('SEO')
                     ->schema([
@@ -154,10 +149,6 @@ class HouseResource extends Resource
                 Tables\Columns\TextColumn::make('capacity_children')
                     ->label('Children')
                     ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('base_price_per_night')
-                    ->label('Base price')
-                    ->money('EUR')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
