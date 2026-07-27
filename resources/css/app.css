@@ -29,6 +29,18 @@
     display: none !important;
 }
 
+.flatpickr-calendar.inline {
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+}
+
+.flatpickr-calendar.inline .flatpickr-days,
+.flatpickr-calendar.inline .dayContainer {
+    width: 100%;
+    max-width: 100%;
+}
+
 .prose-brand {
     --tw-prose-body: var(--color-brand-700);
     --tw-prose-headings: var(--color-brand-900);

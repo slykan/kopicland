@@ -98,6 +98,8 @@ return [
         'to' => 'to',
         'search' => 'Search',
         'nights' => 'nights',
+        'availability' => 'Availability',
+        'booked' => 'booked',
     ],
     'contact_form' => [
         'name' => 'Full name',

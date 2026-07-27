@@ -11,7 +11,7 @@ class AvailabilityChecker
     /**
      * Statuses that hold a date range as unavailable for new bookings.
      */
-    private const BLOCKING_STATUSES = [
+    public const BLOCKING_STATUSES = [
         'new_request', 'pending', 'confirmed', 'hold', 'blocked',
     ];
 

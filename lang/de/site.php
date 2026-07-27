@@ -98,6 +98,8 @@ return [
         'to' => 'bis',
         'search' => 'Suchen',
         'nights' => 'Nächte',
+        'availability' => 'Verfügbarkeit',
+        'booked' => 'belegt',
     ],
     'contact_form' => [
         'name' => 'Vor- und Nachname',

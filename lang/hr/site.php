@@ -98,6 +98,8 @@ return [
         'to' => 'do',
         'search' => 'Pretraži',
         'nights' => 'noćenja',
+        'availability' => 'Dostupnost',
+        'booked' => 'zauzeto',
     ],
     'contact_form' => [
         'name' => 'Ime i prezime',
