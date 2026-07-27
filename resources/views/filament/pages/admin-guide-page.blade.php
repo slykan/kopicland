@@ -131,7 +131,7 @@
             <h3>Email Templates</h3>
             <ul>
                 <li>Tekstovi mailova koji se automatski šalju gostu/adminu kod promjene statusa rezervacije.</li>
-                <li>U tekstu možeš koristiti <span class="kg-path">{{ '{{house_name}}' }}</span>, <span class="kg-path">{{ '{{guest_name}}' }}</span>, <span class="kg-path">{{ '{{check_in}}' }}</span> itd. — zamjenjuju se stvarnim podacima.</li>
+                <li>U tekstu možeš koristiti <span class="kg-path">@{{house_name}}</span>, <span class="kg-path">@{{guest_name}}</span>, <span class="kg-path">@{{check_in}}</span> itd. — zamjenjuju se stvarnim podacima.</li>
             </ul>
 
             <h3>Calendar</h3>
