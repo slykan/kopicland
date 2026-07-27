@@ -16,6 +16,7 @@ class SitemapController extends Controller
         $staticRoutes = [
             'home',
             'houses.index',
+            'articles.index',
             'pages.about',
             'pages.location',
             'pages.contact',
