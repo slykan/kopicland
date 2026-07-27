@@ -32,8 +32,6 @@ class HouseListPage extends Component
 
         return view('livewire.public.house-list-page', [
             'houses' => $houses,
-            'checkIn' => $checkIn,
-            'checkOut' => $checkOut,
         ])->title(__('site.nav.houses').' — '.config('site.name'));
     }
 }

@@ -16,6 +16,17 @@ class AvailabilitySearch extends Component
 
     public int $pets = 0;
 
+    public function mount(): void
+    {
+        $query = request()->query();
+
+        $this->checkIn = $query['check_in'] ?? $this->checkIn;
+        $this->checkOut = $query['check_out'] ?? $this->checkOut;
+        $this->adults = isset($query['adults']) ? (int) $query['adults'] : $this->adults;
+        $this->children = isset($query['children']) ? (int) $query['children'] : $this->children;
+        $this->pets = isset($query['pets']) ? (int) $query['pets'] : $this->pets;
+    }
+
     public function search()
     {
         $this->validate([
