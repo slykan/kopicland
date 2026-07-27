@@ -24,12 +24,8 @@
                 @endif
             </div>
 
-            <div class="prose prose-brand mt-6 max-w-none text-brand-700">
-                {!! $house->getTranslation('description', $locale, useFallbackLocale: true) !!}
-            </div>
-
             @if ($house->amenities->isNotEmpty())
-                <div class="mt-8">
+                <div class="mt-6">
                     <h2 class="text-lg font-semibold text-brand-900">{{ __('Amenities') }}</h2>
                     <ul class="mt-3 grid grid-cols-2 gap-2 text-sm text-brand-600 sm:grid-cols-3">
                         @foreach ($house->amenities as $amenity)
@@ -41,6 +37,10 @@
                     </ul>
                 </div>
             @endif
+
+            <div class="prose prose-brand mt-8 max-w-none text-brand-700">
+                {!! $house->getTranslation('description', $locale, useFallbackLocale: true) !!}
+            </div>
 
             @if ($house->house_rules)
                 <div class="mt-8">
