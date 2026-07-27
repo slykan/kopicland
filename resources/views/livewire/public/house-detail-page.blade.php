@@ -1,15 +1,41 @@
-@php $locale = app()->getLocale(); @endphp
+@php
+    $locale = app()->getLocale();
+    $galleryPhotos = $house->photos->map(fn ($photo) => [
+        'url' => Storage::url($photo->path),
+        'alt' => $photo->getTranslation('alt_text', $locale, useFallbackLocale: true),
+    ])->values();
+@endphp
 <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-    @if ($house->photos->isNotEmpty())
-        <div class="relative overflow-hidden rounded-2xl">
-            <div class="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:grid-rows-2">
-                @foreach ($house->photos->take(5) as $i => $photo)
-                    <div class="{{ $i === 0 ? 'col-span-2 row-span-2' : '' }} aspect-square overflow-hidden bg-brand-100">
-                        <img src="{{ Storage::url($photo->path) }}" alt="{{ $photo->getTranslation('alt_text', $locale, useFallbackLocale: true) }}" class="h-full w-full object-cover">
-                    </div>
+    @if ($galleryPhotos->isNotEmpty())
+        <div x-data="{ open: false, index: 0, photos: {{ Illuminate\Support\Js::from($galleryPhotos) }} }">
+            <div class="grid grid-cols-2 gap-2 overflow-hidden rounded-2xl sm:grid-cols-4 sm:grid-rows-2">
+                @foreach ($galleryPhotos->take(5) as $i => $photo)
+                    <button type="button" @click="open = true; index = {{ $i }}" class="{{ $i === 0 ? 'col-span-2 row-span-2' : '' }} group relative block aspect-square cursor-zoom-in overflow-hidden bg-brand-100">
+                        <img src="{{ $photo['url'] }}" alt="{{ $photo['alt'] }}" class="h-full w-full object-cover transition group-hover:scale-105">
+                        <img src="{{ asset('images/logo-watermark.png') }}" alt="" class="pointer-events-none absolute left-1/2 top-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow {{ $i === 0 ? 'sm:h-24 sm:w-24' : '' }}">
+                    </button>
                 @endforeach
             </div>
-            <img src="{{ asset('images/logo-watermark.png') }}" alt="" class="pointer-events-none absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow sm:h-28 sm:w-28">
+
+            <div
+                x-show="open"
+                x-cloak
+                @keydown.escape.window="open = false"
+                @keydown.left.window="index = (index - 1 + photos.length) % photos.length"
+                @keydown.right.window="index = (index + 1) % photos.length"
+                @click.self="open = false"
+                class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+            >
+                <button type="button" @click="open = false" class="absolute right-4 top-4 text-3xl leading-none text-white/80 hover:text-white" aria-label="Close">&times;</button>
+
+                <button type="button" x-show="photos.length > 1" @click="index = (index - 1 + photos.length) % photos.length" class="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-3xl leading-none text-white/80 hover:text-white sm:left-6" aria-label="Previous photo">&#8249;</button>
+
+                <img :src="photos[index]?.url" :alt="photos[index]?.alt" class="max-h-[85vh] max-w-full rounded-lg object-contain" @click.stop>
+
+                <button type="button" x-show="photos.length > 1" @click="index = (index + 1) % photos.length" class="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-3xl leading-none text-white/80 hover:text-white sm:right-6" aria-label="Next photo">&#8250;</button>
+
+                <div x-show="photos.length > 1" class="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-white/70" x-text="(index + 1) + ' / ' + photos.length"></div>
+            </div>
         </div>
     @endif
 

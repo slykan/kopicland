@@ -74,6 +74,7 @@
             <ul>
                 <li>Ovdje dodaješ/uređuješ svaku kućicu — naziv, opis, kapacitet, broj soba/kreveta/kupaonica, check-in/out vrijeme, pravila.</li>
                 <li>Sve tekstualno se upisuje na sva tri jezika (HR/EN/DE) — gore u formi prebacuješ jezik.</li>
+                <li>Kućica <b>nema</b> vlastito polje za cijenu — osnovna cijena za sve kućice dolazi iz <b>Guest Pricing</b> tablice (vidi Cijene niže), po broju gostiju.</li>
                 <li>Unutar svake kućice (dolje na stranici) nalaze se tri dodatne kartice:
                     <ul>
                         <li><b>Photos</b> — galerija fotki te kućice, redoslijed i naslovna foto.</li>
@@ -96,8 +97,10 @@
             <h2>Cijene</h2>
             <h3>Guest Pricing</h3>
             <ul>
-                <li>Cijena po noćenju ovisno o <b>ukupnom broju gostiju</b> (npr. 90 € za 1-2 osobe, 105 € za 3...).</li>
+                <li>Ovo je <b>osnovna/zadana cijena</b> za sve kućice — po noćenju, ovisno o <b>ukupnom broju gostiju</b> (npr. 90 € za 1-2 osobe, 105 € za 3...). Ovdje uređuješ cijene, ne na samoj kućici.</li>
                 <li>Ista tablica vrijedi za sve kućice. Ako gost odabere više gostiju nego što piše u najvišem redu, rezervacija se odbija.</li>
+                <li>Na javnoj stranici (popis kućica) svaka kućica prikazuje raspon "od X € do Y €" — X je cijena za najmanji broj gostiju, Y cijena za popunjen kapacitet te kućice, prema ovoj tablici.</li>
+                <li>Za sezonske/datumske iznimke po pojedinoj kućici koristi <b>Pricing Rules</b> na toj kućici (vidi gore) — ondje možeš postaviti i vlastitu tablicu po broju gostiju samo za taj period, koja onda nadjačava ovu osnovnu.</li>
             </ul>
 
             <h3>Extra Costs</h3>

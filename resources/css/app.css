@@ -25,6 +25,10 @@
     --color-brand-950: #191d10;
 }
 
+[x-cloak] {
+    display: none !important;
+}
+
 .prose-brand {
     --tw-prose-body: var(--color-brand-700);
     --tw-prose-headings: var(--color-brand-900);
