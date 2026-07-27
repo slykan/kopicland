@@ -2,13 +2,21 @@
 @php
     $cover = $house->photos->firstWhere('is_cover', true) ?? $house->photos->first();
     [$priceFrom, $priceTo] = $house->basePriceRange();
+    preg_match('/(\d+)/', $house->getTranslation('name', app()->getLocale()), $houseNumberMatch);
+    $houseNumber = $houseNumberMatch[1] ?? null;
 @endphp
 <a href="{{ route('houses.show', ['locale' => app()->getLocale(), 'house' => $house->slug]) }}" class="group block overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm transition hover:shadow-md">
-    <div class="aspect-[4/3] overflow-hidden bg-brand-100">
+    <div class="relative aspect-[4/3] overflow-hidden bg-brand-100">
         @if ($cover)
             <img src="{{ Storage::url($cover->path) }}" alt="{{ $cover->getTranslation('alt_text', app()->getLocale(), useFallbackLocale: true) ?: $house->getTranslation('name', app()->getLocale()) }}" class="h-full w-full object-cover transition group-hover:scale-105">
         @else
             <div class="flex h-full w-full items-center justify-center text-brand-300">{{ config('site.name') }}</div>
+        @endif
+
+        @if ($houseNumber)
+            <div class="absolute left-3 top-3 flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-brand-900/80 font-display text-base font-semibold text-white shadow-md backdrop-blur-sm">
+                {{ $houseNumber }}
+            </div>
         @endif
     </div>
 
