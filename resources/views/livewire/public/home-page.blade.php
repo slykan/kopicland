@@ -45,6 +45,19 @@
         </a>
     </section>
 
+    <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <h2 class="font-display px-4 text-center text-3xl font-semibold text-brand-900 sm:text-4xl">{{ __('site.nav.video') }}</h2>
+        <p class="mt-2 px-4 text-center text-brand-600">{{ __('site.nav.video_subtitle') }}</p>
+
+        <div class="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
+            @foreach (['mosaic-1', 'mosaic-2', 'mosaic-3', 'mosaic-4'] as $clip)
+                <div class="aspect-[9/16] overflow-hidden rounded-2xl bg-brand-950 shadow-sm">
+                    <video class="h-full w-full object-cover" autoplay muted loop playsinline preload="metadata" src="{{ asset('videos/'.$clip.'.mp4') }}"></video>
+                </div>
+            @endforeach
+        </div>
+    </section>
+
     @php
         $slides = collect(['sports', 'indoor', 'outdoor', 'sustainable', 'events', 'peka'])->map(function ($key) {
             $body = __('site.pages.about_stories.'.$key.'.body');

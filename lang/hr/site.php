@@ -12,6 +12,8 @@ return [
         'gallery_subtitle' => 'Pogledajte atmosferu Kopićlanda kroz naše fotografije.',
         'features' => 'Značajke',
         'features_subtitle' => 'Sve pogodnosti koje su Vam na raspolaganju tijekom boravka u Kopićlandu.',
+        'video' => 'Kopićland u pokretu',
+        'video_subtitle' => 'Kratki uvid u atmosferu i okoliš Kopićlanda.',
     ],
     'footer' => [
         'rights' => 'Sva prava pridržana.',

@@ -12,6 +12,8 @@ return [
         'gallery_subtitle' => 'Werfen Sie einen Blick auf die Atmosphäre von Kopićland durch unsere Fotos.',
         'features' => 'Ausstattung',
         'features_subtitle' => 'Alle Annehmlichkeiten, die Ihnen während Ihres Aufenthalts in Kopićland zur Verfügung stehen.',
+        'video' => 'Kopićland in Bewegung',
+        'video_subtitle' => 'Ein kurzer Einblick in die Atmosphäre und Umgebung von Kopićland.',
     ],
     'footer' => [
         'rights' => 'Alle Rechte vorbehalten.',
