@@ -1,12 +1,15 @@
 @php $locale = app()->getLocale(); @endphp
 <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6">
     @if ($house->photos->isNotEmpty())
-        <div class="grid grid-cols-2 gap-2 overflow-hidden rounded-2xl sm:grid-cols-4 sm:grid-rows-2">
-            @foreach ($house->photos->take(5) as $i => $photo)
-                <div class="{{ $i === 0 ? 'col-span-2 row-span-2' : '' }} aspect-square overflow-hidden bg-brand-100">
-                    <img src="{{ Storage::url($photo->path) }}" alt="{{ $photo->getTranslation('alt_text', $locale, useFallbackLocale: true) }}" class="h-full w-full object-cover">
-                </div>
-            @endforeach
+        <div class="relative overflow-hidden rounded-2xl">
+            <div class="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:grid-rows-2">
+                @foreach ($house->photos->take(5) as $i => $photo)
+                    <div class="{{ $i === 0 ? 'col-span-2 row-span-2' : '' }} aspect-square overflow-hidden bg-brand-100">
+                        <img src="{{ Storage::url($photo->path) }}" alt="{{ $photo->getTranslation('alt_text', $locale, useFallbackLocale: true) }}" class="h-full w-full object-cover">
+                    </div>
+                @endforeach
+            </div>
+            <img src="{{ asset('images/logo-watermark.png') }}" alt="" class="pointer-events-none absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow sm:h-28 sm:w-28">
         </div>
     @endif
 
