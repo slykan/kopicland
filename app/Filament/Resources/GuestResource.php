@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\GuestResource\Pages;
 use App\Models\Guest;
+use App\Support\Countries;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -36,7 +37,9 @@ class GuestResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('phone')
                     ->tel(),
-                Forms\Components\TextInput::make('country'),
+                Forms\Components\Select::make('country')
+                    ->options(Countries::options(app()->getLocale()))
+                    ->searchable(),
                 Forms\Components\TextInput::make('address'),
                 Forms\Components\Select::make('preferred_locale')
                     ->label('Preferred language')

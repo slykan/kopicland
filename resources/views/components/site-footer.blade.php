@@ -6,7 +6,11 @@
     <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
         <div>
             <p class="text-lg font-semibold text-brand-800">{{ config('site.name') }}</p>
-            <p class="mt-2 text-sm text-brand-600">{{ $contact['address'] }}</p>
+            <p class="mt-2 text-sm text-brand-600">
+                @foreach (explode(', ', $contact['address']) as $line)
+                    {{ $line }}@if (! $loop->last)<br>@endif
+                @endforeach
+            </p>
 
             <div class="mt-4 flex items-center gap-3">
                 <a href="https://www.facebook.com/kopicland/" target="_blank" rel="noopener" aria-label="Facebook" class="text-brand-500 hover:text-brand-800">

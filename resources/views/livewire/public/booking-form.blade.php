@@ -27,10 +27,12 @@
                 <div>
                     <label class="block text-xs font-medium text-brand-600">{{ __('site.common.children') }}</label>
                     <input type="number" min="0" wire:model.live="children" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
+                    @error('children') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
                 </div>
                 <div>
                     <label class="block text-xs font-medium text-brand-600">{{ __('site.common.pets') }}</label>
                     <input type="number" min="0" wire:model="pets" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
+                    @error('pets') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
                 </div>
             </div>
 
@@ -74,11 +76,24 @@
                 <div>
                     <label class="block text-xs font-medium text-brand-600">{{ __('Phone') }}</label>
                     <input type="text" wire:model="phone" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
+                    @error('phone') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
                 </div>
                 <div>
                     <label class="block text-xs font-medium text-brand-600">{{ __('Country') }}</label>
-                    <input type="text" wire:model="country" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
+                    <select wire:model="country" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
+                        <option value="">—</option>
+                        @foreach ($this->countries as $code => $name)
+                            <option value="{{ $code }}">{{ $name }}</option>
+                        @endforeach
+                    </select>
+                    @error('country') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
                 </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-medium text-brand-600">{{ __('Address') }}</label>
+                <input type="text" wire:model="address" class="mt-1 w-full rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
+                @error('address') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
             </div>
 
             <div>

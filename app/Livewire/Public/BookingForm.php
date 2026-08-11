@@ -8,6 +8,8 @@ use App\Models\House;
 use App\Models\Reservation;
 use App\Services\AvailabilityChecker;
 use App\Services\PriceCalculator;
+use App\Support\Countries;
+use Livewire\Attributes\Computed;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -24,10 +26,10 @@ class BookingForm extends Component
     #[Validate('required|integer|min:1')]
     public int $adults = 2;
 
-    #[Validate('integer|min:0')]
+    #[Validate('required|integer|min:0')]
     public int $children = 0;
 
-    #[Validate('integer|min:0')]
+    #[Validate('required|integer|min:0')]
     public int $pets = 0;
 
     #[Validate('required|string|max:255')]
@@ -39,11 +41,14 @@ class BookingForm extends Component
     #[Validate('required|email|max:255')]
     public string $email = '';
 
-    #[Validate('nullable|string|max:50')]
+    #[Validate('required|string|max:50')]
     public string $phone = '';
 
-    #[Validate('nullable|string|max:255')]
+    #[Validate('required|string|size:2')]
     public string $country = '';
+
+    #[Validate('required|string|max:255')]
+    public string $address = '';
 
     #[Validate('nullable|string|max:2000')]
     public string $guestNote = '';
@@ -65,6 +70,12 @@ class BookingForm extends Component
     public function mount(House $house): void
     {
         $this->house = $house;
+    }
+
+    #[Computed]
+    public function countries(): array
+    {
+        return Countries::options(app()->getLocale());
     }
 
     public function updated($property): void
@@ -128,6 +139,7 @@ class BookingForm extends Component
             'email' => $this->email,
             'phone' => $this->phone ?: null,
             'country' => $this->country ?: null,
+            'address' => $this->address ?: null,
             'preferred_locale' => app()->getLocale(),
             'rules_accepted_at' => now(),
             'privacy_accepted_at' => now(),

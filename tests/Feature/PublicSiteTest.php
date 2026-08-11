@@ -86,9 +86,13 @@ class PublicSiteTest extends TestCase
             ->set('checkOut', now()->addDays(13)->toDateString())
             ->set('adults', 2)
             ->set('children', 0)
+            ->set('pets', 0)
             ->set('firstName', 'Ana')
             ->set('lastName', 'Anić')
             ->set('email', 'ana@example.com')
+            ->set('phone', '+385911234567')
+            ->set('country', 'HR')
+            ->set('address', 'Ulica primjer 1, Zagreb')
             ->set('acceptRules', true)
             ->set('acceptPrivacy', true)
             ->call('submit')
@@ -126,9 +130,13 @@ class PublicSiteTest extends TestCase
             ->set('firstName', 'Ana')
             ->set('lastName', 'Anić')
             ->set('email', 'ana@example.com')
+            ->set('phone', '+385911234567')
+            ->set('country', 'HR')
+            ->set('address', 'Ulica primjer 1, Zagreb')
             ->set('acceptRules', true)
             ->set('acceptPrivacy', true)
             ->call('submit')
+            ->assertHasNoErrors()
             ->assertSet('submitted', false);
 
         $this->assertDatabaseCount('reservations', 1);
