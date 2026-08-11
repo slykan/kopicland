@@ -13,62 +13,142 @@ class EmailTemplateSeeder extends Seeder
             [
                 'key' => 'guest_request_received',
                 'recipient' => 'guest',
-                'subject' => 'We received your booking request - {{house_name}}',
-                'body' => '<p>Hi {{guest_name}},</p><p>We received your reservation request for {{house_name}} from {{check_in}} to {{check_out}}. We will confirm availability shortly.</p><p>Estimated total: {{total_price}}</p>',
+                'subject' => [
+                    'hr' => 'Zaprimili smo vaš upit za rezervaciju - {{house_name}}',
+                    'en' => "We've received your reservation request - {{house_name}}",
+                    'de' => 'Wir haben Ihre Reservierungsanfrage erhalten - {{house_name}}',
+                ],
+                'body' => [
+                    'hr' => '<p>Poštovani/a {{guest_name}},</p><p>Hvala vam što ste odabrali Kopić Land! Zaprimili smo vaš upit za rezervaciju kućice <strong>{{house_name}}</strong> u terminu od <strong>{{check_in}}</strong> do <strong>{{check_out}}</strong>.</p><p>Provjerit ćemo dostupnost i uskoro se javiti s potvrdom.</p><p>Procijenjeni ukupni iznos: <strong>{{total_price}}</strong></p><p>Srdačan pozdrav,<br>Kopić Land</p>',
+                    'en' => '<p>Hi {{guest_name}},</p><p>Thank you for choosing Kopić Land! We\'ve received your reservation request for <strong>{{house_name}}</strong> from <strong>{{check_in}}</strong> to <strong>{{check_out}}</strong>.</p><p>We\'ll check availability and get back to you shortly with a confirmation.</p><p>Estimated total: <strong>{{total_price}}</strong></p><p>Best regards,<br>Kopić Land</p>',
+                    'de' => '<p>Hallo {{guest_name}},</p><p>vielen Dank, dass Sie sich für Kopić Land entschieden haben! Wir haben Ihre Reservierungsanfrage für <strong>{{house_name}}</strong> vom <strong>{{check_in}}</strong> bis <strong>{{check_out}}</strong> erhalten.</p><p>Wir prüfen die Verfügbarkeit und melden uns in Kürze mit einer Bestätigung.</p><p>Geschätzter Gesamtbetrag: <strong>{{total_price}}</strong></p><p>Herzliche Grüße,<br>Kopić Land</p>',
+                ],
             ],
             [
                 'key' => 'guest_confirmed',
                 'recipient' => 'guest',
-                'subject' => 'Your reservation is confirmed - {{house_name}}',
-                'body' => '<p>Hi {{guest_name}},</p><p>Your reservation #{{reservation_id}} for {{house_name}} ({{check_in}} - {{check_out}}) is confirmed.</p><p>Total: {{total_price}}</p>',
+                'subject' => [
+                    'hr' => 'Vaša rezervacija je potvrđena - {{house_name}}',
+                    'en' => 'Your reservation is confirmed - {{house_name}}',
+                    'de' => 'Ihre Reservierung ist bestätigt - {{house_name}}',
+                ],
+                'body' => [
+                    'hr' => '<p>Poštovani/a {{guest_name}},</p><p>Sjajne vijesti — vaša rezervacija <strong>#{{reservation_id}}</strong> za <strong>{{house_name}}</strong> ({{check_in}} - {{check_out}}) je potvrđena!</p><p>Ukupan iznos: <strong>{{total_price}}</strong></p><p>Veselimo se vašem dolasku.</p><p>Srdačan pozdrav,<br>Kopić Land</p>',
+                    'en' => '<p>Hi {{guest_name}},</p><p>Great news — your reservation <strong>#{{reservation_id}}</strong> for <strong>{{house_name}}</strong> ({{check_in}} - {{check_out}}) is confirmed!</p><p>Total: <strong>{{total_price}}</strong></p><p>We look forward to welcoming you.</p><p>Best regards,<br>Kopić Land</p>',
+                    'de' => '<p>Hallo {{guest_name}},</p><p>gute Neuigkeiten — Ihre Reservierung <strong>#{{reservation_id}}</strong> für <strong>{{house_name}}</strong> ({{check_in}} - {{check_out}}) ist bestätigt!</p><p>Gesamtbetrag: <strong>{{total_price}}</strong></p><p>Wir freuen uns auf Sie.</p><p>Herzliche Grüße,<br>Kopić Land</p>',
+                ],
             ],
             [
                 'key' => 'guest_rejected',
                 'recipient' => 'guest',
-                'subject' => 'Update on your reservation request - {{house_name}}',
-                'body' => '<p>Hi {{guest_name}},</p><p>Unfortunately we are unable to accept your reservation request for {{house_name}} ({{check_in}} - {{check_out}}).</p>',
+                'subject' => [
+                    'hr' => 'Informacija o vašem upitu za rezervaciju - {{house_name}}',
+                    'en' => 'Update on your reservation request - {{house_name}}',
+                    'de' => 'Update zu Ihrer Reservierungsanfrage - {{house_name}}',
+                ],
+                'body' => [
+                    'hr' => '<p>Poštovani/a {{guest_name}},</p><p>Hvala vam na interesu za <strong>{{house_name}}</strong>. Nažalost, trenutačno nismo u mogućnosti prihvatiti vaš upit za termin <strong>{{check_in}} - {{check_out}}</strong>.</p><p>Rado ćemo vam pomoći pronaći neki drugi slobodan termin — slobodno nas kontaktirajte.</p><p>Srdačan pozdrav,<br>Kopić Land</p>',
+                    'en' => '<p>Hi {{guest_name}},</p><p>Thank you for your interest in <strong>{{house_name}}</strong>. Unfortunately, we\'re unable to accept your reservation request for <strong>{{check_in}} - {{check_out}}</strong> at this time.</p><p>We\'d be happy to help you find another available date — feel free to get in touch.</p><p>Best regards,<br>Kopić Land</p>',
+                    'de' => '<p>Hallo {{guest_name}},</p><p>vielen Dank für Ihr Interesse an <strong>{{house_name}}</strong>. Leider können wir Ihre Reservierungsanfrage für <strong>{{check_in}} - {{check_out}}</strong> derzeit nicht annehmen.</p><p>Gerne helfen wir Ihnen, einen anderen freien Termin zu finden — kontaktieren Sie uns einfach.</p><p>Herzliche Grüße,<br>Kopić Land</p>',
+                ],
             ],
             [
                 'key' => 'guest_modified',
                 'recipient' => 'guest',
-                'subject' => 'Your reservation has been updated - {{house_name}}',
-                'body' => '<p>Hi {{guest_name}},</p><p>Your reservation #{{reservation_id}} has been updated. New dates: {{check_in}} - {{check_out}}. Total: {{total_price}}</p>',
+                'subject' => [
+                    'hr' => 'Vaša rezervacija je izmijenjena - {{house_name}}',
+                    'en' => 'Your reservation has been updated - {{house_name}}',
+                    'de' => 'Ihre Reservierung wurde geändert - {{house_name}}',
+                ],
+                'body' => [
+                    'hr' => '<p>Poštovani/a {{guest_name}},</p><p>Vaša rezervacija <strong>#{{reservation_id}}</strong> za <strong>{{house_name}}</strong> je izmijenjena.</p><p>Novi datumi: <strong>{{check_in}} - {{check_out}}</strong><br>Ukupno: <strong>{{total_price}}</strong></p><p>Ako imate pitanja, slobodno odgovorite na ovaj e-mail.</p><p>Srdačan pozdrav,<br>Kopić Land</p>',
+                    'en' => '<p>Hi {{guest_name}},</p><p>Your reservation <strong>#{{reservation_id}}</strong> for <strong>{{house_name}}</strong> has been updated.</p><p>New dates: <strong>{{check_in}} - {{check_out}}</strong><br>Total: <strong>{{total_price}}</strong></p><p>If you have any questions, just reply to this email.</p><p>Best regards,<br>Kopić Land</p>',
+                    'de' => '<p>Hallo {{guest_name}},</p><p>Ihre Reservierung <strong>#{{reservation_id}}</strong> für <strong>{{house_name}}</strong> wurde aktualisiert.</p><p>Neue Daten: <strong>{{check_in}} - {{check_out}}</strong><br>Gesamtbetrag: <strong>{{total_price}}</strong></p><p>Bei Fragen antworten Sie einfach auf diese E-Mail.</p><p>Herzliche Grüße,<br>Kopić Land</p>',
+                ],
             ],
             [
                 'key' => 'guest_cancelled',
                 'recipient' => 'guest',
-                'subject' => 'Your reservation has been cancelled - {{house_name}}',
-                'body' => '<p>Hi {{guest_name}},</p><p>Your reservation #{{reservation_id}} for {{house_name}} has been cancelled.</p>',
+                'subject' => [
+                    'hr' => 'Vaša rezervacija je otkazana - {{house_name}}',
+                    'en' => 'Your reservation has been cancelled - {{house_name}}',
+                    'de' => 'Ihre Reservierung wurde storniert - {{house_name}}',
+                ],
+                'body' => [
+                    'hr' => '<p>Poštovani/a {{guest_name}},</p><p>Vaša rezervacija <strong>#{{reservation_id}}</strong> za <strong>{{house_name}}</strong> je otkazana.</p><p>Ako ovo niste očekivali ili biste željeli napraviti novu rezervaciju, slobodno nas kontaktirajte.</p><p>Srdačan pozdrav,<br>Kopić Land</p>',
+                    'en' => '<p>Hi {{guest_name}},</p><p>Your reservation <strong>#{{reservation_id}}</strong> for <strong>{{house_name}}</strong> has been cancelled.</p><p>If this wasn\'t expected or you\'d like to make a new booking, please get in touch with us.</p><p>Best regards,<br>Kopić Land</p>',
+                    'de' => '<p>Hallo {{guest_name}},</p><p>Ihre Reservierung <strong>#{{reservation_id}}</strong> für <strong>{{house_name}}</strong> wurde storniert.</p><p>Falls dies unerwartet kam oder Sie eine neue Buchung vornehmen möchten, kontaktieren Sie uns gerne.</p><p>Herzliche Grüße,<br>Kopić Land</p>',
+                ],
             ],
             [
                 'key' => 'guest_reminder',
                 'recipient' => 'guest',
-                'subject' => 'See you soon at {{house_name}}!',
-                'body' => '<p>Hi {{guest_name}},</p><p>This is a reminder that your stay at {{house_name}} starts on {{check_in}}. We look forward to welcoming you!</p>',
+                'subject' => [
+                    'hr' => 'Vidimo se uskoro u {{house_name}}!',
+                    'en' => 'See you soon at {{house_name}}!',
+                    'de' => 'Bis bald in {{house_name}}!',
+                ],
+                'body' => [
+                    'hr' => '<p>Poštovani/a {{guest_name}},</p><p>Ovo je prijateljski podsjetnik da vaš boravak u <strong>{{house_name}}</strong> počinje <strong>{{check_in}}</strong>.</p><p>Veselimo se vašem dolasku!</p><p>Srdačan pozdrav,<br>Kopić Land</p>',
+                    'en' => '<p>Hi {{guest_name}},</p><p>Just a friendly reminder that your stay at <strong>{{house_name}}</strong> starts on <strong>{{check_in}}</strong>.</p><p>We look forward to welcoming you soon!</p><p>Best regards,<br>Kopić Land</p>',
+                    'de' => '<p>Hallo {{guest_name}},</p><p>nur eine kurze Erinnerung: Ihr Aufenthalt in <strong>{{house_name}}</strong> beginnt am <strong>{{check_in}}</strong>.</p><p>Wir freuen uns schon auf Sie!</p><p>Herzliche Grüße,<br>Kopić Land</p>',
+                ],
             ],
             [
                 'key' => 'guest_post_stay',
                 'recipient' => 'guest',
-                'subject' => 'Thank you for staying at {{house_name}}',
-                'body' => '<p>Hi {{guest_name}},</p><p>Thank you for staying with us at {{house_name}}. We hope you enjoyed your visit!</p>',
+                'subject' => [
+                    'hr' => 'Hvala vam što ste odsjeli u {{house_name}}',
+                    'en' => 'Thank you for staying at {{house_name}}',
+                    'de' => 'Danke für Ihren Aufenthalt in {{house_name}}',
+                ],
+                'body' => [
+                    'hr' => '<p>Poštovani/a {{guest_name}},</p><p>Hvala vam što ste odsjeli kod nas u <strong>{{house_name}}</strong>. Nadamo se da ste uživali i veselimo se vašem ponovnom dolasku!</p><p>Srdačan pozdrav,<br>Kopić Land</p>',
+                    'en' => '<p>Hi {{guest_name}},</p><p>Thank you for staying with us at <strong>{{house_name}}</strong>. We hope you had a wonderful time and hope to welcome you back again soon!</p><p>Best regards,<br>Kopić Land</p>',
+                    'de' => '<p>Hallo {{guest_name}},</p><p>vielen Dank, dass Sie bei uns in <strong>{{house_name}}</strong> übernachtet haben. Wir hoffen, Sie hatten eine schöne Zeit, und freuen uns, Sie bald wieder begrüßen zu dürfen!</p><p>Herzliche Grüße,<br>Kopić Land</p>',
+                ],
             ],
             [
                 'key' => 'admin_new_request',
                 'recipient' => 'admin',
-                'subject' => 'New reservation request - {{house_name}}',
-                'body' => '<p>New request #{{reservation_id}} for {{house_name}} ({{check_in}} - {{check_out}}) from {{guest_name}}.</p>',
+                'subject' => [
+                    'hr' => 'Novi upit za rezervaciju - {{house_name}}',
+                    'en' => 'New reservation request - {{house_name}}',
+                    'de' => 'Neue Reservierungsanfrage - {{house_name}}',
+                ],
+                'body' => [
+                    'hr' => '<p>Novi upit <strong>#{{reservation_id}}</strong> za <strong>{{house_name}}</strong> ({{check_in}} - {{check_out}}) od {{guest_name}}.</p>',
+                    'en' => '<p>New request <strong>#{{reservation_id}}</strong> for <strong>{{house_name}}</strong> ({{check_in}} - {{check_out}}) from {{guest_name}}.</p>',
+                    'de' => '<p>Neue Anfrage <strong>#{{reservation_id}}</strong> für <strong>{{house_name}}</strong> ({{check_in}} - {{check_out}}) von {{guest_name}}.</p>',
+                ],
             ],
             [
                 'key' => 'admin_cancelled',
                 'recipient' => 'admin',
-                'subject' => 'Reservation cancelled - {{house_name}}',
-                'body' => '<p>Reservation #{{reservation_id}} for {{house_name}} ({{check_in}} - {{check_out}}) was cancelled.</p>',
+                'subject' => [
+                    'hr' => 'Rezervacija otkazana - {{house_name}}',
+                    'en' => 'Reservation cancelled - {{house_name}}',
+                    'de' => 'Reservierung storniert - {{house_name}}',
+                ],
+                'body' => [
+                    'hr' => '<p>Rezervacija <strong>#{{reservation_id}}</strong> za <strong>{{house_name}}</strong> ({{check_in}} - {{check_out}}) je otkazana.</p>',
+                    'en' => '<p>Reservation <strong>#{{reservation_id}}</strong> for <strong>{{house_name}}</strong> ({{check_in}} - {{check_out}}) was cancelled.</p>',
+                    'de' => '<p>Reservierung <strong>#{{reservation_id}}</strong> für <strong>{{house_name}}</strong> ({{check_in}} - {{check_out}}) wurde storniert.</p>',
+                ],
             ],
             [
                 'key' => 'admin_arrival_reminder',
                 'recipient' => 'admin',
-                'subject' => 'Upcoming arrival - {{house_name}}',
-                'body' => '<p>Reminder: {{guest_name}} arrives at {{house_name}} on {{check_in}}.</p>',
+                'subject' => [
+                    'hr' => 'Nadolazeći dolazak - {{house_name}}',
+                    'en' => 'Upcoming arrival - {{house_name}}',
+                    'de' => 'Bevorstehende Ankunft - {{house_name}}',
+                ],
+                'body' => [
+                    'hr' => '<p>Podsjetnik: {{guest_name}} dolazi u <strong>{{house_name}}</strong> dana <strong>{{check_in}}</strong>.</p>',
+                    'en' => '<p>Reminder: {{guest_name}} arrives at <strong>{{house_name}}</strong> on <strong>{{check_in}}</strong>.</p>',
+                    'de' => '<p>Erinnerung: {{guest_name}} kommt am <strong>{{check_in}}</strong> in <strong>{{house_name}}</strong> an.</p>',
+                ],
             ],
         ];
 
@@ -77,8 +157,8 @@ class EmailTemplateSeeder extends Seeder
                 ['key' => $template['key']],
                 [
                     'recipient' => $template['recipient'],
-                    'subject' => ['en' => $template['subject']],
-                    'body' => ['en' => $template['body']],
+                    'subject' => $template['subject'],
+                    'body' => $template['body'],
                     'is_active' => true,
                 ]
             );
