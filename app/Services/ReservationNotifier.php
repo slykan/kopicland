@@ -25,7 +25,7 @@ class ReservationNotifier
             return;
         }
 
-        $locale = $template->recipient === 'admin' ? 'en' : ($reservation->locale ?? 'en');
+        $locale = $template->recipient === 'admin' ? 'hr' : ($reservation->locale ?? 'en');
 
         $placeholders = $this->placeholders($reservation, $locale);
 
