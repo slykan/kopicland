@@ -56,7 +56,16 @@
                     <tr>
                         <td style="padding: 32px 36px;">
                             <div class="email-body" style="font-family: 'Instrument Sans', Arial, Helvetica, sans-serif; font-size:15px; line-height:1.6; color:#383f24;">
-                                {!! $renderedBody !!}
+                                @php
+                                    $__qrMarker = '{{' . 'payment_qr' . '}}';
+                                    $__finalBody = $renderedBody;
+
+                                    if ($paymentQrPng && str_contains($__finalBody, $__qrMarker)) {
+                                        $__qrTag = '<img src="'.$message->embedData($paymentQrPng, 'placanje-kod.png', 'image/png').'" alt="Kod za placanje" width="220" style="display:block; width:220px; max-width:100%; height:auto; border:1px solid #e6e9d3; border-radius:4px;">';
+                                        $__finalBody = str_replace($__qrMarker, $__qrTag, $__finalBody);
+                                    }
+                                @endphp
+                                {!! $__finalBody !!}
                             </div>
                         </td>
                     </tr>

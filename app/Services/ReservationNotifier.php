@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Mail\ReservationStatusMail;
 use App\Models\EmailTemplate;
 use App\Models\Reservation;
+use App\Support\Hub3Barcode;
 use Illuminate\Support\Facades\Mail;
 
 class ReservationNotifier
@@ -32,7 +33,11 @@ class ReservationNotifier
         $subject = "#{$reservation->id} - ".$this->render($template->getTranslation('subject', $locale, useFallbackLocale: true), $placeholders);
         $body = $this->render($template->getTranslation('body', $locale, useFallbackLocale: true), $placeholders);
 
-        Mail::to($recipientEmail)->send(new ReservationStatusMail($subject, $body));
+        $paymentQrPng = str_contains($body, '{{payment_qr}}')
+            ? Hub3Barcode::png(Hub3Barcode::forReservation($reservation))
+            : null;
+
+        Mail::to($recipientEmail)->send(new ReservationStatusMail($subject, $body, $paymentQrPng));
     }
 
     private function placeholders(Reservation $reservation, string $locale): array

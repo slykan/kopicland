@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a661720febc6a5f6715fecf0b70c55de",
+    "content-hash": "f1e2565f553615cd59d1d0d13b63bd97",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -7744,6 +7744,174 @@
                 }
             ],
             "time": "2026-06-08T20:24:16+00:00"
+        },
+        {
+            "name": "tecnickcom/tc-lib-barcode",
+            "version": "2.13.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tecnickcom/tc-lib-barcode.git",
+                "reference": "c7f3ddbc3df10259c59ddc3016ec421267e25e5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tecnickcom/tc-lib-barcode/zipball/c7f3ddbc3df10259c59ddc3016ec421267e25e5d",
+                "reference": "c7f3ddbc3df10259c59ddc3016ec421267e25e5d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-gd": "*",
+                "ext-pcre": "*",
+                "php": ">=8.2",
+                "tecnickcom/tc-lib-color": "^2.13"
+            },
+            "require-dev": {
+                "pdepend/pdepend": "^2.16",
+                "phpunit/phpunit": "^11.5 || ^12.5 || ^13.2"
+            },
+            "suggest": {
+                "ext-bcmath": "Speeds up the arbitrary precision arithmetic used by the IMB and PDF417 barcode types (a pure-PHP implementation is used when missing)",
+                "ext-imagick": "Alternative PNG renderer used by getPngData() when the extension is loaded"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Com\\Tecnick\\Barcode\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Nicola Asuni",
+                    "email": "info@tecnick.com",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP library to generate linear and bidimensional barcodes",
+            "homepage": "https://tcpdf.org",
+            "keywords": [
+                "3 of 9",
+                "ANSI MH10.8M-1983",
+                "CBC",
+                "CODABAR",
+                "CODE 11",
+                "CODE 128 A B C",
+                "CODE 39",
+                "CODE 93",
+                "EAN 13",
+                "EAN 8",
+                "ECC200",
+                "ISO IEC 15438 2006",
+                "ISO IEC 16022",
+                "ISO IEC 24778 2008",
+                "Intelligent Mail Barcode",
+                "Interleaved 2 of 5",
+                "KIX",
+                "Klant",
+                "MSI",
+                "Onecode",
+                "PHARMACODE",
+                "PHARMACODE TWO-TRACKS",
+                "POSTNET",
+                "RMS4CC",
+                "Standard 2 of 5",
+                "UPC-A",
+                "UPC-E",
+                "USD-3",
+                "USPS-B-3200",
+                "USS-93",
+                "aztec",
+                "barcode",
+                "datamatrix",
+                "pdf417",
+                "planet",
+                "qr-code",
+                "royal mail",
+                "tc-lib-barcode",
+                "upc"
+            ],
+            "support": {
+                "issues": "https://github.com/tecnickcom/tc-lib-barcode/issues",
+                "source": "https://github.com/tecnickcom/tc-lib-barcode"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/tecnickcom",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-08-07T08:07:20+00:00"
+        },
+        {
+            "name": "tecnickcom/tc-lib-color",
+            "version": "2.13.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tecnickcom/tc-lib-color.git",
+                "reference": "36b0cb2215c446fed65842151d494f2b3081533c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tecnickcom/tc-lib-color/zipball/36b0cb2215c446fed65842151d494f2b3081533c",
+                "reference": "36b0cb2215c446fed65842151d494f2b3081533c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pcre": "*",
+                "php": ">=8.2"
+            },
+            "require-dev": {
+                "pdepend/pdepend": "^2.16",
+                "phpunit/phpunit": "^11.5 || ^12.5 || ^13.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Com\\Tecnick\\Color\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Nicola Asuni",
+                    "email": "info@tecnick.com",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP library to manipulate various color representations",
+            "homepage": "https://tcpdf.org",
+            "keywords": [
+                "cmyk",
+                "color",
+                "colors",
+                "colour",
+                "colours",
+                "hsl",
+                "hsla",
+                "javascript",
+                "rgb",
+                "rgba",
+                "tc-lib-color",
+                "web"
+            ],
+            "support": {
+                "issues": "https://github.com/tecnickcom/tc-lib-color/issues",
+                "source": "https://github.com/tecnickcom/tc-lib-color"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/tecnickcom",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-08-07T08:05:09+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

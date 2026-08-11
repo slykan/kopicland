@@ -15,6 +15,7 @@ class ReservationStatusMail extends Mailable
     public function __construct(
         public readonly string $renderedSubject,
         public readonly string $renderedBody,
+        public readonly ?string $paymentQrPng = null,
     ) {}
 
     public function envelope(): Envelope
@@ -28,7 +29,10 @@ class ReservationStatusMail extends Mailable
     {
         return new Content(
             view: 'emails.reservation-status',
-            with: ['renderedBody' => $this->renderedBody],
+            with: [
+                'renderedBody' => $this->renderedBody,
+                'paymentQrPng' => $this->paymentQrPng,
+            ],
         );
     }
 }

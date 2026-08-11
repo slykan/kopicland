@@ -16,7 +16,8 @@
         "laravel/tinker": "^2.10.1",
         "saade/filament-fullcalendar": "^3.0",
         "secondnetwork/blade-tabler-icons": "^3.45",
-        "spatie/laravel-translatable": "^6.14"
+        "spatie/laravel-translatable": "^6.14",
+        "tecnickcom/tc-lib-barcode": "^2.13"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
