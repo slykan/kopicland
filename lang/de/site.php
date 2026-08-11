@@ -41,6 +41,7 @@ return [
         'location_title' => 'Lage & Anfahrt',
         'find_us_heading' => 'Wo Sie uns finden',
         'contact_title' => 'Kontakt',
+        'company_info_title' => 'Firmendaten',
         'faq_title' => 'FAQ',
         'booking_rules_title' => 'Buchungsregeln',
         'terms_title' => 'Nutzungsbedingungen',

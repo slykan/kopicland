@@ -27,7 +27,8 @@ class ReservationStatusMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            htmlString: $this->renderedBody,
+            view: 'emails.reservation-status',
+            with: ['renderedBody' => $this->renderedBody],
         );
     }
 }

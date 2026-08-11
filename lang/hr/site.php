@@ -41,6 +41,7 @@ return [
         'location_title' => 'Lokacija i kako doći',
         'find_us_heading' => 'Gdje se nalazimo',
         'contact_title' => 'Kontakt',
+        'company_info_title' => 'Podaci o tvrtki',
         'faq_title' => 'Česta pitanja',
         'booking_rules_title' => 'Pravila rezervacije',
         'terms_title' => 'Uvjeti korištenja',

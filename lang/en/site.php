@@ -41,6 +41,7 @@ return [
         'location_title' => 'Location & directions',
         'find_us_heading' => 'Where to find us',
         'contact_title' => 'Contact',
+        'company_info_title' => 'Company details',
         'faq_title' => 'FAQ',
         'booking_rules_title' => 'Booking rules',
         'terms_title' => 'Terms of use',
