@@ -25,6 +25,20 @@ class EmailTemplateSeeder extends Seeder
                 ],
             ],
             [
+                'key' => 'guest_pending',
+                'recipient' => 'guest',
+                'subject' => [
+                    'hr' => 'Vaš zahtjev se obrađuje - {{house_name}}',
+                    'en' => 'Your request is being processed - {{house_name}}',
+                    'de' => 'Ihre Anfrage wird bearbeitet - {{house_name}}',
+                ],
+                'body' => [
+                    'hr' => '<p>Poštovani/a {{guest_name}},</p><p>Vaš zahtjev za rezervaciju kućice <strong>{{house_name}}</strong> ({{check_in}} - {{check_out}}) trenutačno se obrađuje. Javit ćemo Vam se uskoro s konačnom potvrdom.</p><p>Hvala na strpljenju.</p><p>Srdačan pozdrav,<br>Kopić Land</p>',
+                    'en' => "<p>Hi {{guest_name}},</p><p>Your reservation request for <strong>{{house_name}}</strong> ({{check_in}} - {{check_out}}) is currently being processed. We'll get back to you shortly with a final confirmation.</p><p>Thank you for your patience.</p><p>Best regards,<br>Kopić Land</p>",
+                    'de' => '<p>Hallo {{guest_name}},</p><p>Ihre Reservierungsanfrage für <strong>{{house_name}}</strong> ({{check_in}} - {{check_out}}) wird derzeit bearbeitet. Wir melden uns in Kürze mit einer endgültigen Bestätigung.</p><p>Vielen Dank für Ihre Geduld.</p><p>Herzliche Grüße,<br>Kopić Land</p>',
+                ],
+            ],
+            [
                 'key' => 'guest_confirmed',
                 'recipient' => 'guest',
                 'subject' => [

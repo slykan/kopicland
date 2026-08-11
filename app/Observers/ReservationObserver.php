@@ -10,6 +10,7 @@ use Throwable;
 class ReservationObserver
 {
     private const STATUS_TEMPLATES = [
+        'pending' => 'guest_pending',
         'confirmed' => 'guest_confirmed',
         'rejected' => 'guest_rejected',
         'cancelled' => 'guest_cancelled',
