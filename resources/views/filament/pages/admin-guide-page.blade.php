@@ -122,8 +122,18 @@
             <h3>Reservations</h3>
             <ul>
                 <li>Sve rezervacije — ručni unos (telefon/mail) ili one koje stignu s javne stranice.</li>
-                <li>Status: novi zahtjev → čeka potvrdu → potvrđena / odbijena / otkazana / završena.</li>
-                <li>Promjena statusa automatski šalje mail gostu na jeziku koji je gost odabrao.</li>
+                <li>Promjena statusa automatski šalje mail gostu, na jeziku koji je gost odabrao (osim kod statusa gdje je niže navedeno da mail ne ide).</li>
+                <li>Svaka rezervacija ima svoj <b>ID</b> (prvi stupac u listi) — taj broj se automatski dodaje na početak naslova svakog maila (npr. "#12 - Vaša rezervacija je potvrđena"), da ju lakše prepoznaš u inboxu.</li>
+            </ul>
+
+            <p style="margin: 0.9rem 0 0.3rem;"><b>Statusi i što svaki radi:</b></p>
+            <ul>
+                <li><b>New request</b> — nova rezervacija s javne stranice (ili ručno unesena s ovim statusom). Gost dobiva mail "Zaprimili smo vaš upit", a admin dobiva mail "Novi upit za rezervaciju".</li>
+                <li><b>Pending confirmation</b> — gost dobiva mail s uputama za plaćanje: IBAN, opis plaćanja ("Rezervacija #ID") i QR kod za skeniranje u mobilnom bankarstvu. Kod je jedinstven za svaku rezervaciju (sadrži točan iznos, ime i adresu gosta te broj rezervacije).</li>
+                <li><b>Confirmed</b> — gost dobiva mail s potvrdom rezervacije. Ako se poslije, dok je rezervacija već potvrđena, promijene datumi dolaska/odlaska, gost dobiva dodatni mail o izmjeni.</li>
+                <li><b>Rejected</b> — gost dobiva mail da nažalost ne možemo prihvatiti upit.</li>
+                <li><b>Cancelled</b> — gost dobiva mail o otkazivanju, a admin dobiva internu obavijest da je rezervacija otkazana.</li>
+                <li><b>Completed, No show, Temporary hold, Blocked</b> — samo interne oznake za tvoju evidenciju, gost ne dobiva mail.</li>
             </ul>
 
             <h3>Guests</h3>
@@ -133,8 +143,9 @@
 
             <h3>Email Templates</h3>
             <ul>
-                <li>Tekstovi mailova koji se automatski šalju gostu/adminu kod promjene statusa rezervacije.</li>
-                <li>U tekstu možeš koristiti <span class="kg-path">@{{house_name}}</span>, <span class="kg-path">@{{guest_name}}</span>, <span class="kg-path">@{{check_in}}</span> itd. — zamjenjuju se stvarnim podacima.</li>
+                <li>Tekstovi mailova iz tablice statusa gore — svaki predložak uređuješ posebno na sva tri jezika (gore u formi prebacuješ jezik).</li>
+                <li>U tekstu možeš koristiti <span class="kg-path">@{{house_name}}</span>, <span class="kg-path">@{{guest_name}}</span>, <span class="kg-path">@{{check_in}}</span>, <span class="kg-path">@{{check_out}}</span>, <span class="kg-path">@{{reservation_id}}</span>, <span class="kg-path">@{{total_price}}</span> — zamjenjuju se stvarnim podacima.</li>
+                <li>U predlošku <b>Pending confirmation</b> (guest_pending) nemoj brisati oznaku <span class="kg-path">@{{payment_qr}}</span> — na tom mjestu se u mailu ubacuje slika QR koda za plaćanje.</li>
             </ul>
 
             <h3>Calendar</h3>
