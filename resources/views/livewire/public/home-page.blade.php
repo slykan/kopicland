@@ -144,11 +144,11 @@
 
             <div class="mx-auto mt-10 grid max-w-7xl grid-cols-3 gap-x-4 gap-y-10 px-4 sm:grid-cols-5 sm:px-6 lg:flex lg:flex-nowrap lg:justify-between lg:gap-x-2">
                 @foreach ($amenities as $amenity)
-                    <div class="flex flex-col items-center gap-3 text-center lg:flex-1 lg:px-1">
-                        <span class="flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-brand-200 bg-white text-brand-600">
-                            <x-dynamic-component :component="'tabler-'.($amenity->icon ?: 'circle')" class="h-9 w-9" />
+                    <div class="group flex flex-col items-center gap-3 text-center lg:flex-1 lg:px-1">
+                        <span class="flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-brand-200 bg-white text-brand-600 transition-all duration-300 ease-out group-hover:-rotate-12 group-hover:scale-110 group-hover:border-brand-500 group-hover:bg-brand-600 group-hover:text-white group-hover:shadow-lg">
+                            <x-dynamic-component :component="'tabler-'.($amenity->icon ?: 'circle')" class="h-9 w-9 transition-transform duration-300 group-hover:scale-110" />
                         </span>
-                        <span class="text-sm font-medium text-brand-700">{{ $amenity->getTranslation('name', app()->getLocale()) }}</span>
+                        <span class="text-sm font-medium text-brand-700 transition-colors duration-300 group-hover:text-brand-900">{{ $amenity->getTranslation('name', app()->getLocale()) }}</span>
                     </div>
                 @endforeach
             </div>
