@@ -16,6 +16,10 @@ return [
         'video_subtitle' => 'A short glimpse of the atmosphere and surroundings of Kopićland.',
         'explore' => 'Explore the Area',
         'explore_subtitle' => 'Trip ideas and attractions near Kopićland.',
+        'reviews' => 'Guest Reviews',
+        'reviews_subtitle' => 'What our guests say about their stay at Kopićland.',
+        'reviews_see_all' => 'See all reviews on Google',
+        'reviews_count' => '{1} :count review|[2,*] :count reviews',
     ],
     'footer' => [
         'rights' => 'All rights reserved.',

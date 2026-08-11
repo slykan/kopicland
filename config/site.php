@@ -17,6 +17,8 @@ return [
         'zip_city' => '32221 Marinci',
         'oib' => '73529336898',
         'phone' => '+385 98 177 66 74',
+        'bank_name' => 'OTP banka',
+        'iban' => 'HR4824070001100775365',
     ],
 
     'locales' => [

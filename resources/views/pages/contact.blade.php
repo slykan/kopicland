@@ -26,6 +26,8 @@
                 <div>
                     Mob: <a href="tel:{{ $company['phone'] }}" class="text-brand-600 hover:text-brand-800">{{ $company['phone'] }}</a>
                 </div>
+                <div class="mt-2">{{ $company['bank_name'] }}</div>
+                <div>IBAN: {{ $company['iban'] }}</div>
             </dl>
         </div>
 

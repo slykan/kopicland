@@ -16,6 +16,10 @@ return [
         'video_subtitle' => 'Ein kurzer Einblick in die Atmosphäre und Umgebung von Kopićland.',
         'explore' => 'Erkunden Sie die Umgebung',
         'explore_subtitle' => 'Ausflugsideen und Sehenswürdigkeiten in der Nähe von Kopićland.',
+        'reviews' => 'Gästebewertungen',
+        'reviews_subtitle' => 'Was unsere Gäste über ihren Aufenthalt in Kopićland sagen.',
+        'reviews_see_all' => 'Alle Bewertungen auf Google ansehen',
+        'reviews_count' => '{1} :count Bewertung|[2,*] :count Bewertungen',
     ],
     'footer' => [
         'rights' => 'Alle Rechte vorbehalten.',

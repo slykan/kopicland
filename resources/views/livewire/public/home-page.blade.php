@@ -137,6 +137,95 @@
         </div>
     </section>
 
+    @if ($reviews->isNotEmpty())
+        @php
+            $ratingText = number_format(
+                (float) $reviewSetting->overall_rating,
+                1,
+                app()->getLocale() === 'en' ? '.' : ',',
+                ''
+            );
+        @endphp
+        <section
+            class="mx-auto max-w-6xl px-4 py-16 sm:px-6"
+            x-data="{
+                next() { this.$refs.reviewScroller.scrollBy({ left: this.$refs.reviewScroller.clientWidth, behavior: 'smooth' }) },
+                prev() { this.$refs.reviewScroller.scrollBy({ left: -this.$refs.reviewScroller.clientWidth, behavior: 'smooth' }) },
+            }"
+        >
+            <h2 class="font-display text-center text-3xl font-semibold text-brand-900 sm:text-4xl">
+                {{ __('site.nav.reviews') }}
+                <span class="inline-flex items-center gap-1 whitespace-nowrap align-middle text-brand-600">
+                    <svg viewBox="0 0 24 24" class="h-7 w-7 fill-amber-400"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    {{ $ratingText }}/5
+                </span>
+            </h2>
+            <p class="mt-2 text-center text-brand-600">
+                {{ __('site.nav.reviews_subtitle') }}
+                @if ($reviewSetting->review_count)
+                    &middot; {{ trans_choice('site.nav.reviews_count', $reviewSetting->review_count, ['count' => $reviewSetting->review_count]) }}
+                @endif
+            </p>
+
+            <div class="relative mt-8">
+                <div x-ref="reviewScroller" class="flex gap-4 overflow-x-auto pb-4" style="scroll-snap-type: x mandatory;">
+                    @foreach ($reviews as $review)
+                        @php $comment = $review->getTranslation('comment', app()->getLocale(), useFallbackLocale: true); @endphp
+                        <div
+                            x-data="{ open: false }"
+                            class="flex w-[85%] shrink-0 flex-col rounded-2xl border border-brand-100 bg-white p-5 shadow-sm sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]"
+                            style="scroll-snap-align: start;"
+                        >
+                            <div class="flex gap-0.5 text-amber-400">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <svg viewBox="0 0 24 24" class="h-4 w-4 {{ $i <= $review->rating ? 'fill-amber-400' : 'fill-brand-100' }}"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                @endfor
+                            </div>
+
+                            <p class="mt-3 flex-1 text-sm text-brand-700" :class="open ? '' : 'line-clamp-4'">{{ $comment }}</p>
+
+                            @if (mb_strlen($comment) > 180)
+                                <button type="button" @click="open = !open" class="mt-2 inline-flex items-center gap-1.5 self-start text-xs font-medium text-brand-600 hover:text-brand-900">
+                                    <span x-show="!open" class="flex h-4 w-4 items-center justify-center rounded-full border border-brand-300 text-[10px] leading-none">+</span>
+                                    <span x-show="open" style="display: none;" class="flex h-4 w-4 items-center justify-center rounded-full border border-brand-300 text-[10px] leading-none">&minus;</span>
+                                    <span x-text="open ? '{{ __('site.common.show_less') }}' : '{{ __('site.common.read_more') }}'"></span>
+                                </button>
+                            @endif
+
+                            <p class="mt-4 text-sm font-semibold text-brand-900">{{ $review->author_name }}</p>
+                            <p class="text-xs text-brand-500">Google</p>
+                        </div>
+                    @endforeach
+                </div>
+
+                <button
+                    @click="prev()"
+                    type="button"
+                    aria-label="Previous"
+                    class="absolute -left-4 top-[38%] hidden -translate-y-1/2 rounded-full bg-white p-2 text-brand-700 shadow-md ring-1 ring-brand-100 hover:bg-brand-50 lg:flex"
+                >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button
+                    @click="next()"
+                    type="button"
+                    aria-label="Next"
+                    class="absolute -right-4 top-[38%] hidden -translate-y-1/2 rounded-full bg-white p-2 text-brand-700 shadow-md ring-1 ring-brand-100 hover:bg-brand-50 lg:flex"
+                >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+            </div>
+
+            @if ($reviewSetting->google_reviews_url)
+                <div class="mt-6 text-center">
+                    <a href="{{ $reviewSetting->google_reviews_url }}" target="_blank" rel="noopener" class="text-sm font-medium text-brand-600 underline hover:text-brand-900">
+                        {{ __('site.nav.reviews_see_all') }}
+                    </a>
+                </div>
+            @endif
+        </section>
+    @endif
+
     @if ($amenities->isNotEmpty())
         <section class="w-full bg-brand-50 py-16">
             <h2 class="font-display px-4 text-center text-3xl font-semibold text-brand-900 sm:text-4xl">{{ __('site.nav.features') }}</h2>

@@ -70,7 +70,9 @@
                                         <strong style="color:#ffffff;">KOPEX d.o.o.</strong><br>
                                         Hrvatske slobode 54<br>
                                         32221 Marinci<br>
-                                        OIB: 73529336898
+                                        OIB: 73529336898<br>
+                                        OTP banka<br>
+                                        IBAN: HR4824070001100775365
                                     </td>
                                     <td align="right" style="color:#ced5ab; font-size:13px; line-height:1.6; vertical-align:top;">
                                         Mob: <a href="tel:+385981776674" style="color:#e6e9d3; text-decoration:none;">+385 98 177 66 74</a><br>

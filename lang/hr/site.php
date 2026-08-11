@@ -16,6 +16,10 @@ return [
         'video_subtitle' => 'Kratki uvid u atmosferu i okoliš Kopićlanda.',
         'explore' => 'Istražite okolicu',
         'explore_subtitle' => 'Ideje za izlete i znamenitosti u blizini Kopićlanda.',
+        'reviews' => 'Recenzije gostiju',
+        'reviews_subtitle' => 'Ono što gosti kažu o svom boravku u Kopićlandu.',
+        'reviews_see_all' => 'Pogledajte sve recenzije na Googleu',
+        'reviews_count' => '{1} :count recenzija|[2,4] :count recenzije|[5,*] :count recenzija',
     ],
     'footer' => [
         'rights' => 'Sva prava pridržana.',
