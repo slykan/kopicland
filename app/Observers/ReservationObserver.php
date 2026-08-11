@@ -4,6 +4,8 @@ namespace App\Observers;
 
 use App\Models\Reservation;
 use App\Services\ReservationNotifier;
+use Illuminate\Support\Facades\Log;
+use Throwable;
 
 class ReservationObserver
 {
@@ -24,14 +26,14 @@ class ReservationObserver
         ]);
 
         if ($reservation->status === 'new_request') {
-            $this->notifier->notify($reservation, 'guest_request_received');
-            $this->notifier->notify($reservation, 'admin_new_request');
+            $this->notify($reservation, 'guest_request_received');
+            $this->notify($reservation, 'admin_new_request');
 
             return;
         }
 
         if ($templateKey = self::STATUS_TEMPLATES[$reservation->status] ?? null) {
-            $this->notifier->notify($reservation, $templateKey);
+            $this->notify($reservation, $templateKey);
         }
     }
 
@@ -45,18 +47,31 @@ class ReservationObserver
 
         if ($reservation->wasChanged('status')) {
             if ($templateKey = self::STATUS_TEMPLATES[$reservation->status] ?? null) {
-                $this->notifier->notify($reservation, $templateKey);
+                $this->notify($reservation, $templateKey);
             }
 
             if ($reservation->status === 'cancelled') {
-                $this->notifier->notify($reservation, 'admin_cancelled');
+                $this->notify($reservation, 'admin_cancelled');
             }
 
             return;
         }
 
         if ($reservation->status === 'confirmed' && ($reservation->wasChanged('check_in') || $reservation->wasChanged('check_out'))) {
-            $this->notifier->notify($reservation, 'guest_modified');
+            $this->notify($reservation, 'guest_modified');
+        }
+    }
+
+    /**
+     * A failed notification email must not fail the reservation itself — the booking
+     * (and its date block) is already committed by the time this runs.
+     */
+    private function notify(Reservation $reservation, string $templateKey): void
+    {
+        try {
+            $this->notifier->notify($reservation, $templateKey);
+        } catch (Throwable $e) {
+            Log::error("Failed to send reservation notification [{$templateKey}] for reservation #{$reservation->id}: {$e->getMessage()}");
         }
     }
 }
