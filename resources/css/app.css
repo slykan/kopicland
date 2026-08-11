@@ -29,6 +29,16 @@
     display: none !important;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
 .flatpickr-calendar.inline {
     width: 100%;
     max-width: 100%;
