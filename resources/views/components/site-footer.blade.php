@@ -5,7 +5,7 @@
 <footer class="border-t border-brand-100 bg-brand-50">
     <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
         <div>
-            <p class="text-lg font-semibold text-brand-800">{{ config('site.name') }}</p>
+            <p class="font-semibold text-brand-800">{{ config('site.name') }}</p>
             <p class="mt-2 text-sm text-brand-600">
                 @foreach (explode(', ', $contact['address']) as $line)
                     {{ $line }}@if (! $loop->last)<br>@endif
@@ -29,7 +29,8 @@
         </div>
 
         <div class="text-sm text-brand-600">
-            <p><a href="mailto:{{ $contact['email'] }}" class="hover:text-brand-800">{{ $contact['email'] }}</a></p>
+            <p class="font-semibold text-brand-800">{{ __('site.nav.contact') }}</p>
+            <p class="mt-2"><a href="mailto:{{ $contact['email'] }}" class="hover:text-brand-800">{{ $contact['email'] }}</a></p>
             <p class="mt-1"><a href="tel:{{ $contact['phone'] }}" class="hover:text-brand-800">{{ $contact['phone'] }}</a></p>
         </div>
 
