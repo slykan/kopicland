@@ -13,7 +13,6 @@
             <a href="{{ route('houses.index', ['locale' => $locale]) }}" class="hover:text-brand-500">{{ __('site.nav.houses') }}</a>
             <a href="{{ route('pages.about', ['locale' => $locale]) }}" class="hover:text-brand-500">{{ __('site.nav.about') }}</a>
             <a href="{{ route('articles.index', ['locale' => $locale]) }}" class="hover:text-brand-500">{{ __('site.nav.explore') }}</a>
-            <a href="{{ route('pages.faq', ['locale' => $locale]) }}" class="hover:text-brand-500">{{ __('site.nav.faq') }}</a>
             <a href="{{ route('pages.contact', ['locale' => $locale]) }}" class="hover:text-brand-500">{{ __('site.nav.contact') }}</a>
         </nav>
 
@@ -43,7 +42,6 @@
             <a href="{{ route('houses.index', ['locale' => $locale]) }}" class="rounded-lg px-3 py-2 hover:bg-brand-100">{{ __('site.nav.houses') }}</a>
             <a href="{{ route('pages.about', ['locale' => $locale]) }}" class="rounded-lg px-3 py-2 hover:bg-brand-100">{{ __('site.nav.about') }}</a>
             <a href="{{ route('articles.index', ['locale' => $locale]) }}" class="rounded-lg px-3 py-2 hover:bg-brand-100">{{ __('site.nav.explore') }}</a>
-            <a href="{{ route('pages.faq', ['locale' => $locale]) }}" class="rounded-lg px-3 py-2 hover:bg-brand-100">{{ __('site.nav.faq') }}</a>
             <a href="{{ route('pages.contact', ['locale' => $locale]) }}" class="rounded-lg px-3 py-2 hover:bg-brand-100">{{ __('site.nav.contact') }}</a>
         </nav>
 
