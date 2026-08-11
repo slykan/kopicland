@@ -110,6 +110,7 @@ return [
         'nights' => 'Nächte',
         'availability' => 'Verfügbarkeit',
         'booked' => 'belegt',
+        'turnover_day' => 'Gast checkt bis 10:00 Uhr aus, neue Anreise ab 16:00 Uhr möglich',
         'read_more' => 'Mehr lesen',
         'show_less' => 'Weniger anzeigen',
     ],

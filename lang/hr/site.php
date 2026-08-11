@@ -110,6 +110,7 @@ return [
         'nights' => 'noćenja',
         'availability' => 'Dostupnost',
         'booked' => 'zauzeto',
+        'turnover_day' => 'Gost odjavljuje do 10:00, moguć dolazak novog gosta od 16:00',
         'read_more' => 'Pročitaj više',
         'show_less' => 'Prikaži manje',
     ],

@@ -19,12 +19,22 @@ document.addEventListener('alpine:init', () => {
 
     Alpine.data('availabilityCalendar', (options = {}) => ({
         init() {
+            const turnoverDates = new Set(options.turnoverDates ?? []);
+
             flatpickr(this.$refs.calendar, {
                 inline: true,
                 minDate: 'today',
                 disable: options.disabledRanges ?? [],
                 locale: ['hr', 'de'].includes(options.locale) ? options.locale : 'default',
                 showMonths: 1,
+                onDayCreate: (dObj, dStr, fp, dayElem) => {
+                    const iso = fp.formatDate(dayElem.dateObj, 'Y-m-d');
+
+                    if (turnoverDates.has(iso)) {
+                        dayElem.classList.add('flatpickr-day-turnover');
+                        dayElem.title = options.turnoverLabel ?? '';
+                    }
+                },
             });
         },
     }));

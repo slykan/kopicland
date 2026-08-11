@@ -110,6 +110,7 @@ return [
         'nights' => 'nights',
         'availability' => 'Availability',
         'booked' => 'booked',
+        'turnover_day' => 'Guest checks out by 10:00, new arrivals possible from 16:00',
         'read_more' => 'Read more',
         'show_less' => 'Show less',
     ],

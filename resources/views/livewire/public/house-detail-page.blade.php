@@ -85,7 +85,7 @@
             <div class="sticky top-6 space-y-4">
                 <div
                     class="rounded-2xl border border-brand-100 bg-white p-4 shadow-sm"
-                    x-data="availabilityCalendar({ disabledRanges: {{ Illuminate\Support\Js::from($bookedRanges) }}, locale: {{ Illuminate\Support\Js::from($locale) }} })"
+                    x-data="availabilityCalendar({ disabledRanges: {{ Illuminate\Support\Js::from($bookedRanges) }}, turnoverDates: {{ Illuminate\Support\Js::from($turnoverDates) }}, turnoverLabel: {{ Illuminate\Support\Js::from(__('site.common.turnover_day')) }}, locale: {{ Illuminate\Support\Js::from($locale) }} })"
                 >
                     <h2 class="mb-3 text-sm font-semibold text-brand-900">{{ __('site.common.availability') }}</h2>
                     <div x-ref="calendar"></div>
