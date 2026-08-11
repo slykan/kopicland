@@ -154,6 +154,10 @@ class ReservationResource extends Resource
         return $table
             ->defaultSort('check_in')
             ->columns([
+                Tables\Columns\TextColumn::make('id')
+                    ->label('ID')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('house.name')
                     ->label('House'),
                 Tables\Columns\TextColumn::make('guest.last_name')

@@ -29,7 +29,7 @@ class ReservationNotifier
 
         $placeholders = $this->placeholders($reservation, $locale);
 
-        $subject = $this->render($template->getTranslation('subject', $locale, useFallbackLocale: true), $placeholders);
+        $subject = "#{$reservation->id} - ".$this->render($template->getTranslation('subject', $locale, useFallbackLocale: true), $placeholders);
         $body = $this->render($template->getTranslation('body', $locale, useFallbackLocale: true), $placeholders);
 
         Mail::to($recipientEmail)->send(new ReservationStatusMail($subject, $body));
