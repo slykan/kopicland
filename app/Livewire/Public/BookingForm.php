@@ -45,7 +45,7 @@ class BookingForm extends Component
     public string $phone = '';
 
     #[Validate('required|string|size:2')]
-    public string $country = '';
+    public string $country = 'HR';
 
     #[Validate('required|string|max:255')]
     public string $address = '';
