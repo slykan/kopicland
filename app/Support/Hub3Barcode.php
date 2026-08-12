@@ -43,7 +43,11 @@ class Hub3Barcode
         $barcode = new Barcode();
 
         // PDF417, default aspect ratio, error correction level 4 (per HUB3 spec).
-        return $barcode->getBarcodeObj('PDF417,,4', $payload, -3, -3)->getPngData();
+        // White background so the code stays readable in dark-mode email clients
+        // (default is transparent, which is invisible against a dark background).
+        return $barcode->getBarcodeObj('PDF417,,4', $payload, -3, -3)
+            ->setBackgroundColor('white')
+            ->getPngData();
     }
 
     public static function forReservation(Reservation $reservation): string
