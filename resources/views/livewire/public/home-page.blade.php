@@ -122,26 +122,28 @@
             next() { this.active = (this.active + 1) % this.slides.length },
             prev() { this.active = (this.active - 1 + this.slides.length) % this.slides.length },
             init() {
-                setInterval(() => { if (!this.paused) this.next() }, 7000)
+                setInterval(() => { if (!this.paused && !this.lightboxOpen) this.next() }, 7000)
             },
             paused: false,
             lightboxOpen: false,
             lightboxIndex: 0,
+            lightboxGallery: [],
+            lightboxTitle: '',
             openGallery() {
                 const slide = this.slides[this.active];
                 if (!slide.gallery || slide.gallery.length === 0) return;
                 this.paused = true;
+                this.lightboxGallery = slide.gallery;
+                this.lightboxTitle = slide.title;
                 this.lightboxIndex = 0;
                 this.lightboxOpen = true;
             },
             closeGallery() { this.lightboxOpen = false },
             lightboxNext() {
-                const gallery = this.slides[this.active].gallery;
-                this.lightboxIndex = (this.lightboxIndex + 1) % gallery.length;
+                this.lightboxIndex = (this.lightboxIndex + 1) % this.lightboxGallery.length;
             },
             lightboxPrev() {
-                const gallery = this.slides[this.active].gallery;
-                this.lightboxIndex = (this.lightboxIndex - 1 + gallery.length) % gallery.length;
+                this.lightboxIndex = (this.lightboxIndex - 1 + this.lightboxGallery.length) % this.lightboxGallery.length;
             },
         }"
     >
@@ -240,8 +242,8 @@
             </button>
 
             <img
-                :src="slides[active] && slides[active].gallery.length ? slides[active].gallery[lightboxIndex] : ''"
-                :alt="slides[active] ? slides[active].title : ''"
+                :src="lightboxGallery.length ? lightboxGallery[lightboxIndex] : ''"
+                :alt="lightboxTitle"
                 class="max-h-[85vh] max-w-full rounded-lg object-contain"
             >
 
@@ -256,7 +258,7 @@
 
             <div
                 class="absolute bottom-4 rounded-full bg-white/10 px-3 py-1 text-sm text-white"
-                x-text="slides[active] && slides[active].gallery.length ? (lightboxIndex + 1) + ' / ' + slides[active].gallery.length : ''"
+                x-text="lightboxGallery.length ? (lightboxIndex + 1) + ' / ' + lightboxGallery.length : ''"
             ></div>
         </div>
     </section>
