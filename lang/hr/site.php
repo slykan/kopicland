@@ -79,8 +79,20 @@ return [
                 ],
             ],
             'peka' => [
-                'title' => 'Peka',
-                'body' => 'Tko ne voli peku? Priprema ispod čeripa, polako i s ljubavlju, jedan je od zaštitnih znakova naše kuhinje. Meso i povrće satima se krčkaju ispod žara, upijajući okuse i mirise domaćeg dvorišta, sve dok ne postanu savršeno sočni i mekani. Dođite probati pravu slavonsku peku pripremljenu na tradicionalan način.',
+                'title' => 'Domaća hrana',
+                'body' => 'Naša kuhinja njeguje okuse domaćeg kraja – od bogatih tanjura i tradicionalnih narezaka do slavonske peke pripremljene ispod čeripa, polako i s ljubavlju. Svaki zalogaj priča priču o domaćem dvorištu, svježim sastojcima i receptima koji se prenose s koljena na koljeno. Dođite probati okuse kakve pamtite iz djetinjstva.',
+            ],
+            'mobile_homes' => [
+                'title' => 'Mobilne kućice',
+                'body' => 'Deset udobno opremljenih mobilnih kućica smješteno je u mirnom dijelu imanja, svaka s vlastitom terasom i pogledom na zelenilo. Idealne su za obiteljski odmor ili produženi vikend – s klimatizacijom, opremljenom kuhinjom i svime što vam treba za ugodan boravak, tik uz restoran i sve sadržaje Kopićlanda.',
+            ],
+            'kids_paradise' => [
+                'title' => 'Raj za djecu',
+                'body' => 'Ljuljačke, tobogani, penjalice, trampolin i viseći most samo su dio dječjeg kutka koji se proteže kroz sjenoviti dio imanja. Dok se mališani igraju na sigurnoj i pažljivo uređenoj površini, roditelji mogu uživati u miru uz kavu ili domaći ručak nadohvat ruke.',
+            ],
+            'robinson' => [
+                'title' => 'Robinzonski turizam',
+                'body' => 'Za one koji traže dašak avanture, tu su naše šarene brvnare u robinzonskom stilu – jednostavne, autentične i okružene prirodom, savršene za noćenje pod zvijezdama uz minimum udobnosti civilizacije. Zajednički sanitarni čvor s tuševima nalazi se u blizini, a probuditi se uz izlazak sunca nad poljima ostaje iskustvo koje se pamti.',
             ],
         ],
         'about_heading' => 'Kopićland Restaurant & Homes',
@@ -97,6 +109,7 @@ return [
         'book_now' => 'Rezerviraj',
         'check_availability' => 'Provjeri dostupnost',
         'view_details' => 'Detalji',
+        'view_gallery' => 'Pogledaj galeriju',
         'check_in' => 'Dolazak',
         'check_out' => 'Odlazak',
         'adults' => 'Odrasli',

@@ -79,8 +79,20 @@ return [
                 ],
             ],
             'peka' => [
-                'title' => 'Peka',
-                'body' => 'Wer liebt Peka nicht? Langsam und mit viel Liebe unter einer Glocke gegart, ist sie eines der Markenzeichen unserer Küche. Fleisch und Gemüse schmoren stundenlang unter der Glut und nehmen die Aromen eines echten Landhofs auf, bis sie perfekt zart und saftig sind. Kommen Sie vorbei und probieren Sie echte slawonische Peka, zubereitet auf traditionelle Weise.',
+                'title' => 'Hausmannskost',
+                'body' => 'Unsere Küche pflegt die Aromen der Heimat – von reichhaltigen Platten und traditionellen Aufschnitten bis hin zur slawonischen Peka, langsam und mit viel Liebe unter einer Glocke gegart. Jeder Bissen erzählt die Geschichte eines echten Landhofs, frischer Zutaten und Rezepte, die von Generation zu Generation weitergegeben werden. Kommen Sie und kosten Sie die Aromen, an die Sie sich aus Ihrer Kindheit erinnern.',
+            ],
+            'mobile_homes' => [
+                'title' => 'Mobilheime',
+                'body' => 'Zehn komfortabel eingerichtete Mobilheime liegen in einem ruhigen Teil des Anwesens, jedes mit eigener Terrasse und Blick ins Grüne. Perfekt für einen Familienurlaub oder ein verlängertes Wochenende – mit Klimaanlage, voll ausgestatteter Küche und allem, was Sie für einen entspannten Aufenthalt brauchen, nur wenige Schritte vom Restaurant und allen Annehmlichkeiten von Kopićland entfernt.',
+            ],
+            'kids_paradise' => [
+                'title' => 'Kinderparadies',
+                'body' => 'Schaukeln, Rutschen, Klettergerüste, ein Trampolin und eine Hängebrücke sind nur ein Teil des Spielbereichs, der sich durch den schattigen Teil des Anwesens erstreckt. Während die Kleinen auf einer sicheren, gepflegten Fläche spielen, können sich die Eltern bei einem Kaffee oder einem hausgemachten Mittagessen in unmittelbarer Nähe entspannen.',
+            ],
+            'robinson' => [
+                'title' => 'Robinson-Camping',
+                'body' => 'Für alle, die einen Hauch Abenteuer suchen, bieten wir bunte Robinson-Hütten – einfach, authentisch und von Natur umgeben, perfekt für eine Nacht unter dem Sternenhimmel mit dem Nötigsten. Ein gemeinsamer Sanitärbereich mit Duschen befindet sich in der Nähe, und der Sonnenaufgang über den Feldern bleibt ein unvergessliches Erlebnis.',
             ],
         ],
         'about_heading' => 'Kopićland Restaurant & Homes',
@@ -97,6 +109,7 @@ return [
         'book_now' => 'Jetzt buchen',
         'check_availability' => 'Verfügbarkeit prüfen',
         'view_details' => 'Details',
+        'view_gallery' => 'Galerie ansehen',
         'check_in' => 'Anreise',
         'check_out' => 'Abreise',
         'adults' => 'Erwachsene',

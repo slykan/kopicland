@@ -79,8 +79,20 @@ return [
                 ],
             ],
             'peka' => [
-                'title' => 'Peka',
-                'body' => 'Who doesn\'t love peka? Slow-cooked under a bell-shaped lid with plenty of care, it\'s one of the signatures of our kitchen. Meat and vegetables simmer for hours beneath the embers, soaking up the flavours and aromas of a real countryside yard, until they turn perfectly tender and juicy. Come and try authentic Slavonian peka, prepared the traditional way.',
+                'title' => 'Home-Style Cooking',
+                'body' => 'Our kitchen celebrates the flavours of home – from hearty platters and traditional cold cuts to Slavonian peka, slow-cooked under a bell-shaped lid with plenty of care. Every bite tells a story of a real countryside yard, fresh ingredients, and recipes passed down through generations. Come and taste the flavours you remember from childhood.',
+            ],
+            'mobile_homes' => [
+                'title' => 'Mobile Homes',
+                'body' => 'Ten comfortably furnished mobile homes sit in a quiet corner of the estate, each with its own terrace and a view of the greenery. Perfect for a family holiday or an extended weekend – with air conditioning, a fully equipped kitchen, and everything you need for a relaxing stay, just steps from the restaurant and all of Kopićland\'s amenities.',
+            ],
+            'kids_paradise' => [
+                'title' => 'Kids\' Paradise',
+                'body' => 'Swings, slides, climbing frames, a trampoline, and a rope bridge are just part of the play area spread through the shaded corner of the estate. While the little ones play on a safe, carefully maintained surface, parents can relax with a coffee or a homemade lunch just steps away.',
+            ],
+            'robinson' => [
+                'title' => 'Robinson-Style Camping',
+                'body' => 'For those looking for a taste of adventure, we offer colourful Robinson-style cabins – simple, authentic, and surrounded by nature, perfect for a night under the stars with just the essentials. A shared bathroom with showers is nearby, and waking up to the sunrise over the fields is an experience you won\'t forget.',
             ],
         ],
         'about_heading' => 'Kopićland Restaurant & Homes',
@@ -97,6 +109,7 @@ return [
         'book_now' => 'Book now',
         'check_availability' => 'Check availability',
         'view_details' => 'View details',
+        'view_gallery' => 'View gallery',
         'check_in' => 'Check-in',
         'check_out' => 'Check-out',
         'adults' => 'Adults',

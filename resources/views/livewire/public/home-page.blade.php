@@ -59,15 +59,59 @@
     </section>
 
     @php
-        $slides = collect(['sports', 'indoor', 'outdoor', 'sustainable', 'events', 'peka'])->map(function ($key) {
-            $body = __('site.pages.about_stories.'.$key.'.body');
+        $storyFolders = [
+            'sports' => 'sportska igralista',
+            'indoor' => 'unutarnji prostor',
+            'outdoor' => 'vanjski prostor',
+            'peka' => 'domaca hrana',
+            'mobile_homes' => 'mobilne kucice',
+            'kids_paradise' => 'raj za djecu',
+            'robinson' => 'robinzonski turizam',
+        ];
 
-            return [
-                'image' => asset('images/about/'.$key.'.jpg'),
-                'title' => __('site.pages.about_stories.'.$key.'.title'),
-                'body' => is_array($body) ? $body[0] : $body,
-            ];
-        })->values()->all();
+        $coverImages = [
+            'sports' => 'IMG-20260812-WA0009.jpg',
+            'indoor' => 'IMG-20260812-WA0002.jpg',
+            'outdoor' => '2.jpg',
+            'peka' => 'IMG-20260812-WA0019.jpg',
+            'mobile_homes' => '2.jpg',
+            'kids_paradise' => 'IMG-20260812-WA0025.jpg',
+            'robinson' => '0.jpg',
+        ];
+
+        $slides = collect(['sports', 'indoor', 'outdoor', 'sustainable', 'events', 'peka', 'mobile_homes', 'kids_paradise', 'robinson'])
+            ->map(function ($key) use ($storyFolders, $coverImages) {
+                $body = __('site.pages.about_stories.'.$key.'.body');
+                $gallery = [];
+
+                if (isset($storyFolders[$key])) {
+                    $dir = public_path('images/slide/'.$storyFolders[$key]);
+
+                    if (is_dir($dir)) {
+                        $files = collect(scandir($dir))
+                            ->reject(fn ($f) => in_array($f, ['.', '..']))
+                            ->filter(fn ($f) => in_array(strtolower(pathinfo($f, PATHINFO_EXTENSION)), ['jpg', 'jpeg', 'png', 'webp']))
+                            ->sort(fn ($a, $b) => strnatcasecmp($a, $b))
+                            ->values();
+
+                        $cover = $coverImages[$key] ?? $files->first();
+
+                        $gallery = $files->reject(fn ($f) => $f === $cover)
+                            ->prepend($cover)
+                            ->filter(fn ($f) => $files->contains($f))
+                            ->map(fn ($f) => asset('images/slide/'.rawurlencode($storyFolders[$key]).'/'.rawurlencode($f)))
+                            ->values()
+                            ->all();
+                    }
+                }
+
+                return [
+                    'image' => $gallery ? $gallery[0] : asset('images/about/'.$key.'.jpg'),
+                    'title' => __('site.pages.about_stories.'.$key.'.title'),
+                    'body' => is_array($body) ? $body[0] : $body,
+                    'gallery' => $gallery,
+                ];
+            })->values()->all();
     @endphp
 
     <section
@@ -81,6 +125,24 @@
                 setInterval(() => { if (!this.paused) this.next() }, 7000)
             },
             paused: false,
+            lightboxOpen: false,
+            lightboxIndex: 0,
+            openGallery() {
+                const slide = this.slides[this.active];
+                if (!slide.gallery || slide.gallery.length === 0) return;
+                this.paused = true;
+                this.lightboxIndex = 0;
+                this.lightboxOpen = true;
+            },
+            closeGallery() { this.lightboxOpen = false },
+            lightboxNext() {
+                const gallery = this.slides[this.active].gallery;
+                this.lightboxIndex = (this.lightboxIndex + 1) % gallery.length;
+            },
+            lightboxPrev() {
+                const gallery = this.slides[this.active].gallery;
+                this.lightboxIndex = (this.lightboxIndex - 1 + gallery.length) % gallery.length;
+            },
         }"
     >
         <div
@@ -96,8 +158,21 @@
                     x-transition:enter-end="opacity-100"
                     class="grid md:grid-cols-2"
                 >
-                    <div class="h-64 md:h-[26rem]">
+                    <div
+                        class="group/gallery relative h-64 md:h-[26rem]"
+                        :class="slide.gallery && slide.gallery.length ? 'cursor-pointer' : ''"
+                        @click="openGallery()"
+                    >
                         <img :src="slide.image" :alt="slide.title" class="h-full w-full object-cover">
+                        <div
+                            x-show="slide.gallery && slide.gallery.length"
+                            class="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-200 group-hover/gallery:bg-black/30"
+                        >
+                            <span class="flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-sm font-medium text-brand-900 opacity-0 shadow transition-opacity duration-200 group-hover/gallery:opacity-100">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                                {{ __('site.common.view_gallery') }}
+                            </span>
+                        </div>
                     </div>
                     <div class="flex flex-col justify-center p-8 text-white sm:p-12">
                         <h3 class="font-display text-2xl font-semibold sm:text-3xl" x-text="slide.title"></h3>
@@ -134,6 +209,55 @@
                     :class="active === index ? 'w-6 bg-brand-600' : 'w-2 bg-brand-200 hover:bg-brand-300'"
                 ></button>
             </template>
+        </div>
+
+        <div
+            x-show="lightboxOpen"
+            x-transition.opacity
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+            style="display: none;"
+            @click.self="closeGallery()"
+            @keydown.escape.window="closeGallery()"
+            @keydown.arrow-right.window="lightboxOpen && lightboxNext()"
+            @keydown.arrow-left.window="lightboxOpen && lightboxPrev()"
+        >
+            <button
+                @click="closeGallery()"
+                type="button"
+                aria-label="Close"
+                class="absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
+            >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+
+            <button
+                @click="lightboxPrev()"
+                type="button"
+                aria-label="Previous"
+                class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 sm:left-6"
+            >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+
+            <img
+                :src="slides[active] && slides[active].gallery.length ? slides[active].gallery[lightboxIndex] : ''"
+                :alt="slides[active] ? slides[active].title : ''"
+                class="max-h-[85vh] max-w-full rounded-lg object-contain"
+            >
+
+            <button
+                @click="lightboxNext()"
+                type="button"
+                aria-label="Next"
+                class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 sm:right-6"
+            >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+
+            <div
+                class="absolute bottom-4 rounded-full bg-white/10 px-3 py-1 text-sm text-white"
+                x-text="slides[active] && slides[active].gallery.length ? (lightboxIndex + 1) + ' / ' + slides[active].gallery.length : ''"
+            ></div>
         </div>
     </section>
 
