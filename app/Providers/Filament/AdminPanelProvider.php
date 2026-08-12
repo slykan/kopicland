@@ -38,7 +38,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->brandName('Kopic Land Admin')
+            ->brandName('Kopićland Admin')
             ->login()
             ->colors([
                 'primary' => Color::Amber,

@@ -25,7 +25,7 @@
             <div class="mt-3 space-y-3 text-sm leading-relaxed text-brand-600">
                 <p>Korištenjem ove web stranice prihvaćate ove uvjete korištenja u cijelosti. Ako se s njima ne slažete, molimo da ne koristite stranicu.</p>
                 <p>Sadržaj stranice (opisi kućica, fotografije, cijene) informativne je prirode i podložan je promjenama bez prethodne najave.</p>
-                <p>Sva prava na sadržaj stranice zadržava Kopić Land, osim ako je drugačije naznačeno.</p>
+                <p>Sva prava na sadržaj stranice zadržava Kopićland, osim ako je drugačije naznačeno.</p>
             </div>
         </section>
 

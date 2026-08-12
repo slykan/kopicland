@@ -279,7 +279,7 @@
         <div class="mt-8 grid grid-cols-3 gap-0.5 sm:grid-cols-4 md:grid-cols-6">
             <template x-for="(image, index) in images" :key="index">
                 <button type="button" @click="show(index)" class="group aspect-square overflow-hidden">
-                    <img :src="image" :alt="`Kopić Land ${index + 1}`" loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110">
+                    <img :src="image" :alt="`Kopićland ${index + 1}`" loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110">
                 </button>
             </template>
         </div>

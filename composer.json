@@ -2,7 +2,7 @@
     "$schema": "https://getcomposer.org/schema.json",
     "name": "on-click/kopicland",
     "type": "project",
-    "description": "Booking sustav za Kopic Land - 10 kucica za odmor u Marincima.",
+    "description": "Booking sustav za Kopicland - 10 kucica za odmor u Marincima.",
     "keywords": [
         "laravel",
         "kopicland"

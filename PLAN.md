@@ -1,4 +1,4 @@
-# Kopić Land — plan i program izrade
+# Kopićland — plan i program izrade
 
 Booking sustav za 10 kućica za odmor, Marinci. Laravel 12 + Filament 3 (admin, EN) + Blade/Livewire (javni dio, HR/EN/DE), MySQL/MariaDB. Puni opseg: `Full_CMS.docx` (lokalno, gitignored).
 

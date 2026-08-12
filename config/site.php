@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'name' => 'Kopić Land',
+    'name' => 'Kopićland',
 
     'contact' => [
         'address' => 'Ulica Hrvatske slobode 54, 32221 Marinci, Hrvatska',
