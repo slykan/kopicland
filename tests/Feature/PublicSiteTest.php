@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Livewire\Public\BookingForm;
 use App\Models\House;
+use App\Models\PricingSetting;
 use App\Models\Reservation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -74,6 +75,8 @@ class PublicSiteTest extends TestCase
 
     public function test_guest_can_submit_a_booking_request(): void
     {
+        PricingSetting::current()->update(['default_price_per_night' => 60]);
+
         $house = House::create([
             'slug' => 'booking-house',
             'name' => ['hr' => 'Booking kućica'],

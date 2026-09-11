@@ -70,22 +70,16 @@ class House extends Model
     }
 
     /**
-     * [cheapest, priciest] per-night price for this house based on the global
-     * per-guest pricing tiers (from 1 guest up to this house's full capacity).
-     * Falls back to base_price_per_night (as a flat range) when no tiers exist.
+     * [cheapest, priciest] per-night price for this house: the site-wide
+     * default plus any of this house's own date/season pricing overrides.
      */
     public function basePriceRange(): array
     {
-        $tiers = PricingTier::query()->whereNull('pricing_rule_id')->orderBy('guests')->get();
+        $prices = $this->pricingRules()->pluck('price_per_night')
+            ->push(PricingSetting::current()->default_price_per_night)
+            ->map(fn ($price) => (float) $price);
 
-        if ($tiers->isEmpty()) {
-            return [(float) $this->base_price_per_night, (float) $this->base_price_per_night];
-        }
-
-        $capacity = $this->capacity_adults + $this->capacity_children;
-        $maxTier = $tiers->first(fn (PricingTier $tier) => $tier->guests >= $capacity) ?? $tiers->last();
-
-        return [(float) $tiers->first()->price_per_night, (float) $maxTier->price_per_night];
+        return [$prices->min(), $prices->max()];
     }
 
     /**

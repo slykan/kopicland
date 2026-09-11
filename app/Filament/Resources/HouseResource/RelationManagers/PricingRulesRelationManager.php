@@ -33,30 +33,11 @@ class PricingRulesRelationManager extends RelationManager
                     ->required()
                     ->afterOrEqual('date_from'),
                 Forms\Components\TextInput::make('price_per_night')
-                    ->label('Flat price / night (EUR)')
-                    ->helperText('Used only when no per-guest prices are set below.')
+                    ->label('Price / night (EUR)')
+                    ->helperText('Overrides the default price for this house on these dates.')
                     ->required()
-                    ->numeric(),
-                Forms\Components\Repeater::make('tiers')
-                    ->relationship()
-                    ->label('Per-guest prices (optional, overrides flat price above)')
-                    ->schema([
-                        Forms\Components\TextInput::make('guests')
-                            ->label('Total guests (up to)')
-                            ->required()
-                            ->numeric()
-                            ->minValue(1),
-                        Forms\Components\TextInput::make('price_per_night')
-                            ->label('Price / night (EUR)')
-                            ->required()
-                            ->numeric()
-                            ->minValue(0),
-                    ])
-                    ->columns(2)
-                    ->columnSpanFull()
-                    ->orderColumn(null)
-                    ->addActionLabel('Add guest tier')
-                    ->defaultItems(0),
+                    ->numeric()
+                    ->minValue(0),
             ])
             ->columns(2);
     }
@@ -74,12 +55,7 @@ class PricingRulesRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('date_from')->date(),
                 Tables\Columns\TextColumn::make('date_to')->date(),
                 Tables\Columns\TextColumn::make('price_per_night')
-                    ->label('Flat price')
                     ->money('EUR'),
-                Tables\Columns\TextColumn::make('tiers_count')
-                    ->counts('tiers')
-                    ->label('Guest tiers')
-                    ->formatStateUsing(fn (int $state) => $state > 0 ? "{$state} tiers" : '—'),
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),

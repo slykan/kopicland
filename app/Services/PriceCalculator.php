@@ -6,7 +6,7 @@ use App\Exceptions\BookingRuleException;
 use App\Models\Discount;
 use App\Models\ExtraCost;
 use App\Models\House;
-use App\Models\PricingTier;
+use App\Models\PricingSetting;
 use Carbon\Carbon;
 use Carbon\CarbonInterface;
 
@@ -29,8 +29,9 @@ class PriceCalculator
         }
 
         $this->assertStayRulesSatisfied($house, $checkIn, $checkOut, $nights);
+        $this->assertCapacityAllows($house, $adults + $children);
 
-        $accommodationSubtotal = $this->accommodationSubtotal($house, $checkIn, $nights, $adults + $children);
+        $accommodationSubtotal = $this->accommodationSubtotal($house, $checkIn, $nights);
         [$extraCosts, $extraCostsTotal] = $this->extraCosts($house, $nights, $adults, $children);
         [$discount, $discountAmount] = $this->bestDiscount($house, $checkIn, $nights, $accommodationSubtotal, $promoCode);
 
@@ -76,10 +77,23 @@ class PriceCalculator
         }
     }
 
-    private function accommodationSubtotal(House $house, Carbon $checkIn, int $nights, int $guests): float
+    private function assertCapacityAllows(House $house, int $guests): void
+    {
+        $capacity = ($house->capacity_adults ?? 0) + ($house->capacity_children ?? 0);
+
+        if ($capacity > 0 && $guests > $capacity) {
+            throw new BookingRuleException("This house sleeps a maximum of {$capacity} guests.");
+        }
+    }
+
+    /**
+     * Flat per-night price: an explicit date/season override for the house
+     * if one covers the night, otherwise the site-wide default price.
+     */
+    private function accommodationSubtotal(House $house, Carbon $checkIn, int $nights): float
     {
         $pricingRules = $house->pricingRules()->get();
-        $tiersByRule = PricingTier::query()->orderBy('guests')->get()->groupBy('pricing_rule_id');
+        $defaultPrice = (float) PricingSetting::current()->default_price_per_night;
 
         $total = 0.0;
 
@@ -89,19 +103,7 @@ class PriceCalculator
             $rule = $pricingRules->first(fn ($rule) => $rule->type === 'date' && $date->between($rule->date_from, $rule->date_to))
                 ?? $pricingRules->first(fn ($rule) => $rule->type === 'season' && $date->between($rule->date_from, $rule->date_to));
 
-            $tiers = $tiersByRule->get($rule?->id);
-
-            if ($tiers && $tiers->isNotEmpty()) {
-                $tier = $tiers->first(fn (PricingTier $tier) => $tier->guests >= $guests);
-
-                if (! $tier) {
-                    throw new BookingRuleException("This house sleeps a maximum of {$tiers->last()->guests} guests.");
-                }
-
-                $total += (float) $tier->price_per_night;
-            } else {
-                $total += $rule ? (float) $rule->price_per_night : (float) $house->base_price_per_night;
-            }
+            $total += $rule ? (float) $rule->price_per_night : $defaultPrice;
         }
 
         return round($total, 2);
