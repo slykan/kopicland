@@ -13,7 +13,7 @@ class Reservation extends Model
 {
     protected $fillable = [
         'house_id', 'guest_id', 'check_in', 'check_out', 'adults', 'children', 'pets',
-        'status', 'source', 'locale', 'total_price', 'discount_amount',
+        'status', 'source', 'locale', 'total_price', 'discount_amount', 'extra_costs',
         'guest_note', 'internal_note', 'hold_expires_at', 'confirmed_at', 'cancelled_at', 'created_by',
     ];
 
@@ -24,6 +24,7 @@ class Reservation extends Model
             'check_out' => 'date',
             'total_price' => 'decimal:2',
             'discount_amount' => 'decimal:2',
+            'extra_costs' => 'array',
             'hold_expires_at' => 'datetime',
             'confirmed_at' => 'datetime',
             'cancelled_at' => 'datetime',

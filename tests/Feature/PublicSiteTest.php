@@ -111,6 +111,54 @@ class PublicSiteTest extends TestCase
         ]);
     }
 
+    public function test_guest_can_opt_into_an_optional_extra_cost(): void
+    {
+        PricingSetting::current()->update(['default_price_per_night' => 60]);
+
+        $house = House::create([
+            'slug' => 'breakfast-house',
+            'name' => ['hr' => 'Doručak kućica'],
+            'base_price_per_night' => 60,
+            'status' => 'published',
+        ]);
+
+        $breakfast = $house->extraCosts()->create([
+            'name' => 'Breakfast', 'amount' => 10, 'unit' => 'per_person', 'is_active' => true, 'is_optional' => true,
+        ]);
+
+        $component = Livewire::test(BookingForm::class, ['house' => $house])
+            ->set('checkIn', now()->addDays(10)->toDateString())
+            ->set('checkOut', now()->addDays(13)->toDateString())
+            ->set('adults', 2)
+            ->set('children', 0)
+            ->set('pets', 0);
+
+        // Without opting in, the breakfast cost is not part of the price.
+        $this->assertEquals(180.0, $component->get('priceBreakdown')['total']);
+
+        $component->set('selectedExtraCostIds', [$breakfast->id]);
+
+        // Opted in: +10 EUR per person = +20 EUR.
+        $this->assertEquals(200.0, $component->get('priceBreakdown')['total']);
+
+        $component
+            ->set('firstName', 'Ana')
+            ->set('lastName', 'Anić')
+            ->set('email', 'ana@example.com')
+            ->set('phone', '+385911234567')
+            ->set('country', 'HR')
+            ->set('address', 'Ulica primjer 1, Zagreb')
+            ->set('acceptRules', true)
+            ->set('acceptPrivacy', true)
+            ->call('submit')
+            ->assertHasNoErrors()
+            ->assertSet('submitted', true);
+
+        $reservation = Reservation::where('house_id', $house->id)->firstOrFail();
+        $this->assertSame(200.0, (float) $reservation->total_price);
+        $this->assertSame('Breakfast', $reservation->extra_costs[0]['name']);
+    }
+
     public function test_booking_form_rejects_already_taken_dates(): void
     {
         $house = House::create([

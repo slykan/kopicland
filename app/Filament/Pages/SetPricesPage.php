@@ -10,6 +10,7 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use Livewire\Attributes\Computed;
 
 class SetPricesPage extends Page implements HasForms
 {
@@ -119,5 +120,45 @@ class SetPricesPage extends Page implements HasForms
             ->send();
 
         $this->form->fill();
+    }
+
+    /**
+     * Currently-set date-type price overrides, grouped back into the batches
+     * they were set in (same date range/price/label created in the same
+     * minute) so a multi-house submission shows as one row like it was made.
+     */
+    #[Computed]
+    public function recentPriceChanges(): array
+    {
+        $locale = app()->getLocale();
+
+        return PricingRule::query()
+            ->where('type', 'date')
+            ->with('house')
+            ->latest()
+            ->limit(200)
+            ->get()
+            ->groupBy(fn (PricingRule $rule) => implode('|', [
+                $rule->date_from->toDateString(),
+                $rule->date_to->toDateString(),
+                $rule->price_per_night,
+                $rule->getTranslation('label', $locale),
+                $rule->created_at->format('Y-m-d H:i'),
+            ]))
+            ->map(function ($group) use ($locale) {
+                $first = $group->first();
+
+                return [
+                    'houses' => $group->map(fn (PricingRule $rule) => $rule->house?->getTranslation('name', $locale))->filter()->implode(', '),
+                    'date_from' => $first->date_from->format('d.m.Y'),
+                    'date_to' => $first->date_to->format('d.m.Y'),
+                    'price' => number_format((float) $first->price_per_night, 2),
+                    'label' => $first->getTranslation('label', $locale),
+                    'created_at' => $first->created_at,
+                ];
+            })
+            ->sortByDesc('created_at')
+            ->values()
+            ->all();
     }
 }

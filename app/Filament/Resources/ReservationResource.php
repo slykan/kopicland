@@ -135,6 +135,13 @@ class ReservationResource extends Resource
                             ->required()
                             ->numeric()
                             ->default(0),
+                        Forms\Components\Placeholder::make('extra_costs_display')
+                            ->label('Included extras')
+                            ->content(fn (?Reservation $record) => $record?->extra_costs
+                                ? collect($record->extra_costs)->map(fn ($e) => "{$e['name']} ({$e['amount']} €)")->implode(', ')
+                                : '—')
+                            ->columnSpanFull()
+                            ->visible(fn (?Reservation $record) => filled($record?->extra_costs)),
                     ])
                     ->columns(2),
 

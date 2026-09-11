@@ -89,4 +89,29 @@ class PricingSettingsTest extends TestCase
         ]);
         $this->assertSame(1, PricingRule::where('house_id', $houseA->id)->count());
     }
+
+    public function test_recent_price_changes_groups_a_multi_house_batch_into_one_row(): void
+    {
+        $this->actingAs(User::factory()->create(['role' => 'admin']));
+
+        $houseA = House::create(['slug' => 'a', 'name' => ['hr' => 'Kucica A'], 'base_price_per_night' => 50]);
+        $houseB = House::create(['slug' => 'b', 'name' => ['hr' => 'Kucica B'], 'base_price_per_night' => 60]);
+
+        $component = Livewire::test(SetPricesPage::class)
+            ->fillForm([
+                'house_ids' => [$houseA->id, $houseB->id],
+                'date_from' => '2026-08-01',
+                'date_to' => '2026-08-31',
+                'price_per_night' => 150,
+                'label' => 'High season',
+            ])
+            ->call('setPrices');
+
+        $rows = $component->instance()->recentPriceChanges();
+
+        $this->assertCount(1, $rows);
+        $this->assertStringContainsString('Kucica A', $rows[0]['houses']);
+        $this->assertStringContainsString('Kucica B', $rows[0]['houses']);
+        $this->assertSame('150.00', $rows[0]['price']);
+    }
 }

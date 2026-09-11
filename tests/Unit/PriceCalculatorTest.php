@@ -90,6 +90,21 @@ class PriceCalculatorTest extends TestCase
         $this->assertSame(198.0, $breakdown->total); // 150 accommodation + 48 extras
     }
 
+    public function test_optional_extra_cost_is_excluded_unless_selected(): void
+    {
+        $breakfast = $this->house->extraCosts()->create([
+            'name' => 'Breakfast', 'amount' => 10, 'unit' => 'per_person', 'is_active' => true, 'is_optional' => true,
+        ]);
+
+        $notSelected = $this->calculator->calculate($this->house, '2026-06-01', '2026-06-02', adults: 2);
+        $this->assertSame(0.0, $notSelected->extraCostsTotal);
+        $this->assertSame(50.0, $notSelected->total);
+
+        $selected = $this->calculator->calculate($this->house, '2026-06-01', '2026-06-02', adults: 2, selectedOptionalExtraCostIds: [$breakfast->id]);
+        $this->assertSame(20.0, $selected->extraCostsTotal);
+        $this->assertSame(70.0, $selected->total);
+    }
+
     public function test_global_extra_cost_applies_to_every_house(): void
     {
         \App\Models\ExtraCost::create(['house_id' => null, 'name' => 'Booking fee', 'amount' => 5, 'unit' => 'one_time', 'is_active' => true]);

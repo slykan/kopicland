@@ -12,13 +12,14 @@ class ExtraCost extends Model
 
     public array $translatable = ['name'];
 
-    protected $fillable = ['house_id', 'name', 'amount', 'unit', 'is_active'];
+    protected $fillable = ['house_id', 'name', 'amount', 'unit', 'is_active', 'is_optional'];
 
     protected function casts(): array
     {
         return [
             'amount' => 'decimal:2',
             'is_active' => 'boolean',
+            'is_optional' => 'boolean',
         ];
     }
 

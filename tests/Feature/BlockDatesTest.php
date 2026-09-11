@@ -79,4 +79,28 @@ class BlockDatesTest extends TestCase
             'status' => 'blocked',
         ]);
     }
+
+    public function test_recent_blocks_groups_a_multi_house_batch_into_one_row(): void
+    {
+        $this->actingAs(User::factory()->create());
+
+        $houseA = House::create(['slug' => 'a', 'name' => ['hr' => 'Kucica A'], 'base_price_per_night' => 50]);
+        $houseB = House::create(['slug' => 'b', 'name' => ['hr' => 'Kucica B'], 'base_price_per_night' => 60]);
+
+        $component = Livewire::test(BlockDatesPage::class)
+            ->fillForm([
+                'house_ids' => [$houseA->id, $houseB->id],
+                'check_in' => '2026-12-01',
+                'check_out' => '2026-12-05',
+                'internal_note' => 'Renovation',
+            ])
+            ->call('block');
+
+        $rows = $component->instance()->recentBlocks();
+
+        $this->assertCount(1, $rows);
+        $this->assertStringContainsString('Kucica A', $rows[0]['houses']);
+        $this->assertStringContainsString('Kucica B', $rows[0]['houses']);
+        $this->assertSame('Renovation', $rows[0]['note']);
+    }
 }

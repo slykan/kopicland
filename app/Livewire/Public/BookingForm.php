@@ -3,6 +3,7 @@
 namespace App\Livewire\Public;
 
 use App\Exceptions\BookingRuleException;
+use App\Models\ExtraCost;
 use App\Models\Guest;
 use App\Models\House;
 use App\Models\Reservation;
@@ -55,6 +56,9 @@ class BookingForm extends Component
 
     public string $promoCode = '';
 
+    /** @var array<int> */
+    public array $selectedExtraCostIds = [];
+
     #[Validate('accepted')]
     public bool $acceptRules = false;
 
@@ -78,9 +82,20 @@ class BookingForm extends Component
         return Countries::options(app()->getLocale());
     }
 
+    #[Computed]
+    public function optionalExtraCosts()
+    {
+        return ExtraCost::query()
+            ->where('is_active', true)
+            ->where('is_optional', true)
+            ->where(fn ($q) => $q->where('house_id', $this->house->id)->orWhereNull('house_id'))
+            ->get();
+    }
+
     public function updated($property): void
     {
-        if (in_array($property, ['checkIn', 'checkOut', 'adults', 'children', 'promoCode'])) {
+        if (in_array($property, ['checkIn', 'checkOut', 'adults', 'children', 'promoCode', 'selectedExtraCostIds'])
+            || str_starts_with($property, 'selectedExtraCostIds')) {
             $this->calculatePrice();
         }
     }
@@ -102,6 +117,7 @@ class BookingForm extends Component
                 $this->adults,
                 $this->children,
                 $this->promoCode ?: null,
+                $this->selectedExtraCostIds,
             )->toArray();
         } catch (BookingRuleException $e) {
             $this->priceError = $e->getMessage();
@@ -126,6 +142,7 @@ class BookingForm extends Component
                 $this->adults,
                 $this->children,
                 $this->promoCode ?: null,
+                $this->selectedExtraCostIds,
             );
         } catch (BookingRuleException $e) {
             $this->priceError = $e->getMessage();
@@ -158,6 +175,7 @@ class BookingForm extends Component
             'locale' => app()->getLocale(),
             'total_price' => $breakdown->total,
             'discount_amount' => $breakdown->discountAmount,
+            'extra_costs' => $breakdown->extraCosts ?: null,
             'guest_note' => $this->guestNote ?: null,
         ]);
 

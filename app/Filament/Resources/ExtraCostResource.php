@@ -56,6 +56,10 @@ class ExtraCostResource extends Resource
                     ->default('one_time'),
                 Forms\Components\Toggle::make('is_active')
                     ->default(true),
+                Forms\Components\Toggle::make('is_optional')
+                    ->label('Optional (guest chooses it)')
+                    ->helperText('Off: always included automatically in the price. On: shown as an add-on the guest can tick on the booking form — only included if they select it.')
+                    ->default(false),
             ])
             ->columns(2);
     }
@@ -71,6 +75,9 @@ class ExtraCostResource extends Resource
                 Tables\Columns\TextColumn::make('amount')
                     ->money('EUR'),
                 Tables\Columns\TextColumn::make('unit'),
+                Tables\Columns\IconColumn::make('is_optional')
+                    ->label('Optional')
+                    ->boolean(),
                 Tables\Columns\IconColumn::make('is_active')
                     ->boolean(),
             ])

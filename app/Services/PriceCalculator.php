@@ -19,6 +19,7 @@ class PriceCalculator
         int $adults = 1,
         int $children = 0,
         ?string $promoCode = null,
+        array $selectedOptionalExtraCostIds = [],
     ): PriceBreakdown {
         $checkIn = Carbon::parse($checkIn)->startOfDay();
         $checkOut = Carbon::parse($checkOut)->startOfDay();
@@ -32,7 +33,7 @@ class PriceCalculator
         $this->assertCapacityAllows($house, $adults + $children);
 
         $accommodationSubtotal = $this->accommodationSubtotal($house, $checkIn, $nights);
-        [$extraCosts, $extraCostsTotal] = $this->extraCosts($house, $nights, $adults, $children);
+        [$extraCosts, $extraCostsTotal] = $this->extraCosts($house, $nights, $adults, $children, $selectedOptionalExtraCostIds);
         [$discount, $discountAmount] = $this->bestDiscount($house, $checkIn, $nights, $accommodationSubtotal, $promoCode);
 
         $total = max(0, $accommodationSubtotal - $discountAmount) + $extraCostsTotal;
@@ -109,13 +110,18 @@ class PriceCalculator
         return round($total, 2);
     }
 
-    private function extraCosts(House $house, int $nights, int $adults, int $children): array
+    /**
+     * Mandatory (is_optional = false) extra costs are always included; optional
+     * ones are only included when the guest picked them on the booking form.
+     */
+    private function extraCosts(House $house, int $nights, int $adults, int $children, array $selectedOptionalExtraCostIds): array
     {
         $guests = $adults + $children;
 
         $costs = ExtraCost::query()
             ->where('is_active', true)
             ->where(fn ($q) => $q->where('house_id', $house->id)->orWhereNull('house_id'))
+            ->where(fn ($q) => $q->where('is_optional', false)->orWhereIn('id', $selectedOptionalExtraCostIds))
             ->get();
 
         $breakdown = [];

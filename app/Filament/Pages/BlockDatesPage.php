@@ -11,6 +11,7 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use Livewire\Attributes\Computed;
 
 class BlockDatesPage extends Page implements HasForms
 {
@@ -131,5 +132,43 @@ class BlockDatesPage extends Page implements HasForms
         }
 
         $this->form->fill();
+    }
+
+    /**
+     * Currently-blocked reservations, grouped back into the batches they were
+     * created in (same dates/note created in the same minute) so a
+     * multi-house submission shows as one row like it was made.
+     */
+    #[Computed]
+    public function recentBlocks(): array
+    {
+        $locale = app()->getLocale();
+
+        return Reservation::query()
+            ->where('status', 'blocked')
+            ->with('house')
+            ->latest()
+            ->limit(200)
+            ->get()
+            ->groupBy(fn (Reservation $reservation) => implode('|', [
+                $reservation->check_in->toDateString(),
+                $reservation->check_out->toDateString(),
+                $reservation->internal_note,
+                $reservation->created_at->format('Y-m-d H:i'),
+            ]))
+            ->map(function ($group) use ($locale) {
+                $first = $group->first();
+
+                return [
+                    'houses' => $group->map(fn (Reservation $reservation) => $reservation->house?->getTranslation('name', $locale))->filter()->implode(', '),
+                    'check_in' => $first->check_in->format('d.m.Y'),
+                    'check_out' => $first->check_out->format('d.m.Y'),
+                    'note' => $first->internal_note,
+                    'created_at' => $first->created_at,
+                ];
+            })
+            ->sortByDesc('created_at')
+            ->values()
+            ->all();
     }
 }

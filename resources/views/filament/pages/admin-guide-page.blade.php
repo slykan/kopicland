@@ -107,12 +107,15 @@
                 <li>Brzo mijenjanje cijene za jednu ili više kućica odjednom, za odabrani raspon datuma (npr. cijela sezona) — odabereš kućice, upišeš datume "od-do" i cijenu po noćenju, po želji dodaš oznaku (npr. "Visoka sezona"), pa klikneš "Set price for selected dates".</li>
                 <li>Ta cijena nadjačava zadanu (Default Pricing) cijenu za odabrane kućice i datume. Ako ponovno postaviš cijenu za iste ili djelomično preklapajuće datume na istoj kućici, stara se briše i vrijedi nova — pazi da uvijek postaviš cijeli raspon koji želiš, ne samo dio koji mijenjaš.</li>
                 <li>Isto se može napraviti i pojedinačno, samo za jednu kućicu, kroz karticu <b>Pricing Rules</b> na toj kućici (vidi Kućice gore).</li>
+                <li>Ispod forme je tablica <b>Recently set prices</b> — pregled svega što je trenutno postavljeno (kućice, datumi, cijena, oznaka, kad je postavljeno).</li>
             </ul>
 
             <h3>Extra Costs</h3>
             <ul>
-                <li>Dodatni troškovi — turistička pristojba, čišćenje i sl. Jednokratno, po noćenju, po osobi ili po osobi/noćenju.</li>
+                <li>Dodatni troškovi — turistička pristojba, čišćenje, doručak i sl. Jednokratno, po noćenju, po osobi ili po osobi/noćenju.</li>
                 <li>Možeš vezati uz jednu kućicu ili ostaviti prazno da vrijedi za sve.</li>
+                <li>Kvačica <b>Optional</b> — ako je isključena (default), trošak se automatski uračuna u svaku rezervaciju za tu kućicu. Ako je uključena, gost ga vidi kao dodatnu opciju s kvačicom na formi za rezervaciju (npr. "Doručak — 10 €") i cijena se računa samo ako ju sam odabere.</li>
+                <li>Na rezervaciji (Reservations → uredi) polje <b>Included extras</b> pokazuje koji su dodatni troškovi (uključujući opcionalne koje je gost odabrao) uračunati u tu rezervaciju.</li>
             </ul>
 
             <h3>Discounts</h3>
@@ -164,6 +167,7 @@
                 <li>Brzo zauzimanje termina za jednu ili više kućica odjednom (npr. za renovaciju, vlastiti boravak i sl.) — odabereš kućice, upišeš datume i po želji internu napomenu, pa klikneš "Block selected dates".</li>
                 <li>Za svaku odabranu kućicu se kreira zasebna rezervacija sa statusom <b>Blocked</b> (bez gosta, gost ne dobiva mail). Ako je neka kućica za odabrane datume već zauzeta/blokirana, ta se kućica preskoči (dobiješ obavijest koja je), a ostale se ipak blokiraju.</li>
                 <li>Blokirani termini se poslije mogu urediti ili obrisati kao i svaka druga rezervacija, u listi Reservations.</li>
+                <li>Ispod forme je tablica <b>Currently blocked</b> — pregled svega što je trenutno blokirano (kućice, datumi, razlog, kad je postavljeno).</li>
             </ul>
         </section>
 

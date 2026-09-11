@@ -36,6 +36,21 @@
                 </div>
             </div>
 
+            @if ($this->optionalExtraCosts->isNotEmpty())
+                <div class="space-y-2">
+                    <label class="block text-xs font-medium text-brand-600">{{ __('Extras') }}</label>
+                    @foreach ($this->optionalExtraCosts as $extra)
+                        <label class="flex items-center justify-between gap-2 rounded-lg border border-brand-200 px-3 py-2 text-sm text-brand-900">
+                            <span class="flex items-center gap-2">
+                                <input type="checkbox" wire:model.live="selectedExtraCostIds" value="{{ $extra->id }}" class="rounded border-brand-300">
+                                {{ $extra->getTranslation('name', app()->getLocale(), useFallbackLocale: true) }}
+                            </span>
+                            <span class="text-brand-500">{{ number_format($extra->amount, 2) }} €</span>
+                        </label>
+                    @endforeach
+                </div>
+            @endif
+
             @if ($priceError)
                 <p class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ $priceError }}</p>
             @elseif ($priceBreakdown)
