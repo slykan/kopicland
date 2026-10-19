@@ -4,6 +4,7 @@
     "Bathrooms": "Kupaonice",
     "Bedrooms": "Sobe",
     "Beds": "Kreveti",
+    "Close": "Zatvori",
     "Country": "Država",
     "Email": "Email",
     "First name": "Ime",
@@ -12,7 +13,7 @@
     "Phone": "Telefon",
     "Promo code": "Promo kod",
     "Thank you!": "Hvala!",
+    "These dates are no longer available for this house.": "Ovi datumi više nisu dostupni za ovu kućicu.",
     "Total": "Ukupno",
-    "Your reservation request has been sent. We will confirm availability shortly by email.": "Vaš zahtjev za rezervaciju je poslan. Dostupnost ćemo potvrditi uskoro putem emaila.",
-    "These dates are no longer available for this house.": "Ovi datumi više nisu dostupni za ovu kućicu."
+    "Your reservation request has been sent. We will confirm availability shortly by email.": "Vaš zahtjev za rezervaciju je poslan. Dostupnost ćemo potvrditi uskoro putem emaila."
 }

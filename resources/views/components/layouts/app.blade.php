@@ -42,6 +42,8 @@
         <x-site-footer />
     </div>
 
+    <x-site-popup />
+
     @livewireScripts
 </body>
 </html>
