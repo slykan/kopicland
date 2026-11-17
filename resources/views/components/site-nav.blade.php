@@ -26,7 +26,7 @@
                 @endforeach
             </div>
             <a href="{{ route('houses.index', ['locale' => $locale]) }}" class="rounded-full bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700">
-                {{ __('site.common.book_now') }}
+                {{ \App\Models\BookingSetting::onlineBookingEnabled() ? __('site.common.book_now') : __('site.inquiry.nav') }}
             </a>
         </div>
 
@@ -55,7 +55,7 @@
         </div>
 
         <a href="{{ route('houses.index', ['locale' => $locale]) }}" class="mt-4 block rounded-full bg-brand-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-brand-700">
-            {{ __('site.common.book_now') }}
+            {{ \App\Models\BookingSetting::onlineBookingEnabled() ? __('site.common.book_now') : __('site.inquiry.nav') }}
         </a>
     </div>
 </header>

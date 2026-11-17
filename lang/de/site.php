@@ -138,4 +138,11 @@ return [
         'sent_title' => 'Nachricht gesendet!',
         'sent_body' => 'Vielen Dank für Ihre Anfrage, wir melden uns so schnell wie möglich bei Ihnen.',
     ],
+    'inquiry' => [
+        'nav' => 'Anfrage senden',
+        'title' => 'Anfrage für Ihre Daten',
+        'intro' => 'Online-Buchungen sind derzeit nicht möglich. Wählen Sie Ihre Daten und senden Sie uns eine Anfrage – wir melden uns mit einem Angebot.',
+        'send' => 'Anfrage senden',
+        'sent_body' => 'Ihre Anfrage wurde gesendet. Wir melden uns so schnell wie möglich bei Ihnen.',
+    ],
 ];

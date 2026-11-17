@@ -138,4 +138,11 @@ return [
         'sent_title' => 'Poruka je poslana!',
         'sent_body' => 'Hvala na upitu, javit ćemo Vam se u najkraćem mogućem roku.',
     ],
+    'inquiry' => [
+        'nav' => 'Pošalji upit',
+        'title' => 'Upit za odabrane datume',
+        'intro' => 'Online rezervacije trenutno nisu dostupne. Odaberite datume i pošaljite upit, a mi ćemo vam se javiti s ponudom.',
+        'send' => 'Pošalji upit',
+        'sent_body' => 'Vaš upit je poslan. Javit ćemo vam se u najkraćem mogućem roku.',
+    ],
 ];

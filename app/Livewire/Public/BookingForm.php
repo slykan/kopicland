@@ -3,6 +3,8 @@
 namespace App\Livewire\Public;
 
 use App\Exceptions\BookingRuleException;
+use App\Mail\BookingInquiryMail;
+use App\Models\BookingSetting;
 use App\Models\ExtraCost;
 use App\Models\Guest;
 use App\Models\House;
@@ -10,6 +12,8 @@ use App\Models\Reservation;
 use App\Services\AvailabilityChecker;
 use App\Services\PriceCalculator;
 use App\Support\Countries;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -71,9 +75,13 @@ class BookingForm extends Component
 
     public bool $submitted = false;
 
+    /** Online booking switched off in admin: the form only sends an inquiry e-mail. */
+    public bool $inquiryMode = false;
+
     public function mount(House $house): void
     {
         $this->house = $house;
+        $this->inquiryMode = ! BookingSetting::onlineBookingEnabled();
     }
 
     #[Computed]
@@ -105,7 +113,7 @@ class BookingForm extends Component
         $this->priceError = null;
         $this->priceBreakdown = null;
 
-        if (! $this->checkIn || ! $this->checkOut) {
+        if ($this->inquiryMode || ! $this->checkIn || ! $this->checkOut) {
             return;
         }
 
@@ -126,6 +134,14 @@ class BookingForm extends Component
 
     public function submit(AvailabilityChecker $availabilityChecker, PriceCalculator $priceCalculator): void
     {
+        // Checked again on the server, so a stale page cannot create a reservation after booking was switched off.
+        if (! BookingSetting::onlineBookingEnabled()) {
+            $this->inquiryMode = true;
+            $this->sendInquiry();
+
+            return;
+        }
+
         $this->validate();
 
         if (! $availabilityChecker->isAvailable($this->house->id, $this->checkIn, $this->checkOut)) {
@@ -178,6 +194,44 @@ class BookingForm extends Component
             'extra_costs' => $breakdown->extraCosts ?: null,
             'guest_note' => $this->guestNote ?: null,
         ]);
+
+        $this->submitted = true;
+    }
+
+    private function sendInquiry(): void
+    {
+        $this->validate([
+            'checkIn' => 'required|date|after_or_equal:today',
+            'checkOut' => 'required|date|after:checkIn',
+            'adults' => 'required|integer|min:1',
+            'children' => 'required|integer|min:0',
+            'pets' => 'required|integer|min:0',
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'nullable|string|max:50',
+            'guestNote' => 'nullable|string|max:2000',
+            'acceptPrivacy' => 'accepted',
+        ]);
+
+        $in = Carbon::parse($this->checkIn);
+        $out = Carbon::parse($this->checkOut);
+        $name = $this->house->getTranslation('name', 'hr', useFallbackLocale: true);
+
+        Mail::to(config('site.contact.email'))->send(new BookingInquiryMail([
+            'house' => is_string($name) && $name !== '' ? $name : (string) $this->house->slug,
+            'check_in' => $in->format('d.m.Y.'),
+            'check_out' => $out->format('d.m.Y.'),
+            'nights' => (int) $in->diffInDays($out),
+            'adults' => $this->adults,
+            'children' => $this->children,
+            'pets' => $this->pets,
+            'name' => trim($this->firstName.' '.$this->lastName),
+            'email' => $this->email,
+            'phone' => trim($this->phone),
+            'message' => trim($this->guestNote),
+            'locale' => app()->getLocale(),
+        ]));
 
         $this->submitted = true;
     }

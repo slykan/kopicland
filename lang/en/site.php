@@ -138,4 +138,11 @@ return [
         'sent_title' => 'Message sent!',
         'sent_body' => 'Thank you for reaching out, we\'ll get back to you as soon as possible.',
     ],
+    'inquiry' => [
+        'nav' => 'Send inquiry',
+        'title' => 'Inquiry for your dates',
+        'intro' => 'Online booking is currently unavailable. Choose your dates and send us an inquiry, and we will get back to you with an offer.',
+        'send' => 'Send inquiry',
+        'sent_body' => 'Your inquiry has been sent. We will get back to you as soon as possible.',
+    ],
 ];
